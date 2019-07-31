@@ -13,6 +13,7 @@
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "webpack": "^4.38.0",
     "webpack-cli": "^3.3.6"
   },
@@ -28,7 +29,7 @@
     "start": "webpack --watch --mode=development",
     "postinstall": "webpack"
   },
-  "engines" : {
+  "engines": {
     "node": "10.13.0",
     "npm": "6.4.1"
   },

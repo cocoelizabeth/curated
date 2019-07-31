@@ -1,12 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { login, logout, signup } from './util/session_api.util';
+import Root from './components/root';
+import configureStore from './store/store';
+
+// TESTING
+import { login, logout, signup } from './actions/session_actions';
+
 
 document.addEventListener("DOMContentLoaded", () => {
-    let root = document.getElementById("root");
+    const store = configureStore();
+  
+
+     // TESTING
+    window.getState = store.getState;
+    window.dispatch = store.dispatch;
+
+    // extra testing
     window.login = login;
     window.logout = logout;
     window.signup = signup;
-    ReactDOM.render(<h1>Welcome to Curated</h1>, root);
+    // testing end
+
+    let root = document.getElementById("root");
+    ReactDOM.render(<Root store={ store }/>, root);
+
+
 });
 
