@@ -17,14 +17,24 @@ nav {
     font-family: sans-serif;
     color: darkgrey;
     text-decoration: none;
-
 }
+
+header {
+    background-color: yellow;
+    height: 100%;
+}
+
+header h1 {
+    color: lightsalmon;
+    text-align: center;
+}
+
 
 .header-group {
     background-color: lightseagreen;
     display: flex;
     align-content: center;
-    justify-content: center
+    justify-content: center;
 }
 
 .header-name {
