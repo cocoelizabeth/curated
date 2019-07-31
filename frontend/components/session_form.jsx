@@ -5,7 +5,7 @@ class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            email: "",
             password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,13 +23,14 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
-    renderErrros() {
+    renderErrors() {
         return(
             <ul>
                 {this.props.errors.map((error, i) => (
                     <li key={`error-${i}`}>
                         {error}
                     </li>
+                    
                 ))}
             </ul>
         );
@@ -39,25 +40,28 @@ class SessionForm extends React.Component {
         return (
             <div className="login-form-container">
                 <form onSubmit={this.handleSubmit} className="login-form-box">
+                    <img src="/app/assets/images/logo.png" alt="curated-logo"  width="128"></img>
                     <h2>welcome to curate</h2>
-                    <br />
+                    {/* <br /> */}
                     <h3>{this.props.subHead}</h3>
-                    {/* //this.renderErrors// */}
-                     <div className="login-form">
+                    {this.renderErrors()}
+                     <div className="login-form-fields">
                         <br/>
                         <label>Email:
                             <input type="email"
                                 value={this.state.email}
                                 onChange={this.update('email')}
                                 className ="login-input"
+                                placeholder="Email"
                             />
                         </label>
                         <br/>
                         <label>Password:
                             <input type="password"
                                 value={this.state.password}
-                                onChange={this.update.apply('password')}
+                                onChange={this.update('password')}
                                 className="login-input"
+                                placeholder="Create a password"
                             />
                         </label>
                         <br/>
