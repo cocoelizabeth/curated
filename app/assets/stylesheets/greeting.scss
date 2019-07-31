@@ -5,18 +5,28 @@
 
 .login-signup {
     background-color: lightpink;
+    min-height: 40px;
+    min-width: 130px;
 }
 
 
 // /* login/signup link buttons */
 
 .login-signup a {
-    padding: 10px 20px;
-    border-radius: 10px;
-    background-color: blue;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color:#efefef;
     font-family: sans-serif;
     color: darkgrey;
+    cursor: pointer;
     text-decoration: none;
+    -webkit-appearance: button;
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    // width: 100%;
+    
 }
 
 header {
