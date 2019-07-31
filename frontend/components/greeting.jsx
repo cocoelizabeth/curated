@@ -10,6 +10,20 @@ const Greeting = ({ currentUser, logout }) => {
         </nav>
     );
 
+    // const loginLink = () => (
+    //     <nav className="login-signup">
+    //         <Link to="/login">Login</Link>
+    //     </nav>
+    // );
+
+    // const signupLink = () => (
+    //     <nav className="login-signup">
+    //         <Link to="/signup">Sign Up</Link>
+    //     </nav>
+    // );
+
+  
+
     const personalGreeting = () => (
         <hgroup className="header-group">
             <h2 className="header-name">Hi, {currentUser.username}! Your feed is made up of these topics:</h2>

@@ -8,7 +8,7 @@ const App = () => (
     <div>
         <header>
             <h1>curated</h1>
-            <GreetingContainer />
+            {/* <GreetingContainer /> */}
         </header>
       
         <Route path="/login" component={LoginFormContainer} />

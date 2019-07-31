@@ -8,9 +8,11 @@ export const mapStateToProps = ({ errors }) => {
     return {
         errors: errors.session,
         formType: 'sign up',
-        navLink: <Link to="/login">Already a member? Log In</Link>,
         subHead: "Find new ideas to try",
-        buttonText: "Continue"
+        buttonText: "Continue",
+        navLink: '/login',
+        navLinkText: 'Log In',
+        bottomLink: <Link to="/login">Already a member? Log In</Link>,
     }
 }
 
