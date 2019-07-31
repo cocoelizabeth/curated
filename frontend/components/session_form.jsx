@@ -1,6 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+  const loginLink = () => (
+        <nav className="login-signup">
+            <Link to="/login">Login</Link>
+        </nav>
+    );
+
+    const signupLink = () => (
+        <nav className="login-signup">
+            <Link to="/signup">Sign Up</Link>
+        </nav>
+    );
+
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
@@ -36,9 +48,16 @@ class SessionForm extends React.Component {
         );
     }
 
+
+      
+
+
     render () {
         return (
             <div className="login-form-container">
+                <nav className="login-signup">
+                    <Link to={this.props.navLink}>{this.props.navLinkText}</Link>
+                </nav>
                 <form onSubmit={this.handleSubmit} className="login-form-box">
                     <img src={window.staticImages.logo} alt="curated-logo"  width="48"></img>
                     <h2>Welcome to curated</h2>
@@ -67,7 +86,7 @@ class SessionForm extends React.Component {
                       
                         <input className="session-submit" type="submit" value={this.props.buttonText} />
                         <p>By continuing, you agree  to Pinterest's <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a></p>
-                        {/* // link to navLink here<Link to={this.props.navLink}>Help</Link> */}
+                        <span> {this.props.bottomLink} </span>
                     </div>
                 </form>
             </div>
