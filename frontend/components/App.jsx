@@ -5,7 +5,7 @@ import SignupFormContainer from './signup_form_container';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 
 const App = () => (
-    <div>
+    <div className="background">
         <header>
             <h1>curated</h1>
             <GreetingContainer />

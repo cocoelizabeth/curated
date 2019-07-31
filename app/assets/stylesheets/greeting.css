@@ -1,0 +1,33 @@
+nav {
+
+}
+
+
+.login-signup {
+    background-color: lightpink;
+}
+
+
+/* login/signup link buttons */
+
+.login-signup a {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: blue;
+    font-family: sans-serif;
+    color: darkgrey;
+    text-decoration: none;
+
+}
+
+.header-group {
+    background-color: lightseagreen;
+    display: flex;
+    align-content: center;
+    justify-content: center
+}
+
+.header-name {
+    color: white;
+    text-align: center;
+}
