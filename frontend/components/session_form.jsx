@@ -40,14 +40,14 @@ class SessionForm extends React.Component {
         return (
             <div className="login-form-container">
                 <form onSubmit={this.handleSubmit} className="login-form-box">
-                    <img src="/app/assets/images/logo.png" alt="curated-logo"  width="128"></img>
-                    <h2>welcome to curate</h2>
-                    {/* <br /> */}
+                    <img src={window.staticImages.logo} alt="curated-logo"  width="48"></img>
+                    <h2>Welcome to curated</h2>
+                
                     <h3>{this.props.subHead}</h3>
                     {this.renderErrors()}
                      <div className="login-form-fields">
-                        <br/>
-                        <label>Email:
+                        
+                        <label>
                             <input type="email"
                                 value={this.state.email}
                                 onChange={this.update('email')}
@@ -55,8 +55,8 @@ class SessionForm extends React.Component {
                                 placeholder="Email"
                             />
                         </label>
-                        <br/>
-                        <label>Password:
+        
+                        <label>
                             <input type="password"
                                 value={this.state.password}
                                 onChange={this.update('password')}
@@ -64,9 +64,9 @@ class SessionForm extends React.Component {
                                 placeholder="Create a password"
                             />
                         </label>
-                        <br/>
-                        <input className="session-submit" type="submit" value={this.props.formType} />
-
+                      
+                        <input className="session-submit" type="submit" value={this.props.buttonText} />
+                        <p>By continuing, you agree  to Pinterest's <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a></p>
                         {/* // link to navLink here<Link to={this.props.navLink}>Help</Link> */}
                     </div>
                 </form>

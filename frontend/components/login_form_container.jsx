@@ -10,6 +10,7 @@ export const mapStateToProps = ({ errors }) => {
         errors: errors.session,
         formType: 'login',
         navLink: <Link to="/signup">Not on curated yet? Sign up</Link>,
+        buttonText: "Log In"
     };
 };
 
