@@ -70,7 +70,6 @@ class Api::IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      debugger
       params.require(:idea).permit(:title, :description, :source_url)
     end
 end
