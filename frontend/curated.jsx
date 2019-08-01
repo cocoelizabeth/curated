@@ -5,7 +5,7 @@ import configureStore from './store/store';
 
 // TESTING
 import { login, logout, signup } from './actions/session_actions';
-
+import { createIdea, fetchIdea, fetchIdeas } from './actions/idea_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
@@ -34,6 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.login = login;
     window.logout = logout;
     window.signup = signup;
+    window.createIdea = createIdea;
+    window.fetchIdea = fetchIdea;
+    window.fetchIdeas= fetchIdeas;
     // testing end
 
 

@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Idea.create!([
+  {title: "this is a test idea", description: nil, source_url: nil}
+])
+User.create!([
+  {session_token: "6ypgU-8ayVH9-cGpMlaLRg", email: "cocoelizabeth@gmail.com", username: "cocoelizabeth2", password_digest: "$2a$12$E2vQ7Czoacx8aCtvPVJNE.kgs8VclBggaPZbnG.oU6j1TXWmBl3l6", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "E8F8nADoDwl6j3SrrVkWpg", email: "coco@hi.com", username: "coco3", password_digest: "$2a$12$57tp0vk/F0dDI3qGbu5gKuinS1UaYeypMVTbPtxHygxkRXObPovYG", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "4mUNmvfPADnTN0rHqsMz5A", email: "happy@yahoo.com", username: "happy4", password_digest: "$2a$12$IQeOObGwzasB1b4beDVnEufnoY2EfHbsWo/ZfRrfN8.V/Z/L22fy6", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "qrEWP3mas-PBWUQavJ7IOw", email: "david@gmail.com", username: "david5", password_digest: "$2a$12$v755cfzW4E/7BZ3WeDme0O1PS7/uyanv/y5V7b37jjzvWGa9OADGK", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "ej1yMcaGvQh3PMf00lXDDQ", email: "cocoeliz@gmail.com", username: "cocoeliz16", password_digest: "$2a$12$iERrOrT8ZDYQ85yjqSIG1u7HilihNscn3QoXKVmNDmZwpH4BHXkZ2", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "dM9_Y70oRcH9qMO_DlNjgQ", email: "stacy@gmail.com", username: "stacy11", password_digest: "$2a$12$oezR70o.URhlNJaXviH8.uIEDPafAdvB3YSgl0trFPmoXZQiDWUCq", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "lOpbhjbSe3n96ZBhrCnaMw", email: "coco2@mail.com", username: "coco26", password_digest: "$2a$12$YDoEI25n8OEv.O2WBFp.G.8zeb9WuhHu5NhW.cdjvN2cYuz8uicRi", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "LMKuNW2ABRu_dw5ZKPqXkQ", email: "coco4@mail.com", username: "coco47", password_digest: "$2a$12$UOpK5yVBKbS3/7OzMyzSUOBReOmh2YJ1Rcw/20JJl4.bjyrgXh3Ua", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "qTJUbbI9NJ1JL2JJl23EQg", email: "deb@gmail.com", username: "deb12", password_digest: "$2a$12$Ue1Tl6WIrgMOk0.hVYjPvOPy4/qTwtMdQd3SriVh0JNCDes0GwqQu", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "KuF0tyLHPofv3eH0Ye8PPQ", email: "deb2@gmail.com", username: "deb213", password_digest: "$2a$12$LK.Zy7ekKUYv4AkXeWnizui95pb2kldq7yulXAClIR0Yv0Xf9grt6", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "5JBsLaJe20Hu1s0gEQ_nsQ", email: "coco11@gmail.com", username: "coco118", password_digest: "$2a$12$6hkSiZdbqV3YaOJFzMWZc.Wagfi5xetdK0dd0aZXYy2y3kharWwj2", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "6159oYrGtZawuc3iDmlCjw", email: "eric@hotmail.com", username: "eric14", password_digest: "$2a$12$g/ROUCnEb3tEj2UnYBorDOUC90AMQcMESzk61s6PwDs0PP3EahUK.", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "wwDw8GjpAGlMCw2oZV7gfg", email: "random@gmail.com", username: "random15", password_digest: "$2a$12$D2bvyqyH7MNAKWbl6SUsM.HJr.m1H.ch1CT.WEfQ6z3v0yR.TCIO6", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "1EvXGEykqSumk5b8ihLssg", email: "cocok@gmail.com", username: "cocok9", password_digest: "$2a$12$rk0Dv4suKwV8x9yJOlIa5OocKERR1972QD1vtYCr5UlXX69hyTzES", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "PtTHaEaZrn2u54n7OdrloA", email: "hi@gmail.com", username: "hi10", password_digest: "$2a$12$wh9KnRpWnDXHBfrvOGMlxe/XQOV3YU2oVvfpEGnrbFo/GyJnraxdi", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
+  {session_token: "hKvNlPCV8MO5dz30CqwWbA", email: "coco@gmail.com", username: "coco1", password_digest: "$2a$12$sw9yqfS5M4NcbV9WftClw.uG5ZPtXvGO/upzp28ZJhnpp1QW7LJY2", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil}
+])

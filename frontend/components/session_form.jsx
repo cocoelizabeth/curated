@@ -1,17 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-  const loginLink = () => (
-        <nav className="login-signup">
-            <Link to="/login">Login</Link>
-        </nav>
-    );
-
-    const signupLink = () => (
-        <nav className="login-signup">
-            <Link to="/signup">Sign Up</Link>
-        </nav>
-    );
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -32,8 +21,9 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
+
         this.props.processForm(user)
-        .then(()=> this.props.history.push('/index'))
+        .then(()=> this.props.history.push('/index'));
     }
 
     renderErrors() {

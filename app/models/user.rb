@@ -28,7 +28,7 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
     after_initialize :set_username
 
-    #has many
+    # has_many :ideas
     #belongs to
 
     def self.find_by_credentials(email, password)
