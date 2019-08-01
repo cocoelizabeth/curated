@@ -9,19 +9,6 @@ const Greeting = ({ currentUser, logout }) => {
             <Link to="/signup">Sign Up</Link>
         </nav>
     );
-
-    // const loginLink = () => (
-    //     <nav className="login-signup">
-    //         <Link to="/login">Login</Link>
-    //     </nav>
-    // );
-
-    // const signupLink = () => (
-    //     <nav className="login-signup">
-    //         <Link to="/signup">Sign Up</Link>
-    //     </nav>
-    // );
-
   
 
     const personalGreeting = () => (
