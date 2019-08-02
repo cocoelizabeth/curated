@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
             password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this)
     }
 
     componentWillUnmount() {
@@ -25,6 +26,7 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        debugger
         const user = Object.assign({}, this.state);
 
         this.props.processForm(user)
@@ -43,11 +45,28 @@ class SessionForm extends React.Component {
         );
     }
 
+    demoLogin(e) {
+        this.setState({
+            email: "demo@email.com",
+            password: "hunter12"
+        }, 
+            () => this.handleSubmit(e)
+        )
+    }
+
 
       
 
 
     render () {
+        const demoLoginButton = this.props.formType !== "login" ? null : (
+            <input 
+                className="session-submit demo"
+                type="submit"
+                value="Demo Login" 
+                onClick={this.demoLogin} />
+        )
+
         return (
             <>
             <div className="session-background">
@@ -87,6 +106,7 @@ class SessionForm extends React.Component {
                         </label>
                       
                         <input className="session-submit" type="submit" value={this.props.buttonText} />
+                        {demoLoginButton}
                         <p>By continuing, you agree  to Pinterest's <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a></p>
                         <span> {this.props.bottomLink} </span>
                     </div>

@@ -20,7 +20,6 @@ export const mapDispatchToProps = dispatch => {
     return { 
         processForm: (user) => dispatch(signup(user)),
         clearErrors: () => dispatch(clearSessionErrors()),
-        closeModal: () => dispatch(closeModal()),
     }
 }
 
