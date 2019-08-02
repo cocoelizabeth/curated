@@ -5,10 +5,10 @@ import { login, clearSessionErrors, } from '../actions/session_actions';
 import SessionForm from './session_form';
 
 
-export const mapStateToProps = ({ state }) => {
+export const mapStateToProps = ({ errors }) => {
 
     return {
-        errors: state.errors.session,
+        errors: errors.session,
         formType: 'login',
         buttonText: "Log In",
         navLink: '/signup',
