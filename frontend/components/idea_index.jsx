@@ -1,6 +1,6 @@
 import React from 'react';
 import IdeaItem from './idea_index_item';
-import GreetingContainer from './greeting_container';
+import NavContainer from './nav_container';
 import Splash from './splash';
 
 
@@ -29,7 +29,7 @@ class IdeaIndex extends React.Component {
         
         return (
             <div className="idea-index">
-                <GreetingContainer />
+                <NavContainer />
                 <Splash />
                 {/* <ul>
                     {ideaItems}
