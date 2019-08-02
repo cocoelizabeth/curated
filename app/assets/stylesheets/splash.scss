@@ -1,18 +1,60 @@
+.session-background {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    // opacity: 0.45;
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.45);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        
+    }
+    .splash{
+        position: absolute;
+        padding:5%;
+        // height: 100%;
+    }
+ 
+}
+
+
+.background-grid {
+    // background-color: rgb(238, 223, 223);
+    // padding: 10px;
+    height: 100%;
+    width: 100%;
+
+}
+
+
+
+
 .splash-container {
-    width: 1200px;
+    width: 100%;
     margin: 20px auto;
     columns: 4;
     column-gap: 40px;
+  
 }
 
 .splash-image-container {
     width: 100%;
     margin: 0 0 20px;
-    padding: 10px;
+    // padding: 10px;
     background: #fff;
+    overflow: hidden;
     break-inside: avoid;
-    display: flex;
+    // display: flex;
+    align-content: center;
     border-radius: 8px;
+
+    // changes
+    // max-height: 30%;
+    // max-width: 30%;
+    
+    
 
 }
 
@@ -22,5 +64,10 @@
 }
 
 @media (max-width: 1200px) {
-
+    .container  {
+        columns: 3;
+        width: calc(100% -40px);
+        box-sizing: border-box;
+        padding: 20px 20px 20px 0;
+    }
 }
