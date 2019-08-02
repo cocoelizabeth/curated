@@ -14,7 +14,7 @@ export const fetchIdea = id => {
 };
 
 export const createIdea = idea => {
-
+debugger
  return $.ajax({
         method: 'POST',
         url: "api/ideas",

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Splash from './splash';
 
 
 class SessionForm extends React.Component {
@@ -10,6 +11,10 @@ class SessionForm extends React.Component {
             password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentWillUnmount() {
+        this.props.clearErrors();
     }
 
     update(field) {
@@ -45,11 +50,18 @@ class SessionForm extends React.Component {
 
     render () {
         return (
+            <>
+            <div className="session-background">
+                <div className="overlay"></div>
+                 <Splash />
+            </div>
             <div className="login-form-container">
+                
                 <nav className="login-signup">
                     <Link to={this.props.navLink}>{this.props.navLinkText}</Link>
                 </nav>
                 <form onSubmit={this.handleSubmit} className="login-form-box">
+                    <div className="content">
                     <img src={window.staticImages.logo} alt="curated-logo"  width="48"></img>
                     <h2>Welcome to curated</h2>
                 
@@ -79,9 +91,11 @@ class SessionForm extends React.Component {
                         <p>By continuing, you agree  to Pinterest's <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a></p>
                         <span> {this.props.bottomLink} </span>
                     </div>
+                    </div>
                 </form>
+                
             </div>
-          
+          </>
         )
        
     }

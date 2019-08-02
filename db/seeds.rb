@@ -1,5 +1,5 @@
 Idea.create!([
-  {title: "this is a test idea", description: nil, source_url: nil}
+  {title: "this is a test idea", description: nil, source_url: "image1"}
 ])
 User.create!([
   {session_token: "6ypgU-8ayVH9-cGpMlaLRg", email: "cocoelizabeth@gmail.com", username: "cocoelizabeth2", password_digest: "$2a$12$E2vQ7Czoacx8aCtvPVJNE.kgs8VclBggaPZbnG.oU6j1TXWmBl3l6", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
@@ -19,3 +19,4 @@ User.create!([
   {session_token: "PtTHaEaZrn2u54n7OdrloA", email: "hi@gmail.com", username: "hi10", password_digest: "$2a$12$wh9KnRpWnDXHBfrvOGMlxe/XQOV3YU2oVvfpEGnrbFo/GyJnraxdi", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil},
   {session_token: "hKvNlPCV8MO5dz30CqwWbA", email: "coco@gmail.com", username: "coco1", password_digest: "$2a$12$sw9yqfS5M4NcbV9WftClw.uG5ZPtXvGO/upzp28ZJhnpp1QW7LJY2", age: nil, gender: nil, location: nil, first_name: nil, last_name: nil, profile_photo_url: nil, about: nil}
 ])
+ 
