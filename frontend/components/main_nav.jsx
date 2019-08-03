@@ -18,7 +18,7 @@ const mainNav = ({ currentUser, logout }) => {
         <div className="main-nav">
         <div className="nav-group">
             <ul>
-                    <li id="logo-container"> <a href="/">
+                    <li id="logo-container"> <a href="/index">
                     <img src={window.staticImages.logo} alt="curated-logo"></img>
                     </a> </li>
                 <li id="search-box-container">
