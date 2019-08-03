@@ -1,44 +1,4 @@
 
-//  /* background can be the grid */
-// .overlay {
-//     background-color: rgb(17, 12, 12);
-//     padding: 10px;
-//     height: 100%;
-//     width: 100%;
-//     opacity: .2;
-//     z-index: -100;
-// }
-
-// .session-background {
-//     position: relative;
-//     height: 100vh;
-//     overflow: hidden;
-//     // opacity: 0.45;
-//     .overlay {
-//         background-color: rgba(0, 0, 0, 0.45);
-//         position: absolute;
-//         height: 100%;
-//         width: 100%;
-//         z-index: 1;
-//     }
-//     .splash{
-//         position: absolute;
-//         // height: 100%;
-//     }
- 
-// }
-
-
-// .background-grid {
-//     // background-color: rgb(238, 223, 223);
-//     // padding: 10px;
-//     height: 100%;
-//     width: 100%;
-// }
-
-// nav {
-
-// }
 nav {
     width: 100%;
     z-index: 2;
@@ -174,6 +134,7 @@ form li {
     font-size: 12px;
     width: 268px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .login-input {
@@ -199,6 +160,7 @@ form li {
     border-style: solid;
     border-width: 1px;
     padding: 8px 14px;
+    text-align: left;
 }
 
 button, input {
@@ -209,7 +171,7 @@ button, input {
 }
 
 .session-submit {
-    width: 100%;
+    width: 268px;
     border: 0px;
     height: 36px;
     display: inline-block;
@@ -222,6 +184,7 @@ button, input {
     vertical-align: middle;
     background-color: rgb(230, 0, 35);
     color: white;
+    text-align: center;
     
 }
 
@@ -252,15 +215,3 @@ span a:hover{
 }
 
 
-
-// form p {
-//     color: rgb(170, 170, 170);
-//     font-size: 11px;
-//     font-weight: normal;
-//     text-align: center;
-//     -webkit-font-smoothing: antialiased;
-// }
-// form a {
-//     font-weight: 700;
-//     color: rgb(170, 170, 170);
-// }

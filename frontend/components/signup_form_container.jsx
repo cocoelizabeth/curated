@@ -13,6 +13,7 @@ export const mapStateToProps = ({ errors }) => {
         navLink: '/login',
         navLinkText: 'Log In',
         bottomLink: <Link to="/login">Already a member? Log In</Link>,
+        passwordPlaceHolder: "Create a password"
     }
 }
 

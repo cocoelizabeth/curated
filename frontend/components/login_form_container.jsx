@@ -14,6 +14,7 @@ export const mapStateToProps = ({ errors }) => {
         navLink: '/signup',
         navLinkText: 'Sign Up',
         bottomLink: <Link to="/signup">Not on curated yet? Sign up</Link>,
+        passwordPlaceHolder: "Password"
 
     };
 };

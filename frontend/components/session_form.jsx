@@ -101,7 +101,7 @@ class SessionForm extends React.Component {
                                 value={this.state.password}
                                 onChange={this.update('password')}
                                 className="login-input"
-                                placeholder="Create a password"
+                                placeholder={this.props.passwordPlaceHolder}
                             />
                         </label>
                       
