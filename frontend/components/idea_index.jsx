@@ -28,14 +28,15 @@ class IdeaIndex extends React.Component {
         )});
         
         return (
-            <div className="idea-index">
+            <>
                 <NavContainer />
-                <Splash />
-                {/* <ul>
+                <div className="idea-index">
+                    <Splash />
+                     {/* <ul>
                     {ideaItems}
-                   
-                </ul>  */}
-            </div>
+                     </ul>  */}
+                 </div>
+            </>
         )
     }
 }

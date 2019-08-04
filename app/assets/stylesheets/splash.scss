@@ -36,7 +36,7 @@
     width: 100%;
     margin: 20px auto;
     columns: 4;
-    column-gap: 40px;
+    column-gap: 24px;
   
 }
 
@@ -65,21 +65,21 @@
     min-height: 85px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1045px) {
     .splash-container  {
         columns: 3;
-        width: calc(100% -40px);
+        width: calc(100% -24px);
         box-sizing: border-box;
-        padding: 20px 20px 20px 0;
+        padding: 20px 20px 0px 20px;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 780px) {
     .splash-container  {
         columns: 2;
-        width: calc(100% -40px);
+        width: calc(100% -24px);
         box-sizing: border-box;
-        padding: 20px 20px 20px 0;
+        padding: 20px 2px 20px 0;
     }
 }
 

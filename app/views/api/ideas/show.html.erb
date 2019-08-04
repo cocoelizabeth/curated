@@ -5,6 +5,8 @@
   <%= @idea.title %>
 </p>
 
+<img src="<%= url_for(@idea.photo) %>" alt="<%= @idea.title %>"> 
+
 <p>
   <strong>Description:</strong>
   <%= @idea.description %>
@@ -15,5 +17,5 @@
   <%= @idea.source_url %>
 </p>
 
-<%= link_to 'Edit', api_edit_idea_path(@idea) %> |
-<%= link_to 'Back', api_ideas_path %>
+<%= link_to 'Edit', edit_api_idea_path(@idea) %> |
+<%= link_to 'Back', '/#/index' %>

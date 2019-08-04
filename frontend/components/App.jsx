@@ -1,5 +1,5 @@
 import React from 'react';
-import navContainer from './nav_container';
+import NavContainer from './nav_container';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
 import IdeaIndexContainer from './idea_index_container';

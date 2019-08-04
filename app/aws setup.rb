@@ -1,0 +1,1 @@
+1. Install Active Storage:bundle exec rails active_storage install
