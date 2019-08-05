@@ -1,0 +1,39 @@
+.dropdown-visible {
+    // box-sizing: border-box;
+   
+    // overflow: auto;
+    position: absolute;
+    // height: auto;
+    min-height: 40px;
+    max-height: 90vh;
+    max-width: 90vw;
+    width: 320px;
+    top: 68px;
+    right: 0px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #211922;
+    font-size: 12px;
+    border: 1px solid #efefef;;
+    stroke: rgb(239, 239, 239);
+    border-radius: 8px;
+
+
+}
+.dropdown-list-item {
+    // position: absolute;
+   
+    display :block;
+    padding: 12px 20px;
+    margin: 0 -4px;
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
+    stroke: rgb(239, 239, 239);
+    border-bottom: 1px solid #efefef;;
+
+}

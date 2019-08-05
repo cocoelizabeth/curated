@@ -30,11 +30,11 @@ class IdeaIndex extends React.Component {
         return (
             <>
                 <NavContainer />
-                <div className="idea-index">
-                    <Splash />
-                     {/* <ul>
+                <div className="idea-index splash">
+                    {/* <Splash /> */}
+                     <ul className="splash-container">
                     {ideaItems}
-                     </ul>  */}
+                     </ul> 
                  </div>
             </>
         )

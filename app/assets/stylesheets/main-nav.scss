@@ -42,7 +42,7 @@
     }
 }
 
-.right-nav ul {
+.nav-links {
 
     display: flex;
     flex-direction: row;
@@ -216,15 +216,6 @@
     color: black;
 }
 
-.dropdown-visible {
-    height: 200px;
-    width: 100px;
-    position: relative;
-    z-index: 40;
-}
-.dropdown-list-item {
-
-}
 
 
 @media all and (max-width: 1090px) {
@@ -239,6 +230,6 @@
     display: none;
 }
   .main-nav {
-  	padding: 20px 0;
+  	// padding: 20px 0;
   }
 }

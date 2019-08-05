@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { createIdea } from '../actions/idea_actions';
+import { openModal } from '../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,28 +14,22 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createIdea: () => {
-            dispatch(createIdea());
-        } 
+        createIdea: () => dispatch(createIdea()),
+        openModal: modal => dispatch(openModal(modal))
     };
 };
 
-const  IdeaItem = ({ idea, title, description, source_url, createIdea }) => {
-    let url = idea.source_url
+const  IdeaItem = ({ idea, title, description, source_url, createIdea, openModal, modal }) => {
     return (
         
-        <li className="idea-item">
-            <img src={window.staticImages.image3} alt="image3" className="idea"></img>
-            <img src={window.staticImages.image2} alt="image2" className="idea"></img>
-            <img src={window.staticImages.image1} alt="image1" className="idea" ></img>
-            <p>Title: {idea.title} </p>
-            {/* <button type="button" onClick={() => {
-                createIdea(this.props.idea)
-            } 
-            }>  
-                Save Idea to board
-            </button> */}
-        </li>
+        <li className="idea-item splash-image-container" onClick={() =>
+            dispatch(openModal({type: "show-idea", idea: idea}))}>
+            <img src={window.staticImages.image2} alt="image2" className="idea"/>
+            <p> Title: {idea.title} </p>
+         </li>
+
+            
+      
     );
    
 };

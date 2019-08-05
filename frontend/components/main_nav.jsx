@@ -8,15 +8,14 @@ class MainNav extends React.Component {
     constructor(props){
         super(props);
         this.state = { dropdown: false };
-        this.dropdownVisible = this.dropdownVisible.bind(this);
-        this.dropdownHidden = this.dropdownHidden.bind(this);
+        this.dropdownToggle = this.dropdownToggle.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+   
         
     }
 
-        // const dropdown = () => (
-    //     <ul ref={dropdownRef => this.dropdownRef = dropdownRef} className={this.state.dropdown}>
-    //     </ul>
-    // );
+
+
     renderDropdown() {
         if (this.state.dropdown) {
             return (
@@ -25,28 +24,33 @@ class MainNav extends React.Component {
                     <li className="dropdown-list-item" onClick={this.props.logout}>Log Out</li>
                 </ul>
             )
-                    }
-                }
-            
-    componentWillUnmount() {
-        document.removeEventListener('mousedown', this.dropdownHidden);
-  }
-                      
-    dropdownHidden(e) {
-        if (!this.dropdownRef.contains(e.target)) {
-            this.setState({ dropdown: false });
-            document.removeEventListener('mousedown', this.dropdownHidden)
         }
     }
 
-    dropdownVisible (e) {
-       this.setState({ dropdown: true });
-       document.addEventListener('mousedown', this.dropdownHidden)
+    handleClick(e) {
+        if (this.dropdownRef && (this.dropdownRef.contains(e.target) || (this.dropdownButton.contains(e.target)))) {
+            return 
+        } else {
+            this.setState({ dropdown: false})
+            e.preventDefault();
+            // e.stopPropagation()
+        }
+    }
+
+    componentWillMount() {
+        document.addEventListener('mousedown', this.handleClick, false)
+    }
+            
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClick, false);
+    }
+                      
+
+    dropdownToggle (e) {
+       this.setState({ dropdown: !this.state.dropdown });
     }
 
     
-   
-        
 
  render() {
 
@@ -70,7 +74,7 @@ class MainNav extends React.Component {
             
     
             <div className="right-nav">
-                <ul>
+                <ul className="nav-links"> 
                     <li><Link to="/#/index" id="nav-button" className="home-button">Home</Link></li>
                     <li><Link to={`/${this.props.currentUser.username}/following`}  id="nav-button" className="following-button">Following</Link></li>
                     <li>
@@ -80,14 +84,14 @@ class MainNav extends React.Component {
                         </Link>
                     </li>
                     <li id="divider"></li>
-                    <li id="kebab-dropdown-button">
+                    <li ref={dropdownButton => this.dropdownButton = dropdownButton} id="kebab-dropdown-button" onClick={this.dropdownToggle}>
                     <i className="fas fa-ellipsis-h">
                     </i></li>
                 </ul>
-                {this.renderDropdown()}
             </div>
             {/* <button className="header-button>" onClick={logout}>Log Out</button> */}
         </div>
+            {this.renderDropdown()}
     </div>
     );
     
