@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => {
 const  IdeaItem = ({ idea, title, description, source_url, createIdea, openModal, modal }) => {
     return (
         
-        <li className="idea-item splash-image-container" onClick={() =>
+        <li className="idea-image-container" onClick={() =>
             dispatch(openModal({type: "show-idea", idea: idea}))}>
             <img src={idea.photoUrl} alt="image2" className="idea"/>
             <p> Title: {idea.title} </p>
