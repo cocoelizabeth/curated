@@ -6,6 +6,7 @@
     align-content: center;
     width: 100vw;
     border-bottom: 1px solid rgb(239, 239, 239);
+   
 
 }
 
@@ -16,6 +17,8 @@
     justify-content: space-between;
     width: 100%;
     height: 56px;
+    background-color: white;
+    z-index: 100;
 }
 .left-nav  {
     display: flex;

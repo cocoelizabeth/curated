@@ -1,12 +1,21 @@
 .modal-background{
-  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background: #000000b3;
+  background: linear-gradient(rgb(238, 238, 238) 300px, rgb(255,255,255) 100%) ;
   height:100%;
   z-index: 10;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+  flex: 1 1 auto;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100vh;
 }
 
 // .background-grid{
@@ -19,13 +28,146 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: rgb(238, 238, 238) 0px 4px 4px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin: 32px;
+  border: 0px solid black;
+  background: white;
+  // max-width: 912px;
+  height:fit-content;
+  max-height: 80vh;
+    overflow: hidden;
+  
+  // max-width: 90vh;
+
 }
 
 .idea-show-container {
-  width: 100vh;
-  height: 100vh;
+  // width: 100vh;
+  // height: 100vh;
   background-color: white;
   text-align: center;
   display: flex;
   align-self: center;
+  border-radius: 8px;
+  flex-direction: column;
+
+  // margin: 24px;
+//  height:-webkit-fill-available;
+
 }
+
+.idea-show-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: pink;
+  height: 72px;
+  width: 100%;
+  padding: 16px 24px;
+  .board-dropdown-button {
+
+  }
+  .idea-save-button {
+
+  }
+}
+
+
+
+.idea-show-elements {
+  display: flex;
+  flex-direction: row;
+  max-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  // position: absolute;
+
+}
+
+.idea-show-image-container {
+
+  padding: 12px;
+  max-width: 496px;
+  min-width: 344px;
+  border-radius: 8px;
+  height: 100%;
+  // display: flex;
+  // flex-direction: row;
+  // align-content: flex-start;
+  margin-bottom: 24px;
+  margin-right: 24px;
+  // height: 100%;
+   max-height: 744px;
+    object-fit: contain;
+   object-position: 50%  50%;
+   object-position: 0 0;
+   margin-bottom: 24px;
+
+  
+  // max-width: 496px;
+
+}
+
+.idea-show-image {
+   object-fit: cover;
+   object-position: 50%  50%;
+  // height: initial;
+    border-radius: 8px;
+
+  // box-sizing: border-box;
+  position: relative;
+  max-height:744px;
+  // // max-width: 496px;
+  width:  100%;
+  height: 100%;
+  // overflow: hidden;
+  // box-sizing: border-box;
+}
+
+
+.idea-show-info-container {
+  display: flex;
+  flex-direction: column;
+  width: 344px;
+  margin-bottom: 24px;
+
+}
+
+.idea-user-info {
+  display: flex;
+  flex-direction: row;
+}
+
+#profile-photo {
+
+}
+
+
+#profile-photo img {
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  margin: auto;
+}
+
+#user-info {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 4px 0px;
+}
+
+.idea-show-username{
+  margin: 0px;
+}
+
+.follow-count {
+  margin: 0px;
+}
+#follow-button {
+
+}
+
