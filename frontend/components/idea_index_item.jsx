@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { createIdea } from '../actions/idea_actions';
 import { openModal } from '../actions/modal_actions';
+import {Link} from 'react-router-dom';
 
 
 const mapStateToProps = (state, ownProps) => {
