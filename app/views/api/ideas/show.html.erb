@@ -1,21 +1,2 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @idea.title %>
-</p>
-
-<img src="<%= url_for(@idea.photo) %>" alt="<%= @idea.title %>"> 
-
-<p>
-  <strong>Description:</strong>
-  <%= @idea.description %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @idea.source_url %>
-</p>
-
-<%= link_to 'Edit', edit_api_idea_path(@idea) %> |
-<%= link_to 'Back', '/#/index' %>
+<h1><%= @idea.title %></h1>
+<img src=<%=(@idea.photo.service_url)%>>

@@ -5,6 +5,7 @@ class Api::IdeasController < ApplicationController
   # GET /ideas.json
   def index
     @ideas = Idea.all
+    render :index
   end
 
   # GET /ideas/1
@@ -71,6 +72,6 @@ class Api::IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:title, :description, :source_url)
+      params.require(:idea).permit(:title, :description, :source_url, :id)
     end
 end

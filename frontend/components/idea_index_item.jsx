@@ -24,7 +24,7 @@ const  IdeaItem = ({ idea, title, description, source_url, createIdea, openModal
         
         <li className="idea-item splash-image-container" onClick={() =>
             dispatch(openModal({type: "show-idea", idea: idea}))}>
-            <img src={window.staticImages.image2} alt="image2" className="idea"/>
+            <img src={idea.photoUrl} alt="image2" className="idea"/>
             <p> Title: {idea.title} </p>
          </li>
 

@@ -5,7 +5,6 @@ import IdeaIndex from './idea_index';
 
 
 const mapStateToProps = (state) => {
-    
     const { ideas } = state.entities;
     return {
         ideas: Object.values(ideas)
