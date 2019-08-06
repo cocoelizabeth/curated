@@ -61,9 +61,9 @@ class MainNav extends React.Component {
             <div className="left-nav">
                 <ul>
                     <li id="logo-container">
-                        <a href="/index">
+                        <Link to="/index">
                         <img src={window.staticImages.logo} alt="curated-logo"></img>
-                        </a>
+                        </Link>
                     </li>
                     <li id="search-box-container">
                         <i className="fas fa-search"></i>
@@ -75,7 +75,7 @@ class MainNav extends React.Component {
     
             <div className="right-nav">
                 <ul className="nav-links"> 
-                    <li><Link to="/#/index" id="nav-button" className="home-button">Home</Link></li>
+                    <li><Link to="/index" id="nav-button" className="home-button">Home</Link></li>
                     <li><Link to={`/${this.props.currentUser.username}/following`}  id="nav-button" className="following-button">Following</Link></li>
                     <li>
                         <Link to={`/${this.props.currentUser.username}`} id="nav-button" className="user-button">

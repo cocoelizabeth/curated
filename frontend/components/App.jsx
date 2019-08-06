@@ -7,6 +7,7 @@ import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal';
 import Splash from './splash';
+import IdeaShowContainer from './idea/idea_show_container';
 
 const App = () => (
     <div className="background-grid">
@@ -18,6 +19,7 @@ const App = () => (
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <ProtectedRoute path="/index" component={IdeaIndexContainer} />
             <Route path="/splash" component={Splash} />
+            <Route path="/ideas/:ideaId" component={IdeaShowContainer} />
         </Switch>
 {/*         
         </div> */}

@@ -8,14 +8,16 @@
   z-index: 10;
   overflow: hidden;
   display: flex;
+  align-items: center;
   align-content: center;
+  justify-content: center;
   width: 100%;
-  position: fixed;
   overflow: hidden;
   flex: 1 1 auto;
   justify-content: space-around;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  position: relative;
 }
 
 // .background-grid{
@@ -31,13 +33,14 @@
   box-shadow: rgb(238, 238, 238) 0px 4px 4px;
   box-sizing: border-box;
   border-radius: 8px;
-  margin: 32px;
+  margin: auto;
+  // margin-bottom: 24px;
   border: 0px solid black;
-  background: white;
+  background-color: white;
   // max-width: 912px;
   height:fit-content;
-  max-height: 80vh;
-    overflow: hidden;
+  max-height: 90vh;
+  overflow: hidden;
   
   // max-width: 90vh;
 
@@ -52,6 +55,7 @@
   align-self: center;
   border-radius: 8px;
   flex-direction: column;
+  overflow: hidden;
 
   // margin: 24px;
 //  height:-webkit-fill-available;
@@ -59,18 +63,61 @@
 }
 
 .idea-show-nav {
+   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 72px;
+  width: 100%;
+  
+
+}
+
+.idea-show-nav-left {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  background-color: pink;
   height: 72px;
-  width: 100%;
+
   padding: 16px 24px;
+  width: 344px;
   .board-dropdown-button {
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: rgb(239, 239, 239);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 400;
+    font-size: 16px;
+    
 
   }
   .idea-save-button {
-
+// width: 268px;
+    border: 0px;
+    height: 36px;
+    display: flex;
+    flex: 0 0 auto;
+    height: 100%;
+    border-top-right-radius: 8px;
+     border-bottom-right-radius: 8px;
+    padding: 0px 14px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: #e60023;
+    color: white;
+    text-align: center;
+    letter-spacing: -.4px;
+    font-size: 16px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    align-items: center;
+    
   }
 }
 
@@ -86,9 +133,10 @@
 
 }
 
+
 .idea-show-image-container {
 
-  padding: 12px;
+  padding: 0px 12px 12px 12px;
   max-width: 496px;
   min-width: 344px;
   border-radius: 8px;
@@ -100,10 +148,11 @@
   margin-right: 24px;
   // height: 100%;
    max-height: 744px;
-    object-fit: contain;
-   object-position: 50%  50%;
-   object-position: 0 0;
-   margin-bottom: 24px;
+  object-fit: contain;
+  object-position: 50%  50%;
+  object-position: 0 0;
+  margin-bottom: 24px;
+  overflow: hidden;
 
   
   // max-width: 496px;

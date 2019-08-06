@@ -1,23 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavContainer from '../nav_container';
 
 class IdeaShow extends React.Component {
     constructor(props){
+        
         super(props);
     }
 
-    // componentDidMount() {
-    //     this.props.fetchIdea(this.props.idea);
-    // }
+    componentDidMount() {
+        
+        this.props.fetchIdea(this.props.match.params.ideaId);
+    }
+
+
 
    render () {
-
+   if (!this.props.idea) { return <p>Loading..</p> };
        return (
+           <>
+           <NavContainer />
+           <div className="modal-background">
+               <div className="modal-child">
            <div className="idea-show-container" >
-                <nav className="idea-show-nav">
-                    <button className="board-dropdown-button">BOARD DROPDOWN</button>
-                    <button className="idea-save-button">SAVE</button>
-               </nav>
+                <span className="idea-show-nav">
+                    <ul className="idea-show-nav-left">
+                        <li className="board-dropdown-button">BOARD DROPDOWN</li>
+                        <li className="idea-save-button">Save</li>
+                   </ul>
+               </span>
                 <div className="idea-show-elements">
                     <div className="idea-show-image-container">
                         <img src={this.props.idea.photoUrl} className="idea-show-image"/>
@@ -59,6 +70,9 @@ class IdeaShow extends React.Component {
                 </div>
                
            </div>
+         </div>
+ </div>
+                        </>
        )
 
    }

@@ -6,16 +6,17 @@ import IdeaShow from './idea_show';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-    const idea = ownProps.idea
+    // debugger
+    const idea = state.entities.ideas[ownProps.match.params.ideaId];
     return {
-        idea,
+        idea, 
     };
 };
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         fetchIdea: (ideaId) => dispatch(fetchIdea(ideaId))
-//     };
-// };
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchIdea: (ideaId) => dispatch(fetchIdea(ideaId))
+    };
+};
 
-export default connect(mapStateToProps)(withRouter(IdeaShow));
+export default connect(mapStateToProps, mapDispatchToProps)(IdeaShow);

@@ -12,4 +12,6 @@
 
 class Idea < ApplicationRecord
     has_one_attached :photo
+    # belongs_to :original_user
+
 end
