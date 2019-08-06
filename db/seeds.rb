@@ -21,7 +21,7 @@ ActiveRecord::Base.transaction do
   idea4.photo.attach(io: file4, filename: 'image4.jpg')
 
   idea5 = Idea.create({title:"title5", description:"description5", source_url:"instagram.com"})
-  file5 = open('https://curated-seeds.s3.amazonaws.com/image5.jpg')
+  file5 = open('https://curated-seeds.s3.amazonaws.com/image5-large.jpg')
   idea5.photo.attach(io: file5, filename: 'image5.jpg')
 
   idea6 = Idea.create({title:"title6", description:"description6", source_url:"instagram.com"})

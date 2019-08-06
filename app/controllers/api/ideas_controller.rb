@@ -4,14 +4,14 @@ class Api::IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    @ideas = Idea.with_attached_photo.all
     render :index
   end
 
   # GET /ideas/1
   # GET /ideas/1.json
   def show
-    @idea = Idea.find(params[:id])
+    @idea = Idea.with_attached_photo.find(params[:id])
     render :show
   end
 

@@ -10,7 +10,7 @@ class IdeaIndex extends React.Component {
 
     constructor(props) {
         super(props);
-
+        
         this.ideaItems = [];
     } 
     componentDidMount () {
@@ -25,47 +25,47 @@ class IdeaIndex extends React.Component {
         
     }
 
-    shuffleIdeas (ideas) {
-        for (let i=0; i < ideas.length; i++) {
-            const randomIndex = Math.floor(Math.random() * ideas.length);
-            [ideas[i], ideas[randomIndex]] = [ideas[randomIndex], ideas[i]]
-        }
+    // shuffleIdeas (ideas) {
+    //     for (let i=0; i < ideas.length; i++) {
+    //         const randomIndex = Math.floor(Math.random() * ideas.length);
+    //         [ideas[i], ideas[randomIndex]] = [ideas[randomIndex], ideas[i]]
+    //     }
 
         
-        return ideas;
-    }
+    //     return ideas;
+    // }
 
-    mapIdeasToJsx () {
-        const { ideas } = this.props;
-        const ideaItems = ideas.map(idea => {
+    // mapIdeasToJsx () {
+    //     const { ideas } = this.props;
+    //     const ideaItems = ideas.map(idea => {
 
-            return (
+    //         return (
 
-                <IdeaItem
-                    key={idea.id}
-                    idea={idea}
-                />
-            )
-        });
+    //             <IdeaItem
+    //                 key={idea.id}
+    //                 idea={idea}
+    //             />
+    //         )
+    //     });
 
         
-        return this.shuffleIdeas(ideaItems);
-    }
+    //     return this.shuffleIdeas(ideaItems);
+    // }
 
     render() {
-
-        this.ideaItems = this.ideaItems.length > 0 ? this.ideaItems : this.mapIdeasToJsx();
         
-        // const { ideas } = this.props;
-        // const ideaItems = ideas.map(idea => {
+        // this.ideaItems = this.ideaItems.length > 0 ? this.ideaItems : this.mapIdeasToJsx();
+       
+        const { ideas } = this.props;
+        const ideaItems = ideas.map(idea => {
             
-        // return (
+        return (
     
-        //     <IdeaItem 
-        //         key={idea.id}
-        //         idea={idea}
-        //     />
-        // )});
+            <IdeaItem 
+                key={idea.id}
+                idea={idea}
+            />
+        )});
         
 
 
@@ -75,7 +75,7 @@ class IdeaIndex extends React.Component {
                 <div className="idea-index">
                     {/* <Splash /> */}
                      <ul className="idea-index-container">
-                    {this.ideaItems}
+                    {ideaItems}
                      </ul> 
                  </div>
             </>

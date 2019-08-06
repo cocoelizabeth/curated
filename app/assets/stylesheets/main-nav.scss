@@ -7,6 +7,8 @@
     width: 100vw;
     border-bottom: 2px solid rgb(239, 239, 239);
     z-index: 300;
+    position: sticky;
+    top: 0px;
 
 }
 
@@ -19,6 +21,8 @@
     height: 56px;
     background-color: white;
     z-index: 100;
+    top: 0px;
+    position: sticky;
 }
 .left-nav  {
     display: flex;
