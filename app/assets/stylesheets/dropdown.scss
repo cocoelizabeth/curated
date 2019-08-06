@@ -20,7 +20,13 @@
     border: 1px solid #efefef;;
     stroke: rgb(239, 239, 239);
     border-radius: 8px;
-
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 3px 6px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    // stroke: rgb(239, 239, 239);
+    
+   
 
 }
 .dropdown-list-item {
@@ -33,6 +39,8 @@
     flex: 1 1 auto;
     display: flex;
     align-items: flex-start;
-    stroke: rgb(239, 239, 239);
-
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(239, 239, 239);
+    padding: 12px 20px;
+   
 }
