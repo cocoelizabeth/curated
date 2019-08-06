@@ -69,7 +69,7 @@ class IdeaShow extends React.Component {
                             </div>
                         </div>
 
-                        <div className="idea-show-info-container">
+                        {/* <div className="idea-show-info-container">
                             <div id="profile-photo">
                                 <Link to="#"><img src="https://curated-seeds.s3.amazonaws.com/default_profile_pic.png" /></Link>
                             </div>
@@ -85,7 +85,7 @@ class IdeaShow extends React.Component {
                                 </ul>
                                 <div className="description-box">{this.props.idea.description}</div>
                             </div>              
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>
