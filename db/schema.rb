@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_153159) do
+ActiveRecord::Schema.define(version: 2019_08_06_205949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,31 @@ ActiveRecord::Schema.define(version: 2019_08_01_153159) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "description"
+    t.boolean "private", default: false
+    t.integer "user_id", null: false
+    t.integer "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_collections_on_title"
+    t.index ["topic_id"], name: "index_collections_on_topic_id"
+    t.index ["user_id"], name: "index_collections_on_user_id"
+  end
+
   create_table "ideas", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.string "source_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "collection_id"
+    t.index ["collection_id"], name: "index_ideas_on_collection_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

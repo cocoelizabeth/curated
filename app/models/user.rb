@@ -28,8 +28,19 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
     after_initialize :set_username
 
+    has_many :collections,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :User
+
+    has_many :ideas,
+    through: :collections,
+    source: :ideas
+
+
+
     # has_many :ideas
-    #belongs to
+    # belongs to
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)

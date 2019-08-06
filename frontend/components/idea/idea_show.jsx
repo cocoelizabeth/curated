@@ -12,10 +12,22 @@ class IdeaShow extends React.Component {
         this.props.fetchIdea(this.props.match.params.ideaId);
     }
 
+    formatName() {
+        const defaultCurator = "A curator";
+        
+        const curator = this.props.curator || defaultCurator;
+        if (curator.firstName ? curator = curator.firstName : curator = curator.username)
+            return (
+                curator
+            );
+    }
+
 
 
    render () {
    if (!this.props.idea) { return <p>Loading..</p> };
+    { `/${this.props.idea.curator.username}` }
+   
        return (
            <>
            <NavContainer />
@@ -38,8 +50,8 @@ class IdeaShow extends React.Component {
                         </ul> 
 
                         <ul className="idea-show-nav-right">
-                            <li className="board-dropdown-button">
-                                <h4 className="dropdown-board-name">COLLECTION NAME</h4>
+                            <li className="collection-dropdown-button">
+                                <h4 className="dropdown-collection-name">COLLECTION NAME</h4>
                                 <i className="fas fa-chevron-down"></i>
                             </li>
                             <li className="idea-save-button">Save</li>
@@ -51,14 +63,15 @@ class IdeaShow extends React.Component {
                         <div className="idea-show-image-container">
                             <img src={this.props.idea.photoUrl} className="idea-show-image"/>
                         </div>
-                        <div className="idea-show-info-container">
+
+                        {/* <div className="idea-show-info-container">
                             <div id="profile-photo">
                                 <Link to="#"><img src="https://curated-seeds.s3.amazonaws.com/default_profile_pic.png" /></Link>
                             </div>
                             <div className="idea-show-text">
                                 <ul className ="follow-user-info">
                                     <li id="follow-user-info">
-                                        <Link to="#">idea.username</Link>
+                                        <Link to={`/${this.props.idea.curator.username}`}>{this.props.idea.curator.username}</Link>
                                         <div className="description-box">1.3k Followers</div> 
                                     </li>
                             
@@ -67,16 +80,16 @@ class IdeaShow extends React.Component {
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> */}
 
-                        {/* <div className="idea-show-info-container">
+                        <div className="idea-show-info-container">
                             <div id="profile-photo">
                                 <Link to="#"><img src="https://curated-seeds.s3.amazonaws.com/default_profile_pic.png" /></Link>
                             </div>
                             <div className="idea-show-text">
                                 <ul className ="idea-user-info">
                                     <li id="user-info">
-                                        <Link to="#">idea.username</Link> saved to <Link to="#">idea.collection</Link>
+                                               <Link to={`/${this.props.idea.curator.username}`}>{this.props.idea.curator.username}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link>
                                     </li>
                                     <li className="num-resaves">
                                         <i className="fas fa-asterisk"></i>
@@ -85,7 +98,7 @@ class IdeaShow extends React.Component {
                                 </ul>
                                 <div className="description-box">{this.props.idea.description}</div>
                             </div>              
-                        </div> */}
+                        </div>
 
                     </div>
                 </div>
