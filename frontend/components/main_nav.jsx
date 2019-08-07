@@ -59,7 +59,7 @@ class MainNav extends React.Component {
     
 
  render() {
-     debugger
+     
 
     const mainNav = () => (
 

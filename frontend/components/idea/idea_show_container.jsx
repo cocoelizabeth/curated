@@ -27,7 +27,7 @@ const mapStateToProps = (state, ownProps) => {
     const currentUser = state.session["id"];
     // let defaultCuratorId = { curatorId: "" };
     const idea = state.entities.ideas[ownProps.match.params.ideaId] || { original_collection: {} };
-    debugger
+    
     
     const curator= state.entities.users[idea.curatorId] || {};
     // const curatorId = idea.curator.id 

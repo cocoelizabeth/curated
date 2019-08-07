@@ -7,6 +7,9 @@ export const fetchAllCollections = () => {
 
 export const fetchCollection = id => {
     return $.ajx({
-        method: 'GET'
-    })
-}
+        method: 'GET',
+        url: `api/collections/${id}`
+    });
+};
+
+export const createBoard

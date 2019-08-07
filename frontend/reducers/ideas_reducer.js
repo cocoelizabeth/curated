@@ -5,7 +5,7 @@ const ideasReducer = (state = {}, action) => {
     Object.freeze(state);
     switch(action.type) {
         case RECEIVE_IDEAS: {
-            debugger
+            
             return action.idea;
         }
         case RECEIVE_IDEA:{
