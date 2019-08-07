@@ -1,38 +1,58 @@
-// import * as APIUtil from "../util/board_api_util";
+import * as APIUtil from "../util/collection_api_util";
 
-// export const RECEIVE_BOARDS= 'RECEIVE_IDEAS';
-// export const RECEIVE_IDEA = 'RECEIVE_IDEA';
+export const RECEIVE_COLLECTIONS= 'RECEIVE_COLLLECTIONS';
+export const RECEIVE_COLLECTION = 'RECEIVE_COLLECTION';
 
-// export const receiveIdeas = (idea) => ({
-//     type: RECEIVE_IDEAS,
-//     idea,
-// });
+export const receiveCollections = (collections) => {
+    debugger 
+    return ({
+        type: RECEIVE_COLLECTIONS,
+        collections,
 
-// export const receiveIdea = (payload) => ({
-//     type: RECEIVE_IDEA,
-//     payload,
-// });
+    });
+ 
+};
 
-
-// export const fetchIdeas = () => dispatch => (
-//     APIUtil.fetchIdeas().then(
-//         ideas => dispatch(receiveIdeas(ideas))
-//     )
-// );
-
-// export const fetchIdea = (id) => dispatch => (
-//     APIUtil.fetchIdea(id).then(
-//         idea => dispatch(receiveIdea(idea))
-//     )
-// );
+export const receiveCollection = (payload) => ({
+    type: RECEIVE_COLLECTION,
+    payload,
+});
 
 
-// export const createIdea = idea => dispatch => {
+export const fetchAllCollections = (userId) => dispatch => (
+    APIUtil.fetchAllCollections(userId).then(
+        collections => dispatch(receiveCollections(collections))
+    )
+);
 
-//     return APIUtil.createIdea(idea).then(
-//         idea => dispatch(receiveIdea(idea))
-//     );
-// };
+export const fetchCollection = (id) => dispatch => (
+    APIUtil.fetchCollection(id).then(
+        collection => dispatch(receiveCollection(collection))
+    )
+);
+
+
+export const createCollection = collection => dispatch => {
+
+    return APIUtil.createCollection(collection).then(
+        collection => dispatch(receiveCollection(collection))
+    );
+};
+
+export const updateCollection = collection => dispatch => {
+
+    return APIUtil.createCollection(collection).then(
+        collection => dispatch(receiveCollection(collection))
+    );
+};
+
+export const deleteCollection = collection => dispatch => {
+
+    return APIUtil.createCollection(collection).then(
+        collection => dispatch(receiveCollection(collection))
+    );
+};
+
 
 
 

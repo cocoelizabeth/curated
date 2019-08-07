@@ -1,9 +1,9 @@
 class Api::CollectionsController < ApplicationController
 
-    before_action :ensure_logged_in, only: [:new, :edit]
+    before_action :ensure_logged_in, only: [:create, :edit]
 
     def index
-        @collections = Collection.all.includes(:curator)
+        @collections = Collection.where(user_id: params[:user_id])
         render :index
     end
 
@@ -31,6 +31,19 @@ class Api::CollectionsController < ApplicationController
     def edit
         @collection = Collection.find(params[:id])
         redirect_to api_collection_url(@collection) unless @collection.user = current_user
+    end
+
+    def update
+        deugger
+        @collection = current_user.collections.find(params[:id])
+        @collection.update!(collection_params)
+        render :show
+    end
+
+    def destroy
+        @collection = current_user.collections.find(params[:id])
+        @collection.destroy
+        render :index
     end
 
     private

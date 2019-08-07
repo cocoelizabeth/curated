@@ -4,13 +4,13 @@ import merge from 'lodash/merge';
 const ideasReducer = (state = {}, action) => {
     Object.freeze(state);
     switch(action.type) {
-        case RECEIVE_IDEAS: {
+        case RECEIVE_IDEAS: 
             
             return action.idea;
-        }
-        case RECEIVE_IDEA:{
+        
+        case RECEIVE_IDEA:
             return merge({}, state, { [action.payload.idea.id]: action.payload.idea });
-        }
+        
         default:
             return state;
     }

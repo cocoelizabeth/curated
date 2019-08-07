@@ -6,6 +6,7 @@ import configureStore from './store/store';
 // TESTING
 import { login, logout, signup } from './actions/session_actions';
 import { createIdea, fetchIdea, fetchIdeas } from './actions/idea_actions';
+import { fetchAllCollections, fetchCollection, createCollection, updateCollection, deleteCollection } from './actions/collection_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
@@ -25,6 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let root = document.getElementById("root");
     
+
+    window.fetchAllCollections = fetchAllCollections;
+    window.fetchCollection = fetchCollection;
+    window.createCollection = createCollection;
+    window.updateCollection = updateCollection;
+    window.deleteCollection = deleteCollection;
+
     ReactDOM.render(<Root store={ store }/>, root);
 
     // TESTING
@@ -38,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.createIdea = createIdea;
     window.fetchIdea = fetchIdea;
     window.fetchIdeas= fetchIdeas;
+
     // testing end
 
 
