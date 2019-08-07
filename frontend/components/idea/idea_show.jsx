@@ -52,7 +52,7 @@ class IdeaShow extends React.Component {
                     <i className="fas fa-arrow-left"></i>
                </button>
                <button className="close-button" onClick={this.props.history.goBack}>
-                   <i class="fas fa-times"></i>
+                   <i className="fas fa-times"></i>
                </button>
            <div className="modal-background">
             
