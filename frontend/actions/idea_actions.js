@@ -3,9 +3,9 @@ import * as APIUtil from "../util/idea_api_util";
 export const RECEIVE_IDEAS = 'RECEIVE_IDEAS';
 export const RECEIVE_IDEA = 'RECEIVE_IDEA';
 
-export const receiveIdeas = (idea) => ({
+export const receiveIdeas = (ideas) => ({
     type: RECEIVE_IDEAS,
-    idea,
+    ideas,
 });
 
 export const receiveIdea = (payload) => ({

@@ -8,6 +8,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal';
 import Splash from './splash';
 import IdeaShowContainer from './idea/idea_show_container';
+import UserShowContainer from './user/user_show_container';
 
 const App = () => (
     <div className="background-grid">
@@ -20,9 +21,8 @@ const App = () => (
             <ProtectedRoute path="/index" component={IdeaIndexContainer} />
             <Route path="/splash" component={Splash} />
             <Route path="/ideas/:ideaId" component={IdeaShowContainer} />
+            <Route path="/users/:userId" component={UserShowContainer} />
         </Switch>
-{/*         
-        </div> */}
     </div>
 );
 

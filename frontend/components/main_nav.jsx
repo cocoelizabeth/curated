@@ -27,7 +27,15 @@ class MainNav extends React.Component {
         }
     }
 
+    // componentDidMount() {
+    //     debugger
+    //     if (this.props.currentUser.id) {
+    //         this.props.fetchUser(this.props.currentUser.username);
+    //     }
+    // }
+
     handleLogOut() {
+        debugger
         const { logout, history } = this.props;
         history.push('/login')
         logout()
@@ -59,7 +67,7 @@ class MainNav extends React.Component {
     
 
  render() {
-     
+    //  debugger
 
     const mainNav = () => (
 
@@ -85,7 +93,7 @@ class MainNav extends React.Component {
                     <li><Link to="/index" id="nav-button" className="home-button">Home</Link></li>
                     <li><Link to={`/${this.props.currentUser.username}/following`}  id="nav-button" className="following-button">Following</Link></li>
                     <li>
-                        <Link to={`/${this.props.currentUser.username}`} id="nav-button" className="user-button">
+                        <Link to={`/users/${this.props.currentUser.id}`} id="nav-button" className="user-button">
                             <div className="initial-icon">{this.props.currentUser.username.charAt(0).toUpperCase()}</div>
                             <div className="username">{this.props.currentUser.username}</div>
                         </Link>

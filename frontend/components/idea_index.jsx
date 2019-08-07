@@ -73,7 +73,7 @@ class IdeaIndex extends React.Component {
             <>
                 <NavContainer />
                 <div className="idea-index">
-                    {/* <Splash /> */}
+
                      <ul className="idea-index-container">
                     {ideaItems}
                      </ul> 
