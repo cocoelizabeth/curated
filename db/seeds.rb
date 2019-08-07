@@ -4,6 +4,7 @@ ActiveRecord::Base.transaction do
   User.destroy_all
   Idea.destroy_all
   Topic.destroy_all
+  Collection.destroy_all
 
     Topic.create!([
       # {name: "Architecture"},
@@ -43,20 +44,20 @@ ActiveRecord::Base.transaction do
   file5 = open('https://curated-seeds.s3.amazonaws.com/image5-large.jpg')
   idea5.photo.attach(io: file5, filename: 'image5.jpg')
 
-  idea6 = Idea.create({title:"title6", description:"description6", source_url:"instagram.com", original_collection: collection1})
-  file6 = open('https://curated-seeds.s3.amazonaws.com/image6.jpg')
+  idea6 = Idea.create({title:"title6", description:"description31", source_url:"instagram.com", original_collection: collection1})
+  file6 = open('https://curated-seeds.s3.amazonaws.com/image31-large.jpg')
   idea6.photo.attach(io: file6, filename: 'image6.jpg')
 
-  idea7 = Idea.create({title:"title7", description:"description7", source_url:"instagram.com", original_collection: collection1})
-  file7 = open('https://curated-seeds.s3.amazonaws.com/image7.jpg')
+  idea7 = Idea.create({title:"title7", description:"description30", source_url:"instagram.com", original_collection: collection1})
+  file7 = open('https://curated-seeds.s3.amazonaws.com/image30-large.jpg')
   idea7.photo.attach(io: file7, filename: 'image7.jpg')
 
   idea8 = Idea.create({title:"title8", description:"description8", source_url:"instagram.com", original_collection: collection1})
-  file8 = open('https://curated-seeds.s3.amazonaws.com/image8.jpg')
+  file8 = open('https://curated-seeds.s3.amazonaws.com/image8-large.jpg')
   idea8.photo.attach(io: file8, filename: 'image8.jpg')
 
-  idea9 = Idea.create({title:"title9", description:"description9", source_url:"instagram.com", original_collection: collection1})
-  file9 = open('https://curated-seeds.s3.amazonaws.com/image9.jpg')
+  idea9 = Idea.create({title:"title32", description:"description9", source_url:"instagram.com", original_collection: collection1})
+  file9 = open('https://curated-seeds.s3.amazonaws.com/image32-large.jpg')
   idea9.photo.attach(io: file9, filename: 'image9.jpg')
 
   idea10 = Idea.create({title:"title10", description:"description10", source_url:"instagram.com", original_collection: collection1})

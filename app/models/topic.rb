@@ -13,10 +13,7 @@ class Topic < ApplicationRecord
     validates :name, uniqueness: true, presence: true
 
 
-    has_many :collections,
-    primary_key: :id,
-    foreign_key: :topic_id,
-    class_name: :Collection
+    has_many :collections
 
     has_many :ideas,
     through: :collections,

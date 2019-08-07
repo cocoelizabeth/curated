@@ -31,11 +31,15 @@ class User < ApplicationRecord
     has_many :collections,
     primary_key: :id,
     foreign_key: :user_id,
-    class_name: :User
+    class_name: :Collection
 
     has_many :ideas,
     through: :collections,
     source: :ideas
+
+    has_many :interests,
+    through: :collections,
+    source: :topic
 
 
 
@@ -63,8 +67,16 @@ class User < ApplicationRecord
 
     def set_username
         username = self.email.split("@")[0]
-        username += self.id.to_s
+        
+        if User.find_by username: username == nil
+            
+             username = username
+        else 
+            
+            username += self.id.to_s
+        end
         self.username = username
+        
         self.save 
     end
 
