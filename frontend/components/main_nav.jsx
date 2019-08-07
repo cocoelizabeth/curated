@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class MainNav extends React.Component {
 
@@ -10,8 +10,8 @@ class MainNav extends React.Component {
         this.state = { dropdown: false };
         this.dropdownToggle = this.dropdownToggle.bind(this);
         this.handleClick = this.handleClick.bind(this);
-   
         
+        this.handleLogOut = this.handleLogOut.bind(this);
     }
 
 
@@ -21,10 +21,16 @@ class MainNav extends React.Component {
             return (
                 <ul ref={dropdownRef => this.dropdownRef = dropdownRef} className="dropdown-visible">
                     <li><Link to="/settings" className="dropdown-list-item">Edit Settings</Link></li>
-                    <li className="dropdown-list-item" onClick={this.props.logout}>Log Out</li>
+                    <li className="dropdown-list-item" onClick={this.handleLogOut}>Log Out</li>
                 </ul>
             )
         }
+    }
+
+    handleLogOut() {
+        const { logout, history } = this.props;
+        history.push('/login')
+        logout()
     }
 
     handleClick(e) {
@@ -53,6 +59,7 @@ class MainNav extends React.Component {
     
 
  render() {
+     debugger
 
     const mainNav = () => (
 
@@ -101,4 +108,4 @@ class MainNav extends React.Component {
 };
 
 
-export default MainNav;
+export default withRouter(MainNav);

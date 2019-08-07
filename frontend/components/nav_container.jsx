@@ -5,7 +5,7 @@ import MainNav from './main_nav';
 
 const mapStateToProps = ({ session, entities: {users} }) => {
     return {
-        currentUser: users[session.id]
+        currentUser: users[session.id] || {}
     };
 };
 

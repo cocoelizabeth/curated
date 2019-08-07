@@ -55,10 +55,10 @@ class IdeaIndex extends React.Component {
     render() {
         
         // this.ideaItems = this.ideaItems.length > 0 ? this.ideaItems : this.mapIdeasToJsx();
-       
+        
         const { ideas } = this.props;
         const ideaItems = ideas.map(idea => {
-            
+        
         return (
     
             <IdeaItem 

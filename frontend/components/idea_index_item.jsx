@@ -5,7 +5,7 @@ import { openModal } from '../actions/modal_actions';
 import {Link} from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
+    // 
     const defaultTitle = { title: "" };
     const id = ownProps.idea.id
     const title = state.entities.ideas[ownProps.title] || defaultTitle;

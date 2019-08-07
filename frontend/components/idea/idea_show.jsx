@@ -6,29 +6,42 @@ class IdeaShow extends React.Component {
     constructor(props){
         
         super(props);
+      
+        // this.state  = { curator, original_collection}
     }
 
     componentDidMount() {
+        
         this.props.fetchIdea(this.props.match.params.ideaId);
+        
     }
 
-    formatName() {
-        const defaultCurator = "A curator";
+    // formatName() {
+    //     const defaultCurator = "A curator";
         
-        const curator = this.props.curator || defaultCurator;
-        if (curator.firstName ? curator = curator.firstName : curator = curator.username)
-            return (
-                curator
-            );
-    }
+    //     const curator = this.props.curator || defaultCurator;
+    //     if (curator.firstName ? curator = curator.firstName : curator = curator.username)
+    //         return (
+    //             curator
+    //         );
+    // }
 
 
 
    render () {
-   if (!this.props.idea) { return <p>Loading..</p> };
-    { `/${this.props.idea.curator.username}` }
-   
+     if (!this.props.idea) { return <p>Loading..</p> };
+
+     const editButton =  this.props.currentUser  === this.props.curator.id ? (
+         <ul className="idea-show-nav-left">
+             <li className="idea-show-nav-left"><i className="fas fa-pencil-alt"></i></li>
+         </ul> 
+     ) : <div height="40px" width="40px"></div>
+
+//    debugger
+
+     
        return (
+           
            <>
            <NavContainer />
                <button className="back-button" onClick={this.props.history.goBack}>
@@ -44,10 +57,9 @@ class IdeaShow extends React.Component {
                 <div className="idea-show-container" >
                 
                     <span className="idea-show-nav">
-
-                        <ul className="idea-show-nav-left">
-                            <li className="idea-show-nav-left"><i className="fas fa-pencil-alt"></i></li>
-                        </ul> 
+                       
+                        {editButton}
+                    
 
                         <ul className="idea-show-nav-right">
                             <li className="collection-dropdown-button">
@@ -89,7 +101,7 @@ class IdeaShow extends React.Component {
                             <div className="idea-show-text">
                                 <ul className ="idea-user-info">
                                     <li id="user-info">
-                                               <Link to={`/${this.props.idea.curator.username}`}>{this.props.idea.curator.username}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link>
+                                               <Link to={`/${this.props.curator.username}`}>{this.props.curator.username}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link>
                                     </li>
                                     <li className="num-resaves">
                                         <i className="fas fa-asterisk"></i>

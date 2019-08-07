@@ -5,15 +5,41 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 import IdeaShow from './idea_show';
 import { withRouter } from 'react-router-dom';
 
+// const mapStateToProps = (state, ownProps) => {
+//     debugger
+//     const idea = state.entities.ideas[ownProps.match.params.ideaId];
+    
+//     let  curatorId;
+//     //  ? curatorId = state.entities.ideas[ownProps.match.params.ideaId].curator.id : curatorId = null
+//     // const curatorId = idea.curator.id
+//     return {
+//         idea,
+//         currentUser,
+//         curatorId,
+
+
+//     };
+// };
+
+
 const mapStateToProps = (state, ownProps) => {
-    // debugger
-    const idea = state.entities.ideas[ownProps.match.params.ideaId];
+    
+    const currentUser = state.session["id"];
+    // let defaultCuratorId = { curatorId: "" };
+    const idea = state.entities.ideas[ownProps.match.params.ideaId] || { original_collection: {} };
+    debugger
+    
+    const curator= state.entities.users[idea.curatorId] || {};
+    // const curatorId = idea.curator.id 
     return {
-        idea, 
+        idea,
+        currentUser,
+        curator
     };
 };
 
 const mapDispatchToProps = dispatch => {
+    
     return {
         fetchIdea: (ideaId) => dispatch(fetchIdea(ideaId))
     };
