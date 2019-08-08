@@ -26,7 +26,7 @@ class UserShow extends React.Component {
         
         collectionItem = collectionList.map(collection =>  {
             return (
-                <li className="collection-container" key={`collection-${collection.id}`}><CollectionItem collection={collection}/></li>
+                <li className="collection-item-container" key={`collection-${collection.id}`}><CollectionItem collection={collection}/></li>
             )
         })}
         
@@ -59,11 +59,14 @@ class UserShow extends React.Component {
                         <li id="ideas-tab"><Link to="#">Ideas</Link></li>
                     </ul>
                 </div>
-        
-        <h1>User Collections</h1>
-                    <ul>
+{/*         
+        <h1>User Collections</h1> */}
+                <div className="collection-index">
+                    <ul className="collection-index-container">
                         {collectionItem}
+                     
                     </ul>
+                </div>
 
 
     </div>
