@@ -26,10 +26,13 @@ const mapStateToProps = (state, ownProps) => {
     
     const currentUser = state.session["id"];
     // let defaultCuratorId = { curatorId: "" };
-    const idea = state.entities.ideas[ownProps.match.params.ideaId] || { original_collection: {} };
-    
-    
-    const curator= state.entities.users[idea.curatorId] || {};
+    const idea = state.entities.ideas[ownProps.match.params.ideaId] || { original_collection: {}, curator: {} };
+  
+    debugger
+    // const curator = state.entities.users[idea.curatorId] || {};
+    const curator = state.entities.ideas[ownProps.match.params.ideaId]|| {};
+
+    // debugger
     // const curatorId = idea.curator.id 
     return {
         idea,

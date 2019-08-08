@@ -29,20 +29,36 @@ class IdeaShow extends React.Component {
 
 
    render () {
-     if (!this.props.idea) { return <p>Loading..</p> };
+    debugger
+     if (!this.props.idea) { return <p>Loading...</p> };
+    //  let editButton;
+    //  let usernameDisplay ="";
+     
+    //  if(typeof this.props.idea.curator !== 'undefined'){
+    //      editButton = this.props.currentUser === this.props.idea.curator.id ? (
+    //          <ul className="idea-show-nav-left">
+    //              <li className="idea-show-nav-left"><i className="fas fa-pencil-alt"></i></li>
+    //          </ul>
+    //      ) : <div height="40px" width="40px"></div>
 
-     const editButton =  this.props.currentUser  === this.props.curator.id ? (
+    //      usernameDisplay = this.props.currentUser === this.props.idea.curator.id ? (
+    //          "You"
+    //      ) : this.props.idea.curator.username
+
+
+    //  }
+     const editButton =  this.props.currentUser  === this.props.idea.curator.id ? (
          <ul className="idea-show-nav-left">
              <li className="idea-show-nav-left"><i className="fas fa-pencil-alt"></i></li>
          </ul> 
      ) : <div height="40px" width="40px"></div>
 
-     const usernameDisplay = this.props.currentUser === this.props.curator.id ? (
+     const usernameDisplay = this.props.currentUser === this.props.idea.curator.id ? (
          "You"
-     ) : this.props.curator.username
+     ) : this.props.idea.curator.username
 
 //      
-
+       debugger
      
        return (
            
@@ -54,7 +70,7 @@ class IdeaShow extends React.Component {
                <button className="close-button" onClick={this.props.history.goBack}>
                    <i className="fas fa-times"></i>
                </button>
-           <div className="modal-background">
+           <div className="grey-background">
             
                <div className="modal-child">
                  
@@ -105,7 +121,7 @@ class IdeaShow extends React.Component {
                             <div className="idea-show-text">
                                 <ul className ="idea-user-info">
                                     <li id="user-info">
-                                               <Link to={`/${this.props.curator.username}`}>{usernameDisplay}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link>
+                                               <Link to={`/${this.props.idea.curator.username}`}>{usernameDisplay}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link>
 
                                                {/* <Link to={`/${this.props.curator.username}`}>{this.props.curator.username}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link> */}
                                     </li>

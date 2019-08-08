@@ -130,7 +130,7 @@ class UserShow extends React.Component {
                 <div className="profile-container">
                     <div className="fixed-nav-container">
                         <ul className="fixed-nav">
-                            <li className="fixed-nav-icon"><Link to="/create-idea"><i className="fas fa-plus"></i></Link></li>
+                            <li className="fixed-nav-icon"><Link to="/create_idea"><i className="fas fa-plus"></i></Link></li>
                             <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
                         </ul>
                     </div>

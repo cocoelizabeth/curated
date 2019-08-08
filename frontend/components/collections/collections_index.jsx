@@ -18,9 +18,11 @@ class CollectionIndex extends React.Component {
 
   
     render() {
+
+
         const { user } = this.props;
         let collectionItem;
-
+        debugger;
         if (user) {
 
             const collectionList = Object.keys(this.props.collections).map(

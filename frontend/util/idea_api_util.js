@@ -21,12 +21,12 @@ export const fetchUserIdeas = (user_id) => {
     });
 };
 
-export const createIdea = idea => {
+export const createIdea = (idea) => {
 
  return $.ajax({
         method: 'POST',
         url: "api/ideas",
-        data: { idea },
+        data: idea
         // contentType: false,
         // processData: false
     });

@@ -4,6 +4,7 @@ import { fetchUser } from '../../actions/user_actions';
 import UserShow from './user_show';
 import { openModal } from '../../actions/modal_actions';
 import { createCollection, fetchAllCollections }  from '../../actions/collection_actions';
+import { createIdea } from "../../actions/idea_actions";
 
 
 
@@ -20,6 +21,7 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchUser: userId => dispatch(fetchUser(userId)),
         openModal: modal => dispatch(openModal(modal)),
+        createIdea: ()  => dispatch(createIdea()),
         createCollection: (collection)  => dispatch(createCollection(collection)),
         fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
     };

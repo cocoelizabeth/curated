@@ -27,7 +27,7 @@ export const fetchIdea = (id) => dispatch => (
 );
 
 
-export const createIdea = idea => dispatch => {
+export const createIdea = (idea) => dispatch => {
     
 return APIUtil.createIdea(idea).then(
         idea => dispatch(receiveIdea(idea))

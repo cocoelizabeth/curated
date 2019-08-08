@@ -1,0 +1,131 @@
+.form-container {
+    position: relative;
+  display: inline-block;
+  background-color: white;
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: rgb(238, 238, 238) 0px 4px 4px;
+  margin: 0 auto;
+  margin-top: 32px;
+  width: 880px;
+  height: 630px;
+
+
+}
+
+.create-idea-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 40px;
+  width: 100%;
+  background-color: white;
+  padding-bottom: 20px;
+}
+
+.create-idea-nav-right {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+
+  .create-idea-collection-dropdown-button {
+    height: 40px;
+    padding: 0px 14px;
+    width: 172px;
+    background-color:#EFEFEF;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    .create-idea-dropdown-collection-name {
+      font-weight: 400;
+      font-size: 16px;
+      color: #8e8e8e;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: break-word;
+    }
+
+    i {
+      height: 12px;
+      width: 12px;
+      margin-left: 8px;
+      color: #333;
+    }
+
+    
+
+  }
+  .idea-save-button {
+// // width: 268px;
+//     border: 0px;
+//     height: 40px;
+    display: flex;
+    // flex: 0 0 auto;
+    height: 100%;
+    border-top-right-radius: 8px;
+     border-bottom-right-radius: 8px;
+    padding: 0px 14px;
+    font-size: 15px;
+//     font-weight: bold;
+//     cursor: pointer;
+    // vertical-align: middle;
+    background-color: #e60023;
+    color: white;
+//     text-align: center;
+    letter-spacing: -.4px;
+    font-size: 16px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    align-items: center;
+    
+  }
+}
+
+.create-idea-form-elements {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 40px;
+    height: 510px;
+    background-color: pink;
+
+}
+
+.create-idea-left {
+    background-color: aqua;
+    width: 380px;
+    height: 510px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.upload-image-container {
+    background-color: rgb(33, 25, 34);
+    padding: 12px;
+    width: 340px;
+    height: 454px;
+    border-radius: 12px;
+
+    .media-upload-input {
+        border: 1px dotted black;
+        display: flex;
+        flex-direction: column-reverse;
+        
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            .upload-arrow {
+        
+            }
+        }
+    }
+}
+
