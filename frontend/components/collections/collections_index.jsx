@@ -8,19 +8,42 @@ class CollectionIndex extends React.Component {
     constructor(props) {
         super(props);
         this.collectionItems = [];
+        
     }
 
     componentDidMount() {
-        this.props.fetchCollections();
+        debugger
+        this.props.fetchAllCollections(this.props.match.params.userId);
     }
 
   
     render() {
+        const { user } = this.props;
+        let collectionItem;
+
+        if (user) {
+
+            const collectionList = Object.keys(this.props.collections).map(
+                id => this.props.collections[id]
+            );
+
+            collectionItem = collectionList.map(collection => {
+                return (
+                    <li className="collection-item-container" key={`collection-${collection.id}`}><CollectionItem collection={collection} /></li>
+                )
+            })
+        }
+
+     
         
         return (
             <>
-            <h1>Collection Index</h1>
-                
+                <div className="collection-index">
+                    <ul className="collection-index-container">
+                        {collectionItem}
+
+                    </ul>
+                </div>                
             </>
 
         )

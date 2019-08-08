@@ -22,7 +22,10 @@ const App = () => (
             <Route path="/splash" component={Splash} />
             <Route path="/ideas/:ideaId" component={IdeaShowContainer} />
             <Route path="/users/:userId" component={UserShowContainer} />
+    
+            
         </Switch>
+
     </div>
 );
 

@@ -4,7 +4,7 @@ export const RECEIVE_COLLECTIONS= 'RECEIVE_COLLLECTIONS';
 export const RECEIVE_COLLECTION = 'RECEIVE_COLLECTION';
 
 export const receiveCollections = (collections) => {
-     
+    debugger
     return ({
         type: RECEIVE_COLLECTIONS,
         collections,
@@ -19,11 +19,14 @@ export const receiveCollection = (payload) => ({
 });
 
 
-export const fetchAllCollections = (userId) => dispatch => (
-    APIUtil.fetchAllCollections(userId).then(
+export const fetchAllCollections = (userId) => dispatch => {
+    debugger
+    return APIUtil.fetchAllCollections(userId).then(
         collections => dispatch(receiveCollections(collections))
-    )
-);
+    );
+
+};
+   
 
 export const fetchCollection = (id) => dispatch => (
     APIUtil.fetchCollection(id).then(

@@ -6,7 +6,7 @@ import IdeaShow from './idea_show';
 import { withRouter } from 'react-router-dom';
 
 // const mapStateToProps = (state, ownProps) => {
-//     debugger
+//       
 //     const idea = state.entities.ideas[ownProps.match.params.ideaId];
     
 //     let  curatorId;

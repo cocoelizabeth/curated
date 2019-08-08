@@ -28,7 +28,7 @@ class MainNav extends React.Component {
     }
 
     // componentDidMount() {
-    //     debugger
+    //       
     //     if (this.props.currentUser.id) {
     //         this.props.fetchUser(this.props.currentUser.username);
     //     }

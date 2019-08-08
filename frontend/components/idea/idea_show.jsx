@@ -41,7 +41,7 @@ class IdeaShow extends React.Component {
          "You"
      ) : this.props.curator.username
 
-//    debugger
+//      
 
      
        return (

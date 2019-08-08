@@ -1,16 +1,19 @@
 import { connect } from 'react-redux';
-import { fetchCollections } from '../../actions/collection_actions';
-import CollectionIndex from './collection_index';
+import { fetchAllCollections } from '../../actions/collection_actions';
+import CollectionIndex from './collections_index';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    
     const { collections } = state.entities;
+    const user = state.entities.users[ownProps.match.params.userId]
     return {
-        collections: Object.values(collections)
+        collections: Object.values(collections),
+        user,
     };
 };
 
 const mapDispatchToProps = dispatch => ({
-    fetchCollections: () => dispatch(fetchCollections()),
+    fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CollectionIndex);

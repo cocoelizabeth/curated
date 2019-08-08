@@ -4,7 +4,14 @@ class Api::IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.with_attached_photo.all
+    
+    if params[:user_id] 
+      @ideas = Idea.with_attached_photo.joins(:curator).where(users:{id: params[:user_id]})
+      
+
+    else
+      @ideas = Idea.with_attached_photo.all
+    end
     render :index
   end
 

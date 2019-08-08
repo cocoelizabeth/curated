@@ -33,6 +33,12 @@ return APIUtil.createIdea(idea).then(
         idea => dispatch(receiveIdea(idea))
     );
 };
+
+export const fetchUserIdeas = (userId) => dispatch => (
+    APIUtil.fetchUserIdeas(userId).then(
+        ideas => dispatch(receiveIdeas(ideas))
+    )
+);
   
 
 

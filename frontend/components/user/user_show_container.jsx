@@ -9,7 +9,7 @@ import { createCollection, fetchAllCollections }  from '../../actions/collection
 
 const mapStateToProps = (state, ownProps) => {
     const user = state.entities.users[ownProps.match.params.userId];
-
+    
     return {
         user,
         collections: state.entities.collections,
