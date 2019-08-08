@@ -24,7 +24,7 @@ ActiveRecord::Base.transaction do
   user1 = User.create({email: "coco@gmail.com", password: "hunter12", first_name: "coco", last_name: "elizabeth"})
   topic1 = Topic.create({name: "Minimalism"})
   collection1 = Collection.create({title: "Aesthetic", user: user1, topic: topic1})
-  idea1 = Idea.create({title:"title1", description:"description1", source_url:"instagram.com", original_collection: collection1})
+  idea1 = Idea.create({title:"Amangari", description:"Luxury resort in Canyon Point,Utah", source_url:"instagram.com", original_collection: collection1})
   file1 = open('https://curated-seeds.s3.amazonaws.com/image1.png')
   idea1.photo.attach(io: file1, filename: 'image1.jpg')
 
@@ -48,7 +48,7 @@ ActiveRecord::Base.transaction do
   file6 = open('https://curated-seeds.s3.amazonaws.com/image31-large.jpg')
   idea6.photo.attach(io: file6, filename: 'image6.jpg')
 
-  idea7 = Idea.create({title:"title7", description:"description30", source_url:"instagram.com", original_collection: collection1})
+  idea7 = Idea.create({title:"9828 La Jolla Farms Rd, La Jolla, CA", description:"Property for sale in La Jolla CA - 9828 La Jolla Farms Road La Jolla CA 92037", source_url:"pacificsoothbays.com", original_collection: collection1})
   file7 = open('https://curated-seeds.s3.amazonaws.com/image30-large.jpg')
   idea7.photo.attach(io: file7, filename: 'image7.jpg')
 
@@ -56,7 +56,7 @@ ActiveRecord::Base.transaction do
   file8 = open('https://curated-seeds.s3.amazonaws.com/image8-large.jpg')
   idea8.photo.attach(io: file8, filename: 'image8.jpg')
 
-  idea9 = Idea.create({title:"title32", description:"description9", source_url:"instagram.com", original_collection: collection1})
+  idea9 = Idea.create({title:"Malibu home, Architectural Digest, February 1990", source_url:"architechtualdigest.com", original_collection: collection1})
   file9 = open('https://curated-seeds.s3.amazonaws.com/image32-large.jpg')
   idea9.photo.attach(io: file9, filename: 'image9.jpg')
 

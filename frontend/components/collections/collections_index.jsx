@@ -16,7 +16,7 @@ class CollectionIndex extends React.Component {
 
   
     render() {
-        debugger
+        
         return (
             <>
             <h1>Collection Index</h1>

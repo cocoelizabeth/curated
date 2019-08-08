@@ -4,7 +4,7 @@ export const RECEIVE_COLLECTIONS= 'RECEIVE_COLLLECTIONS';
 export const RECEIVE_COLLECTION = 'RECEIVE_COLLECTION';
 
 export const receiveCollections = (collections) => {
-    debugger 
+     
     return ({
         type: RECEIVE_COLLECTIONS,
         collections,

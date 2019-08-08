@@ -6,7 +6,7 @@ export const fetchAllCollections = (userId) => {
 };
 
 export const fetchCollection = id => {
-    debugger
+    
     return $.ajax({
         method: 'GET',
         url: `api/collections/${id}`,
@@ -23,7 +23,7 @@ export const createCollection = (collection) => {
 };
 
 export const updateCollection = (collection) => {
-    debugger
+    
     return $.ajax({
         method: 'PATCH',
         url: `api/collections/${collection.id}`,

@@ -14,7 +14,7 @@ import MainNav from './main_nav';
 //     };
 // };
 const mapStateToProps = (state) =>{
-    // debugger
+    
     let user = state.entities.users[state.session.id];
     return({
         currentUser: user

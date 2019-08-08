@@ -35,7 +35,7 @@ class MainNav extends React.Component {
     // }
 
     handleLogOut() {
-        debugger
+        
         const { logout, history } = this.props;
         history.push('/login')
         logout()
@@ -67,7 +67,7 @@ class MainNav extends React.Component {
     
 
  render() {
-    //  debugger
+     
 
     const mainNav = () => (
 
