@@ -9,10 +9,12 @@ export const receiveUsers = (users) => {
     };
 };
 
-export const receiveUser = (user) => {
+export const receiveUser = (payload) => {
+
     return {
         type: RECEIVE_USER,
-        user,
+        user: payload.user,
+        collections: payload.collections
     };
 };
 

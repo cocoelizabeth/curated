@@ -12,7 +12,6 @@ class CollectionIndex extends React.Component {
     }
 
     componentDidMount() {
-        debugger
         this.props.fetchAllCollections(this.props.match.params.userId);
     }
 
@@ -21,8 +20,7 @@ class CollectionIndex extends React.Component {
 
 
         const { user } = this.props;
-        let collectionItem;
-        debugger;
+        let collectionItem;;
         if (user) {
 
             const collectionList = Object.keys(this.props.collections).map(

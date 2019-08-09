@@ -6,10 +6,9 @@ import { fetchAllCollections } from '../../actions/collection_actions';
 import CreateIdeaForm from './create_idea_form';
 
 const mapStateToProps = (state, ownProps)  => {
-    // const currentUser = state.entities.users[state.session.id] || {};
-    const currentUser = state.session.id;
+    const currentUser = state.entities.users[state.session.id] || {};
     const collections = Object.values(state.entities.collections)
-        .filter(collection => collection.curator.id === currentUser);
+        .filter(collection => collection.user_id === currentUser.id);
 
         return ({
             currentUser,

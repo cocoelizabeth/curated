@@ -58,12 +58,15 @@
     padding: 24 0;
     padding-left: 5%;
     padding-right: 5%;
+    display: flex;
+    justify-content: center;
     // background-color: orange;
     // position: absolute;
         .collection-index-container {
            display: flex;
            flex-direction: row;
            flex-wrap: wrap;
+           justify-content: center;
          
             .collection-item-container{   // li
                 width: 324px;

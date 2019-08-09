@@ -22,13 +22,13 @@ export const fetchUserIdeas = (user_id) => {
 };
 
 export const createIdea = (idea) => {
-
+    
  return $.ajax({
         method: 'POST',
         url: "api/ideas",
-        data: idea
-        // contentType: false,
-        // processData: false
+        data: { idea },
     });
 };
 
+  // contentType: false,
+        // processData: false

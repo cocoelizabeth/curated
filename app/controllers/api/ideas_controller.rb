@@ -34,7 +34,10 @@ class Api::IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create
+
     @idea = Idea.new(idea_params)
+    # @idea.photo.photoUrl = params[:photoUrl]
+    # @idea.collection = Collection.find(params[:collection_id])
     respond_to do |format|
       if @idea.save
          format.json { render json: "idea saved" }
@@ -79,6 +82,6 @@ class Api::IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:title, :description, :source_url, :id)
+      params.require(:idea).permit(:title, :description, :source_url, :original_collection, :collection_id, :photoUrl, :photoType)
     end
 end

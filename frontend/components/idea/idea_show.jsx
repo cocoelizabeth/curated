@@ -29,7 +29,7 @@ class IdeaShow extends React.Component {
 
 
    render () {
-    debugger
+    
      if (!this.props.idea) { return <p>Loading...</p> };
     //  let editButton;
     //  let usernameDisplay ="";
@@ -58,7 +58,7 @@ class IdeaShow extends React.Component {
      ) : this.props.idea.curator.username
 
 //      
-       debugger
+      
      
        return (
            
@@ -71,6 +71,7 @@ class IdeaShow extends React.Component {
                    <i className="fas fa-times"></i>
                </button>
            <div className="grey-background">
+           
             
                <div className="modal-child">
                  

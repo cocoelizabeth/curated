@@ -93,18 +93,24 @@ class UserShow extends React.Component {
     }
 
     componentDidMount() {
-          debugger
-        this.props.fetchUser(this.props.match.params.userId).then(() => {
-            debugger
+        //  debugger
+        this.props.fetchUser(this.props.match.params.userId).then(() => {    
             this.props.fetchAllCollections(this.props.match.params.userId);
         });
     }
 
-    // componentDidUpdate() {
-    //     if 
-    // }
+    componentDidUpdate(prevProps) {
+        // debugger
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.fetchUser(this.props.match.params.userId).then(() => {
+                this.props.fetchAllCollections(this.props.match.params.userId);
+            });
+        }
+    }
+
 
     render() {
+        // debugger
         const { user } = this.props;
         let collectionItem;
 
@@ -120,9 +126,10 @@ class UserShow extends React.Component {
                 )
             })
         } else {
+            // debugger
             return <p>Loading...</p>
         }
-        
+        // debugger
 
         return (
             <>

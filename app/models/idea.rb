@@ -23,7 +23,7 @@ class Idea < ApplicationRecord
     through: :original_collection,
     source: :user
 
-    
+        
     # belongs_to :original_user
 
 end
