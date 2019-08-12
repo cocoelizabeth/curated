@@ -14,11 +14,7 @@ class IdeaIndex extends React.Component {
         this.ideaItems = [];
     } 
     componentDidMount () {
-    // request photos from api here
-        
         this.props.fetchIdeas();
-        // 
-
     }
 
     componentDidUpdate () {

@@ -6,6 +6,31 @@ ActiveRecord::Base.transaction do
   Topic.destroy_all
   Collection.destroy_all
 
+
+  user1 = User.create({email: "coco@gmail.com", password: "hunter12", first_name: "coco", last_name: "elizabeth", location: "New York, New York"})
+  user2 = User.create({email: "stacy@gmail.com", password: "hunter12"})
+  user3 = User.create( {email: "demo@email.com", password: "hunter12"})
+
+
+  
+  topic1 = Topic.create({name: "Minimalism"})
+  topic2 = Topic.create({name: "Architecture"})
+  topic3 = Topic.create({name: "Travel"})
+
+
+
+  collection1 = Collection.create({title: "aesthetic", user: user1, topic: topic1})
+  collection2 = Collection.create({title: "swim", user: user1, topic: topic2})
+  collection3 = Collection.create({title: "minimalism", user: user1, topic: topic2})
+  collection4 = Collection.create({ title: "Exterior", user: user2, topic: topic2})
+  collection5 = Collection.create{{ title: "Interior", user: user2, topic: topic2}}
+  collection6 = Collection.create{{ title: "Travel", user: user2, topic: topic3}}
+  collection7 = Collection.create({ title: "// WHITE", user: user3, topic: topic1})
+  collection8 = Collection.create({ title: "// DUSTY PINK", user: user3, topic: topic2})
+  collection9 = Collection.create({ title: "zen", user: user1, topic: topic2})
+  collection10 = Collection.create({ title: "neutral colors", user: user1, topic: topic2})
+  collection11 = Collection.create({ title: "texture", user: user1, topic: topic2})
+
     Topic.create!([
       # {name: "Architecture"},
       {name: "Art"},
@@ -77,34 +102,8 @@ ActiveRecord::Base.transaction do
   # topic2 = Topic.create({name: "Architecture"})
   # collection2 = Collection.create({title: "swim", user: user1, topic: topic2})
   
-  user1 = User.create({email: "coco@gmail.com", password: "hunter12", first_name: "coco", last_name: "elizabeth", location: "New York, New York"})
-  user2 = User.create({email: "stacy@gmail.com", password: "hunter12"})
-  user3 = User.create( {email: "demo@email.com", password: "hunter12"})
-
-
   
-  topic1 = Topic.create({name: "Minimalism"})
-  topic2 = Topic.create({name: "Architecture"})
-  topic3 = Topic.create({name: "Travel"})
-
-
-
-  collection1 = Collection.create({title: "aesthetic", user: user1, topic: topic1})
-  collection2 = Collection.create({title: "swim", user: user1, topic: topic2})
-  collection3 = Collection.create({title: "minimalism", user: user1, topic: topic2})
-  collection4 = Collection.create({title: "Exterior", user: user2, topic: topic2})
-  collection5 = Collection.create({title: "Interior", user: user2, topic: topic2})
-  collection6 = Collection.create({title: "Travel", user: user2, topic: topic3})
-  collection7 = Collection.create({title: "// WHITE", user: user3, topic: topic1})
-  collection8 = Collection.create({title: "// DUSTY PINK", user: user3, topic: topic2})
-  collection9 = Collection.create({title: "zen", user: user1, topic: topic2})
-  collection10 = Collection.create({title: "neutral colors", user: user1, topic: topic2})
-  collection11 = Collection.create({title: "texture", user: user1, topic: topic2})
-
-
-  idea1 = Idea.create({title:"Amangiri Resort Utah", description:"Luxury Hotel & Spa in Canyon Point, Utah", source_url:"vogue.com", original_collection: collection6})
-  file1 = open('https://curated-seeds.s3.amazonaws.com/image1.png')
-  idea1.photo.attach(io: file1, filename: 'image1.png')
+  
 
   idea2 = Idea.create({title:"Mexico's Grutas Tolantongo: Infinity Pools", description:"The Vogue Guide to Mexico City", source_url:"vogue.com", original_collection: collection1})
   file2 = open('https://curated-seeds.s3.amazonaws.com/image2.jpg')
@@ -157,8 +156,13 @@ ActiveRecord::Base.transaction do
   file10 = open('https://curated-seeds.s3.amazonaws.com/image10.jpg')
   idea10.photo.attach(io: file10, filename: 'image10.jpg')
 
+  #zen, japanese
+  idea11 = Idea.create({title:"Modern Japanese Zen", description:"Calm neutural colors, clean lines and texture", source_url:"instagram.com", original_collection: collection1})
+  file11 = open('https://curated-seeds.s3.amazonaws.com/image11.jpg')
+  idea11.photo.attach(io: file11, filename: 'image11.jpg')
 
-  idea11 = Idea.create({title:"Modern Japanese Zen", description:"Calm neutural colors, clean lines and texture", source_url:"instagram.com", original_collection: collection4})
+
+  idea11 = Idea.create({title:"Modern Japanese Zen", description:"Calm neutural colors, clean lines and texture", source_url:"instagram.com", original_collection: collection2})
   file11 = open('https://curated-seeds.s3.amazonaws.com/image11.jpg')
   idea11.photo.attach(io: file11, filename: 'image2.jpg')
 

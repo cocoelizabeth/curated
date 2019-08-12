@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps)  => {
 
 
 const mapDispatchToProps = dispatch => ({
-    createIdea: (idea) => dispatch(createIdea(idea)),
+    createIdea: (formData) => dispatch(createIdea(formData)),
     fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId))
 });
 

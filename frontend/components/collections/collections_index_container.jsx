@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 import { fetchAllCollections } from '../../actions/collection_actions';
 import CollectionIndex from './collections_index';
 
+// WORKING CODE::
 const mapStateToProps = (state, ownProps) => {
     
     const { collections } = state.entities;
-    const user = state.entities.users[ownProps.match.params.userId]
+    const user = state.entities.users[ownProps.match.params.userId];
     return {
         collections: Object.values(collections),
         user,

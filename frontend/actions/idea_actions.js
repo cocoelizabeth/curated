@@ -27,9 +27,9 @@ export const fetchIdea = (id) => dispatch => (
 );
 
 
-export const createIdea = (idea) => dispatch => {
+export const createIdea = (formData) => dispatch => {
     
-return APIUtil.createIdea(idea).then(
+return APIUtil.createIdea(formData).then(
         idea => dispatch(receiveIdea(idea))
     );
 };

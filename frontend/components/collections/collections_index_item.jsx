@@ -13,6 +13,7 @@ class CollectionItem extends React.Component {
         //         fetchId()
         //     )
         // }
+        
         return(
             <>
                 <div className="collection-image-grid-container"> 

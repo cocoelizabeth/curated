@@ -1,19 +1,82 @@
+// import React from 'react';
+// import { withRouter, Link, Switch }  from  'react-router-dom';
+// import SelectCollection from './select_collection';
+
+// class CreateIdeaForm extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//         this.state = ({
+//             idea: {title: "", photoFile: null}
+//         });
+//     }
+
+//     handleInput(e) {
+//         title = this.state.idea.title;
+//         debugger
+//         this.setState({title: e.currentTarget.value});
+//     }
+
+//     handleSubmit(e) {
+//         e.preventDefault();
+//         const formData = new FormData();
+//         debugger
+//         formData.append('idea[title]', this.state.idea.title);
+//         formData.append('idea[photo]', this.state.idea.photoFile);
+        
+//         this.props.createIdea(formData);
+//     }
+
+//     handleFile(e) {
+//         debugger
+//         this.setState({photoFile: e.currentTarget.files[0]});
+//     }
+
+//    render() {
+//        console.log(this.state)
+//        return (
+//          <form>
+//              {/* onSubmit={this.handleSubmit.bind(this)}> */}
+//              <label htmlFor="idea-title">Title of Idea</label> 
+//              <input type = "text"
+//                 id = "idea-title"
+//                 value = {this.state.idea.title}
+//                 onChange={this.handleInput.bind(this)}/> 
+//             <input type="file"
+//                 onChange={this.handleFile.bind(this)}/>
+
+//             <button onClick={this.handleSubmit.bind(this)}>Upload a new idea</button>
+//         </form>
+//        )
+//     }
+
+
+// }
+
+// export default CreateIdeaForm;
+
+
+
+
+//// OLD CODE
+
 import React from 'react';
 import { withRouter, Link, Switch }  from  'react-router-dom';
 import SelectCollection from './select_collection';
+import NavContainer from '../nav_container';
 
 class CreateIdeaForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            idea_id: "",
+            title: "",
             description: "",
-            collection_id: "",
             source_url: "",
+            collection_id: null,
+            user_id: this.props.currentUser.id,
             optionText: "Select",
             collectionScroll: false,
             chooseFile: false,
-            title: "",
             photoFile: null,
             photoUrl: null,
             photoType: null,
@@ -85,20 +148,13 @@ class CreateIdeaForm extends React.Component {
     handleSubmit(e) {
         if (this.state.photoType === 'upload') {
             e.preventDefault();
-            const ideaInfo = {
-                description: this.state.description,
-                // original_collection: this.state.collectionId,
-                collection_id: this.state.collectionId,
-                curator: this.state.currentUser,
-                // source_url: this.state.source_url,
-                title: this.state.title,
-                //  source_url: this.state.photoFile
-                // photoFile: this.state.photoFile,
-                // photoUrl: this.state.photoUrl,
-                // photoType: this.state.photoType,
-
-            }
-            this.props.createIdea(ideaInfo)
+             const formData = new FormData();
+            formData.append('idea[title]', this.state.title);
+            formData.append('idea[description]', this.state.description);
+            formData.append('idea[source_url]', this.state.source_url);
+            formData.append('idea[collection_id]',  this.state.collectionId);
+            formData.append('idea[photo]', this.state.photoFile);
+            this.props.createIdea(formData)
         }
     }
 
@@ -161,6 +217,8 @@ class CreateIdeaForm extends React.Component {
     render() {
         const { idea } = this.state;
         return (
+            <>
+            <NavContainer />
             <div className="dropdown-modal">
                 {this.displayCollectionScroll()}
             <div className="grey-background">
@@ -260,6 +318,7 @@ class CreateIdeaForm extends React.Component {
          </div>                                  
                 
         </div>
+        </>
 
         )
             

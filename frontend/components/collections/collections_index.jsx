@@ -20,7 +20,7 @@ class CollectionIndex extends React.Component {
 
 
         const { user } = this.props;
-        let collectionItem;;
+        let collectionItem;
         if (user) {
 
             const collectionList = Object.keys(this.props.collections).map(
