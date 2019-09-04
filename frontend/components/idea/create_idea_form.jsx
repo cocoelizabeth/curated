@@ -101,23 +101,49 @@ class CreateIdeaForm extends React.Component {
         this.hideCollectionScroll();
     }
 
-    displayCollectionScroll() {
-        if (this.state.collectionScroll)  {
-            const collections = this.props.collections.map((collection, i) => {
-                return (
-                    <SelectCollection
-                        onSelectCollection={this.handleCollection}
-                        collection = {collection}
-                        key = {i}
-                        text='Select'
-                    />
-                )
-            });
+    // displayCollectionScroll() {
+    //     if (this.state.collectionScroll)  {
+    //         const collections = this.props.collections.map((collection, i) => (
+             
+    //                 <SelectCollection
+    //                     onSelectCollection={this.handleCollection}
+    //                     collection={collection}
+    //                     key={i}
+    //                     text='Save'
+    //                 />
+                
+    //         ))}
             
+    //         return (
+                
+    //             <ul className='dropdown-visible-collections'>
+    //                 {collections}
+    //             </ul>
+    //         )
+        
+    // }
+
+    changeSelectField() {
+        if (this.state.collectionScroll) {
             return (
-                <div className='collection-dropdown-container'>
-                    {collections}
-                </div>
+                <ul className="create-idea-nav-right">
+                <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
+                    <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
+                    <i className="fas fa-chevron-down"></i>
+                </li>
+                <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
+            </ul>
+
+            )
+        }else {
+            return (
+                <ul className="create-idea-nav-right">
+                    <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
+                        <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
+                        <i className="fas fa-chevron-down"></i>
+                    </li>
+                    <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
+                </ul>
             )
         }
     }
@@ -134,6 +160,7 @@ class CreateIdeaForm extends React.Component {
 
 
     hideCollectionScroll(e) {
+        debugger
         this.setState({ collectionScroll: false});
     }
 
@@ -212,15 +239,38 @@ class CreateIdeaForm extends React.Component {
             [field]: e.target.value
         });
     }
+
  
 
     render() {
         const { idea } = this.state;
+        const displayCollectionScrollLis = 
+            this.state.collectionScroll ? 
+                this.props.collections.map((collection, i) => (
+
+                    <SelectCollection
+                        onSelectCollection={this.handleCollection}
+                        collection={collection}
+                        key={i}
+                        text='Save'
+                    />
+
+                )) : null;
+        const displayCollectionScroll = this.state.collectionScroll ?  (
+                <ul className='dropdown-visible-collections'>
+                    {displayCollectionScrollLis}
+                </ul>
+            ) : null;
+
         return (
-            <>
+        <>
             <NavContainer />
-            <div className="dropdown-modal">
+
+            {/* change */}
+            {/* <div className="dropdown-modal">
                 {this.displayCollectionScroll()}
+            </div>
+                 */}
             <div className="grey-background">
                 
                    
@@ -235,7 +285,11 @@ class CreateIdeaForm extends React.Component {
                             </li>
                             <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
                         </ul>
+
                     </div>
+                     <div className="dropdown-modal">
+                          {displayCollectionScroll}
+                        </div>
                    
                     <div className="create-idea-form-elements">
 
@@ -264,15 +318,15 @@ class CreateIdeaForm extends React.Component {
 
                         <div className="create-idea-right">
                             <div id="idea-title-form">
-                                <input id=""
+                                <input
                                     type="textarea" 
                                     className="text-area-bold" 
                                     onChange={this.update('title')}
                                     value={this.state.title}
                                     placeholder="Add your title" 
-                                    rows="1">
-
-                                </input>
+                                    rows="1"/>
+                                  
+                            
                             </div>
 
                             <div className="create-form-user-profile-container">
@@ -317,10 +371,10 @@ class CreateIdeaForm extends React.Component {
 
          </div>                                  
                 
-        </div>
-        </>
+        
+    </>
 
-        )
+    )
             
     }
 }

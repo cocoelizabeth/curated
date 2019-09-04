@@ -10,7 +10,7 @@ class MainNav extends React.Component {
         this.state = { dropdown: false };
         this.dropdownToggle = this.dropdownToggle.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        
+        this.renderDropdown = this.renderDropdown.bind(this);
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 
@@ -18,7 +18,9 @@ class MainNav extends React.Component {
 
     renderDropdown() {
         if (this.state.dropdown) {
+            debugger
             return (
+                
                 <ul ref={dropdownRef => this.dropdownRef = dropdownRef} className="dropdown-visible">
                     <li><Link to="/settings" className="dropdown-list-item">Edit Settings</Link></li>
                     <li className="dropdown-list-item" onClick={this.handleLogOut}>Log Out</li>
@@ -42,23 +44,30 @@ class MainNav extends React.Component {
     }
 
     handleClick(e) {
+        
+
         if (this.dropdownRef && (this.dropdownRef.contains(e.target) || (this.dropdownButton.contains(e.target)))) {
-            return 
+            
+            return; 
         } else {
+            
             this.setState({ dropdown: false})
+            
             e.preventDefault();
-            // e.stopPropagation()
+            e.stopPropagation()
         }
     }
 
-    componentWillMount() {
-        document.addEventListener('mousedown', this.handleClick, false)
-    }
+
+    // componentWillMount() {
+    //     document.addEventListener('mousedown', this.handleClick, false)
+    // }
             
     componentWillUnmount() {
         document.removeEventListener('mousedown', this.handleClick, false);
     }
-                      
+               
+
 
     dropdownToggle (e) {
        this.setState({ dropdown: !this.state.dropdown });

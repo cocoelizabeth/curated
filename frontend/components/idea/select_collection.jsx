@@ -22,6 +22,7 @@ class SelectCollection extends React.Component {
     }
 
     handleCollection(e) {
+        debugger
         this.props.onSelectCollection(this.props.collection);
     }
 
@@ -29,7 +30,7 @@ class SelectCollection extends React.Component {
         if (this.state.visible) {
             return (
                 <button
-                    className="collection-dropdown-select-button"
+                    className="collection-dropdown-save-button"
                     onClick={this.handleCollection}>
                     {this.props.text}
                 </button>
@@ -46,7 +47,11 @@ class SelectCollection extends React.Component {
                 onMouseEnter={this.turnOnVisibility}
                 onMouseLeave={this.turnOffVisibility}
                 value={collection.id}>
-                <h4>{collection.title}</h4>
+                {/* onClick={this.co} */}
+                <div className="collection-thumbnail-text-container">
+                    <div className ="collection-dropdown-thumbnail-container"></div>
+                    <div className="collection-dropdown-text-container">{collection.title}</div>
+                </div>
                 {this.displayLinks()}
            </div>
         )
