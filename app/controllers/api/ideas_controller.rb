@@ -31,7 +31,6 @@ class Api::IdeasController < ApplicationController
   def create
     
     @idea = Idea.new(idea_params)
-       
     if @idea.save
       @idea.photo.attach(idea_params[:photo])
       render :show

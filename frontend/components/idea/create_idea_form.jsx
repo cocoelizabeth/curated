@@ -64,6 +64,7 @@ import React from 'react';
 import { withRouter, Link, Switch }  from  'react-router-dom';
 import SelectCollection from './select_collection';
 import NavContainer from '../nav_container';
+import { throws } from 'assert';
 
 class CreateIdeaForm extends React.Component {
     constructor(props) {
@@ -89,6 +90,8 @@ class CreateIdeaForm extends React.Component {
         this.updateUrl = this.updateUrl.bind(this);
         this.handleCollection = this.handleCollection.bind(this);
         this.update = this.update.bind(this);
+        this.hideUploadBackground= this.hideUploadBackground.bind(this);
+        
         // this.goBack = this.goBack.bind(this);
     }
 
@@ -101,27 +104,6 @@ class CreateIdeaForm extends React.Component {
         this.hideCollectionScroll();
     }
 
-    // displayCollectionScroll() {
-    //     if (this.state.collectionScroll)  {
-    //         const collections = this.props.collections.map((collection, i) => (
-             
-    //                 <SelectCollection
-    //                     onSelectCollection={this.handleCollection}
-    //                     collection={collection}
-    //                     key={i}
-    //                     text='Save'
-    //                 />
-                
-    //         ))}
-            
-    //         return (
-                
-    //             <ul className='dropdown-visible-collections'>
-    //                 {collections}
-    //             </ul>
-    //         )
-        
-    // }
 
     changeSelectField() {
         if (this.state.collectionScroll) {
@@ -164,12 +146,27 @@ class CreateIdeaForm extends React.Component {
         this.setState({ collectionScroll: false});
     }
 
+    hideUploadBackground(e) {
+        debugger
+        const background = document.querySelector(".upload-image-container")
+        debugger
+        const dotBorder = document.querySelector(".upload-section")
+
+        background.style.backgroundColor="transparent";
+        dotBorder.style.display="none";
+    }
+
+    showUploadBackground(e) {
+        const background = document.querySelector("#upload-image-form")
+        background.style.display = "block";
+    }
+
     hideChooseFile(e) {
         this.setState({ chooseFile: false})
     }
 
     showChooseFile(e) {
-        this.setStaet({ chooseFile: true});
+        this.setState({ chooseFile: true});
     }
 
     handleSubmit(e) {
@@ -181,13 +178,16 @@ class CreateIdeaForm extends React.Component {
             formData.append('idea[source_url]', this.state.source_url);
             formData.append('idea[collection_id]',  this.state.collectionId);
             formData.append('idea[photo]', this.state.photoFile);
-            this.props.createIdea(formData)
+            this.props.createIdea(formData).then((res) => {
+                debugger
+                this.props.history.push(`/ideas/${res.payload.idea.id}`)
+            })
         }
     }
 
     previewImage() {
         if (this.state.photoUrl) {
-            return <div className="preview-image">
+            return <div className="idea-image-container">
                 <img src={this.state.photoUrl}></img>
             </div>
         }
@@ -198,12 +198,17 @@ class CreateIdeaForm extends React.Component {
         const fileReader = new FileReader();
 
         fileReader.onloadend = () => {
+            
             const image = new Image();
+            
             image.onload = () => {
                 const displayHeight =  (`${Math.round(image.height * (image.height / image.width))}`)
                 this.setState({ displayHeight: displayHeight});
+                
             };
             image.src = fileReader.result;
+            debugger
+            this.hideUploadBackground();
             this.setState({
                 photoFile: file,
                 photoUrl: fileReader.result,
@@ -253,6 +258,7 @@ class CreateIdeaForm extends React.Component {
                         collection={collection}
                         key={i}
                         text='Save'
+                        fetchIdea={this.props.fetchIdea}
                     />
 
                 )) : null;
@@ -298,7 +304,7 @@ class CreateIdeaForm extends React.Component {
                             <div id="upload-image-form">
                                 {this.previewImage()}
                                 <input
-                                    id="media-upload-input dot-border"
+                                    id="media-upload-input"
                                     type="file"
                                     onChange={this.handleUploadFile}
                                     accept="image/jpeg,image/png">
@@ -306,11 +312,12 @@ class CreateIdeaForm extends React.Component {
                             </div>
                             <div className="upload-image-container">
                                   
-                                            {/* <div className="upload-section">
+                                            <div className="upload-section">
                                                 <div className="upload-arrow">
-                                                    upload arrow
+                                            <i className="fas fa-arrow-circle-up"></i>
+                                            <div className="instructions">Drag and drop or click to upload</div>
                                                 </div>
-                                            </div> */}
+                                            </div>
                                     
                             </div>
                         </div>
@@ -325,7 +332,7 @@ class CreateIdeaForm extends React.Component {
                                     value={this.state.title}
                                     placeholder="Add your title" 
                                     rows="1"/>
-                                  
+                                    <div className="line"></div>
                             
                             </div>
 
@@ -333,13 +340,10 @@ class CreateIdeaForm extends React.Component {
                                 <img src="https://curated-seeds.s3.amazonaws.com/default_280.png" className="form-user-profile-photo"></img>
 
                                 <ul className="create-form-user-profile-text" >
-                                    <li className="create-form-header-username"><h4>{this.props.currentUser.username}</h4></li>
-                                    <li id="create-form-following-stats">
-                                        <Link to="#">0 followers</Link>
-                                    </li>
+                                    <li className="create-form-header-username">{this.props.currentUser.username}</li>
                                 </ul>
                             </div>
-
+                        <div className="description-link-container">
                             <div id="idea-description-form">
                                 <input id=""
                                     type="textarea"
@@ -349,8 +353,9 @@ class CreateIdeaForm extends React.Component {
                                     placeholder="Tell everyone what your idea is about"
                                     rows="1">
                                 </input>
+                                    <div className="line"></div>
                             </div>
-
+                              
                             <div id="idea-link-form">
                                 <input id=""
                                     type="url"
@@ -360,7 +365,10 @@ class CreateIdeaForm extends React.Component {
                                     placeholder="Add destination link"
                                     rows="1">
                                 </input>
+                                        <div className="line"></div>
                             </div>
+                        </div>
+
                         </div>
 
 

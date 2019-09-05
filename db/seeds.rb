@@ -110,15 +110,6 @@ ActiveRecord::Base.transaction do
   file2 = open('https://curated-seeds.s3.amazonaws.com/image2.jpg')
   idea2.photo.attach(io: file2, filename: 'image2.jpg')
 
-
-  idea3 = Idea.create({title:"Modern Outdoor Living Space", description:"Modern open plan outdoor living, featured in Architectural Digest magazine", source_url:"architechturaldigest.com", original_collection: collection1})
-  file3 = open('https://curated-seeds.s3.amazonaws.com/image3.jpg')
-  idea3.photo.attach(io: file3, filename: 'image3.jpg')
-
-  idea2 = Idea.create({title:"Mexico's Grutas Tolantongo: Infinity Pools", description:"The Vogue Guide to Mexico City", source_url:"vogue.com", original_collection: collection2})
-  file2 = open('https://curated-seeds.s3.amazonaws.com/image2.jpg')
-  idea2.photo.attach(io: file2, filename: 'image2.jpg')
-
   idea3 = Idea.create({title:"Modern Outdoor Living Space", description:"Modern open plan outdoor living, featured in Architectural Digest magazine", source_url:"architechturaldigest.com", original_collection: collection2})
   file3 = open('https://curated-seeds.s3.amazonaws.com/image3.jpg')
   idea3.photo.attach(io: file3, filename: 'image3.jpg')

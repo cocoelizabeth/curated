@@ -9,7 +9,18 @@ class SelectCollection extends React.Component {
         this.turnOnVisibility  = this.turnOnVisibility.bind(this);
         this.displayLinks = this.displayLinks.bind(this);
         this.handleCollection = this.handleCollection.bind(this);
+      
     }
+// COME BACK TO THIS - ELI
+    // componentDidMount() {
+    //     const { collection } = this.props;
+    //     const idea_id = collection.idea_ids[0];
+    //     this.props.fetchIdea(idea_id).then((res) => {
+    //         console.log(res)
+    //         debugger
+    //     })
+
+    // }
 
     turnOffVisibility(e)  {
       
@@ -41,6 +52,7 @@ class SelectCollection extends React.Component {
     render() {
         const { collection } = this.props;
         
+        
         return (
             <div 
                 className='collection-dropdown-list-item'
@@ -49,7 +61,7 @@ class SelectCollection extends React.Component {
                 value={collection.id}>
                 {/* onClick={this.co} */}
                 <div className="collection-thumbnail-text-container">
-                    <div className ="collection-dropdown-thumbnail-container"></div>
+                    <img className ="collection-dropdown-thumbnail-container" src=""></img>
                     <div className="collection-dropdown-text-container">{collection.title}</div>
                 </div>
                 {this.displayLinks()}
