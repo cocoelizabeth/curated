@@ -30,7 +30,7 @@ const mapStateToProps = (state, ownProps) => {
   
     // const curator = state.entities.users[idea.curatorId] || {};
     const curator = state.entities.ideas[ownProps.match.params.ideaId]|| {};
-
+    debugger
     // const curatorId = idea.curator.id 
     return {
         idea,
