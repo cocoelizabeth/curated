@@ -1,21 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavContainer from '../nav_container';
+import SelectCollection from './select_collection';
 
 class IdeaShow extends React.Component {
     constructor(props){
-        
         super(props);
-      
+        this.state = {
+            optionText: "COLLECTION NAME",
+            collectionScroll: false,
+            collection_id: null,
+            user_id: this.props.currentUser
+        };
+        this.showCollectionScroll = this.showCollectionScroll.bind(this);
+        this.hideCollectionScroll = this.hideCollectionScroll.bind(this);
+        this.handleCollection = this.handleCollection.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
         // this.state  = { curator, original_collection}
     }
 
     componentDidMount() {
-        
         this.props.fetchIdea(this.props.match.params.ideaId);
+        this.props.fetchAllCollections(this.props.currentUser);
+    }
+
+    showCollectionScroll(e) {
+        this.setState({collectionScroll: true});
+    }
+
+    hideCollectionScroll(e) {
+        this.setState({ collectionScroll: false});
+    }
+
+    handleCollection(collection) {
+        this.setState({collectionId: collection.id, optionText:collection.title});
+        this.hideCollectionScroll();
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        debugger
+        const  formData = new FormData();
+        formData.append('')
+
         
     }
 
+    // changeSelectField() {
+    //     if (this.state.collectionScroll) {
+    //         return 
+    //     }
+
+    // }
     // formatName() {
     //     const defaultCurator = "A curator";
         
@@ -31,6 +68,24 @@ class IdeaShow extends React.Component {
    render () {
     
      if (!this.props.idea) { return <p>Loading...</p> };
+     const displayCollectionScrollLis = 
+        this.state.collectionScroll ?
+            
+            this.props.collections.map((collection, i) => (
+
+                <SelectCollection
+                    onSelectCollection={this.handleCollection}
+                    collection={collection}
+                    key={i}
+                    text='Save'
+                    fetchIdea={this.props.fetchIdea}
+                />
+            )) : null;
+            const displayCollectionScroll = this.state.collectionScroll ? (
+                <ul className='dropdown-visible-collections'>
+                    {displayCollectionScrollLis}
+                </ul>
+            ): null;
     //  let editButton;
     //  let usernameDisplay ="";
      
@@ -58,6 +113,7 @@ class IdeaShow extends React.Component {
      ) : this.props.idea.curator.username
 
 //      
+
       
      
        return (
@@ -83,19 +139,24 @@ class IdeaShow extends React.Component {
                     
 
                         <ul className="idea-show-nav-right">
-                            <li className="collection-dropdown-button">
-                                <h4 className="dropdown-collection-name">COLLECTION NAME</h4>
+                            <li className="collection-dropdown-button" onClick={this.showCollectionScroll}>
+                                <h4 className="dropdown-collection-name">{this.state.optionText}</h4>
                                 <i className="fas fa-chevron-down"></i>
                             </li>
-                            <li className="idea-save-button">Save</li>
+                            <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
                         </ul>
                     </span>
+
+                     <div className="dropdown-modal">
+                               {displayCollectionScroll}
+                    </div>
 
                     <div className="idea-show-elements">
                         <h5 className="idea-title">{this.props.idea.title}</h5>
                         <div className="idea-show-image-container">
                             <img src={this.props.idea.photoUrl} className="idea-show-image"/>
                         </div>
+                      
 
                         {/* <div className="idea-show-info-container">
                             <div id="profile-photo">

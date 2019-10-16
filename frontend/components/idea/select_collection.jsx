@@ -12,32 +12,36 @@ class SelectCollection extends React.Component {
       
     }
 // COME BACK TO THIS - ELI
-    // componentDidMount() {
-    //     const { collection } = this.props;
-    //     const idea_id = collection.idea_ids[0];
-    //     this.props.fetchIdea(idea_id).then((res) => {
-    //         console.log(res)
-    //         debugger
-    //     })
+    componentDidMount() {
+        
+        const { collection } = this.props;
+        const idea_id = collection.idea_ids[0];
+        this.props.fetchIdea(idea_id).then((res) => {
+            
+            console.log(res)
+            
+        })
 
-    // }
+    }
 
     turnOffVisibility(e)  {
+        
       
         this.setState({ visible: false});
     }
 
     turnOnVisibility(e) {
-  
+        
         this.setState({ visible: true});
     }
 
     handleCollection(e) {
-        debugger
+        
         this.props.onSelectCollection(this.props.collection);
     }
 
     displayLinks() {
+        
         if (this.state.visible) {
             return (
                 <button
@@ -50,9 +54,8 @@ class SelectCollection extends React.Component {
     }
 
     render() {
+        
         const { collection } = this.props;
-        
-        
         return (
             <div 
                 className='collection-dropdown-list-item'
