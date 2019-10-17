@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :collections, only:[:index]
     end
     resource :session, only: [:create, :destroy]
-    resources :ideas,  only: [:index, :create, :show, :edit, :destroy]
+    resources :ideas,  only: [:index, :create, :show, :update, :destroy]
     resources :collections, only: [:create, :edit, :destroy, :show, :update] do
     resources :ideas, only: [:index]
     resources :idea_joins, only: [:index, :create, :show, :edit, :destroy]

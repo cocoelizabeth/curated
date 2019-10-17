@@ -33,6 +33,13 @@ export const createIdea = (formData) => dispatch => {
         );
 };
 
+export const updateIdea = (id, formData) => dispatch => {
+    debugger
+    return APIUtil.updateIdea(id, formData).then(
+        idea => dispatch(receiveIdea(idea))
+    );
+};
+
 export const fetchUserIdeas = (userId) => dispatch => (
     APIUtil.fetchUserIdeas(userId).then(
         ideas => dispatch(receiveIdeas(ideas))
@@ -40,11 +47,11 @@ export const fetchUserIdeas = (userId) => dispatch => (
 );
   
 
-export const createIdeaJoin = (idea, collectionId) => dispatch => {
-   return  APIUtil.createIdeaJoin(idea, collectionId).then(
-       idea => dispatch(receiveIdea(idea))
-   )
-}
+// export const createIdeaJoin = (idea, collectionId) => dispatch => {
+//    return  APIUtil.createIdeaJoin(idea, collectionId).then(
+//        idea => dispatch(receiveIdea(idea))
+//    )
+// }
 
 
 

@@ -15,7 +15,7 @@ export const fetchIdea = id => {
 
 export const fetchUserIdeas = (user_id) => {
     return $.ajax({
-        method: "GET",
+        method: 'GET',
         url: `/api/users/${user_id}/ideas`
     });
 };
@@ -28,6 +28,18 @@ export const createIdea = (formData) => {
             contentType: false,
             processData: false,
         });
+};
+
+export const updateIdea = (id, formData) => {
+    debugger
+    return $.ajax({
+        method: 'PATCH',
+        url: `api/ideas/${id}`,
+        data: formData,
+        contentType: false,
+        processData: false,
+    });
+    debugger
 };
 
 export const createIdeaJoin = (idea, collectionId) => {

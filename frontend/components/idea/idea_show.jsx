@@ -38,8 +38,15 @@ class IdeaShow extends React.Component {
     }
 
     handleSubmit(e) {
+
         e.preventDefault();
-        this.props.createIdeaJoin(this.props.idea, this.state.collection.id);
+        const formData = new FormData();
+        formData.append('idea[collection_ids]', [this.state.collectionId]);
+        debugger
+        this.props.updateIdea(this.props.idea.id, formData).then((res) => {
+            this.props.history.push(`/ideas/${res.payload.idea.id}`);
+        });
+        
     }
 
     // changeSelectField() {

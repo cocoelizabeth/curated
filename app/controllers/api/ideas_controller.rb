@@ -45,14 +45,17 @@ class Api::IdeasController < ApplicationController
   end
 
   def update
-    respond_to do |format|
+    collection_id = params[:idea][:collection_ids].to_i
+       debugger
+
       if @idea.update(idea_params)
+         IdeaJoin.create(idea: @idea, collection_id: collection_id)
       else
-        format.html { render :edit }
-        format.json { render json: @idea.errors, status: :unprocessable_entity }
+        debugger
+        render json: @idea.errors.full_messages
       end
-    end
-  end
+   end
+
 
   def destroy
     @idea.destroy
