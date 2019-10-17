@@ -28,10 +28,9 @@ export const fetchIdea = (id) => dispatch => (
 
 
 export const createIdea = (formData) => dispatch => {
-    
-return APIUtil.createIdea(formData).then(
-        idea => dispatch(receiveIdea(idea))
-    );
+    return APIUtil.createIdea(formData).then(
+            idea => dispatch(receiveIdea(idea))
+        );
 };
 
 export const fetchUserIdeas = (userId) => dispatch => (
@@ -40,6 +39,12 @@ export const fetchUserIdeas = (userId) => dispatch => (
     )
 );
   
+
+export const createIdeaJoin = (idea, collectionId) => dispatch => {
+   return  APIUtil.createIdeaJoin(idea, collectionId).then(
+       idea => dispatch(receiveIdea(idea))
+   )
+}
 
 
 

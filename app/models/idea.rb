@@ -23,7 +23,12 @@ class Idea < ApplicationRecord
     through: :original_collection,
     source: :user
 
-        
-    # belongs_to :original_user
+    has_many :idea_joins
+
+    has_many :collections,
+    through: :idea_joins,
+    source: :collection
+
+    # has_many :shared_collections, through: :idea_joins, source: :collection
 
 end

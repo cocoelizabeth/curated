@@ -30,5 +30,10 @@ class Collection < ApplicationRecord
     foreign_key: :collection_id,
     class_name: :Idea
 
+    has_many :idea_joins,
+    foreign_key: :idea_id
+
+    
+
 
 end

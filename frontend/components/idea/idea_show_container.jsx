@@ -48,7 +48,7 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchIdea: (ideaId) => dispatch(fetchIdea(ideaId)),
         fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
-        createIdea: (formData) => dispatch(createIdea(formData))
+        createIdeaJoin: (idea, collectionId) => dispatch(createIdeaJoin(idea, collectionId))
     };
 };
 

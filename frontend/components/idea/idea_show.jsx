@@ -41,10 +41,7 @@ class IdeaShow extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         debugger
-        const  formData = new FormData();
-        formData.append('')
-
-        
+        this.props.createIdeaJoin(this.props.idea, this.state.collection.id);
     }
 
     // changeSelectField() {

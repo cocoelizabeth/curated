@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_205949) do
+ActiveRecord::Schema.define(version: 2019_10_16_192454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2019_08_06_205949) do
     t.index ["title"], name: "index_collections_on_title"
     t.index ["topic_id"], name: "index_collections_on_topic_id"
     t.index ["user_id"], name: "index_collections_on_user_id"
+  end
+
+  create_table "idea_joins", force: :cascade do |t|
+    t.integer "idea_id", null: false
+    t.integer "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_idea_joins_on_collection_id"
+    t.index ["idea_id", "collection_id"], name: "index_idea_joins_on_idea_id_and_collection_id"
+    t.index ["idea_id"], name: "index_idea_joins_on_idea_id"
   end
 
   create_table "ideas", force: :cascade do |t|
