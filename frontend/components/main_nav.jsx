@@ -18,7 +18,7 @@ class MainNav extends React.Component {
 
     renderDropdown() {
         if (this.state.dropdown) {
-            debugger
+
             return (
                 
                 <ul ref={dropdownRef => this.dropdownRef = dropdownRef} className="dropdown-visible">

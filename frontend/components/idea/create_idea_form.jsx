@@ -179,7 +179,7 @@ class CreateIdeaForm extends React.Component {
             formData.append('idea[title]', this.state.title);
             formData.append('idea[description]', this.state.description);
             formData.append('idea[source_url]', this.state.source_url);
-            formData.append('idea[collection_id]',  this.state.collectionId);
+            formData.append('idea[collection_ids]',  [this.state.collectionId]);
             formData.append('idea[photo]', this.state.photoFile);
             this.props.createIdea(formData).then((res) => {
                 

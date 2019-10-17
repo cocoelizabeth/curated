@@ -17,7 +17,6 @@ class IdeaShow extends React.Component {
         this.handleCollection = this.handleCollection.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        // this.state  = { curator, original_collection}
     }
 
     componentDidMount() {
@@ -40,7 +39,6 @@ class IdeaShow extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
         this.props.createIdeaJoin(this.props.idea, this.state.collection.id);
     }
 
@@ -181,8 +179,6 @@ class IdeaShow extends React.Component {
                                 <ul className ="idea-user-info">
                                     <li id="user-info">
                                                <Link to={`/${this.props.idea.curator.username}`}>{usernameDisplay}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link>
-
-                                               {/* <Link to={`/${this.props.curator.username}`}>{this.props.curator.username}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link> */}
                                     </li>
                                     <li className="num-resaves">
                                         <i className="fas fa-asterisk"></i>

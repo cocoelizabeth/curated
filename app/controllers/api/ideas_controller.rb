@@ -31,21 +31,17 @@ class Api::IdeasController < ApplicationController
   def create
     
     @idea = Idea.new(idea_params)
+    @idea.curator = current_user
+
     if @idea.save
       @idea.photo.attach(idea_params[:photo])
+      # IdeaJoin.create(idea: @idea, collection_id:params[:collection_id])
       render :show
     else 
       render json: @idea.errors.full_messages
     end
     
-    # respond_to do |format|
-    #   if @idea.save
-    #      format.json { render json: "idea saved" }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @idea.errors, status: :unprocessable_entity }
-    #   end
-    # end
+
   end
 
   def update
@@ -72,6 +68,6 @@ class Api::IdeasController < ApplicationController
     end
 
     def idea_params
-      params.require(:idea).permit(:title, :description, :user_id, :source_url, :original_collection, :collection_id, :photo, :photoUrl, :photoType)
+      params.require(:idea).permit(:title, :description, :user_id, :source_url, :collection_ids, :photo, :photoUrl, :photoType)
     end
 end
