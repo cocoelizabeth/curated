@@ -67,12 +67,10 @@ class User < ApplicationRecord
 
     def set_username
         username = self.email.split("@")[0]
-        
+   
         if User.find_by username: username == nil
-            
              username = username
-        else 
-            
+        else
             username += self.id.to_s
         end
         self.username = username

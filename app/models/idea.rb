@@ -2,28 +2,25 @@
 #
 # Table name: ideas
 #
-#  id            :bigint           not null, primary key
-#  title         :string
-#  description   :string
-#  source_url    :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  collection_id :integer
+#  id          :bigint           not null, primary key
+#  title       :string
+#  description :string
+#  source_url  :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :integer
 #
 
 class Idea < ApplicationRecord
     has_one_attached :photo
 
-    belongs_to :original_collection,
+    belongs_to :curator,
     primary_key: :id,
-    foreign_key: :collection_id,
-    class_name: :Collection
+    foreign_key: :user_id,
+    class_name: :User
 
-    has_one :curator,
-    through: :original_collection,
-    source: :user
+    has_many :idea_joins
 
-        
-    # belongs_to :original_user
-
+    has_many :collections,
+    through: :idea_joins
 end

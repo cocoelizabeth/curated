@@ -100,24 +100,27 @@ class CreateIdeaForm extends React.Component {
     }
 
     handleCollection(collection) {
+        
         this.setState({collectionId: collection.id, optionText: collection.title});
         this.hideCollectionScroll();
     }
 
-
+// COME  BACK TO THIS
     changeSelectField() {
+        
         if (this.state.collectionScroll) {
             return (
                 <ul className="create-idea-nav-right">
-                <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
-                    <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
-                    <i className="fas fa-chevron-down"></i>
-                </li>
-                <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
-            </ul>
+                    <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
+                        <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
+                        <i className="fas fa-chevron-down"></i>
+                    </li>
+                    <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
+                </ul>
 
             )
         }else {
+            
             return (
                 <ul className="create-idea-nav-right">
                     <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
@@ -141,15 +144,14 @@ class CreateIdeaForm extends React.Component {
     }
 
 
-    hideCollectionScroll(e) {
-        debugger
+    hideCollectionScroll(e) { 
         this.setState({ collectionScroll: false});
     }
 
     hideUploadBackground(e) {
-        debugger
+        
         const background = document.querySelector(".upload-image-container")
-        debugger
+        
         const dotBorder = document.querySelector(".upload-section")
 
         background.style.backgroundColor="transparent";
@@ -170,16 +172,17 @@ class CreateIdeaForm extends React.Component {
     }
 
     handleSubmit(e) {
+        
         if (this.state.photoType === 'upload') {
             e.preventDefault();
-             const formData = new FormData();
+            const formData = new FormData();
             formData.append('idea[title]', this.state.title);
             formData.append('idea[description]', this.state.description);
             formData.append('idea[source_url]', this.state.source_url);
-            formData.append('idea[collection_id]',  this.state.collectionId);
+            formData.append('idea[collection_ids]',  [this.state.collectionId]);
             formData.append('idea[photo]', this.state.photoFile);
             this.props.createIdea(formData).then((res) => {
-                debugger
+                
                 this.props.history.push(`/ideas/${res.payload.idea.id}`)
             })
         }
@@ -207,7 +210,7 @@ class CreateIdeaForm extends React.Component {
                 
             };
             image.src = fileReader.result;
-            debugger
+            
             this.hideUploadBackground();
             this.setState({
                 photoFile: file,
@@ -248,11 +251,12 @@ class CreateIdeaForm extends React.Component {
  
 
     render() {
+        
         const { idea } = this.state;
         const displayCollectionScrollLis = 
             this.state.collectionScroll ? 
                 this.props.collections.map((collection, i) => (
-
+                    
                     <SelectCollection
                         onSelectCollection={this.handleCollection}
                         collection={collection}

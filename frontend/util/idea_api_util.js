@@ -14,21 +14,38 @@ export const fetchIdea = id => {
 };
 
 export const fetchUserIdeas = (user_id) => {
-      
     return $.ajax({
-        method: "GET",
+        method: 'GET',
         url: `/api/users/${user_id}/ideas`
     });
 };
 
 export const createIdea = (formData) => {
-    
- return $.ajax({
-        method: 'POST',
-        url: "api/ideas",
+    return $.ajax({
+            method: 'POST',
+            url: "api/ideas",
+            data: formData,
+            contentType: false,
+            processData: false,
+        });
+};
+
+export const updateIdea = (id, formData) => {
+    return $.ajax({
+        method: 'PATCH',
+        url: `api/ideas/${id}`,
         data: formData,
         contentType: false,
         processData: false,
+    });
+};
+
+export const createIdeaJoin = (idea, collectionId) => {
+    return $.ajax({
+        method: 'POST',
+        url: "api/idea_joins",
+        data: { idea },
+        collectionId: collectionId
     });
 };
 

@@ -28,8 +28,14 @@ export const fetchIdea = (id) => dispatch => (
 
 
 export const createIdea = (formData) => dispatch => {
+    return APIUtil.createIdea(formData).then(
+            idea => dispatch(receiveIdea(idea))
+        );
+};
+
+export const updateIdea = (id, formData) => dispatch => {
     
-return APIUtil.createIdea(formData).then(
+    return APIUtil.updateIdea(id, formData).then(
         idea => dispatch(receiveIdea(idea))
     );
 };
@@ -40,6 +46,12 @@ export const fetchUserIdeas = (userId) => dispatch => (
     )
 );
   
+
+// export const createIdeaJoin = (idea, collectionId) => dispatch => {
+//    return  APIUtil.createIdeaJoin(idea, collectionId).then(
+//        idea => dispatch(receiveIdea(idea))
+//    )
+// }
 
 
 

@@ -9,7 +9,6 @@ const ideasReducer = (state = {}, action) => {
             return action.ideas;
         
         case RECEIVE_IDEA:
-            debugger
             return merge({}, state, { [action.payload.idea.id]: action.payload.idea });
         
         default:
