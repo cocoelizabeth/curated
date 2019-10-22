@@ -31,7 +31,6 @@ export const createIdea = (formData) => {
 };
 
 export const updateIdea = (id, formData) => {
-    debugger
     return $.ajax({
         method: 'PATCH',
         url: `api/ideas/${id}`,
@@ -39,7 +38,6 @@ export const updateIdea = (id, formData) => {
         contentType: false,
         processData: false,
     });
-    debugger
 };
 
 export const createIdeaJoin = (idea, collectionId) => {

@@ -4,6 +4,7 @@ class Api::IdeasController < ApplicationController
   def index
     
     if params[:user_id] 
+      debugger
       @ideas = Idea.with_attached_photo.joins(:curator).where(users:{id: params[:user_id]})
     else
       @ideas = Idea.with_attached_photo.all
