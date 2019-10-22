@@ -4,7 +4,7 @@ class Api::IdeasController < ApplicationController
   def index
     
     if params[:user_id] 
-      debugger
+      
       @ideas = Idea.with_attached_photo.joins(:curator).where(users:{id: params[:user_id]})
     else
       @ideas = Idea.with_attached_photo.all
@@ -47,12 +47,12 @@ class Api::IdeasController < ApplicationController
 
   def update
     collection_id = params[:idea][:collection_ids].to_i
-       debugger
+       
 
       if @idea.update(idea_params)
          IdeaJoin.create(idea: @idea, collection_id: collection_id)
       else
-        debugger
+        
         render json: @idea.errors.full_messages
       end
    end

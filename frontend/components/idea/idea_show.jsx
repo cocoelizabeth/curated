@@ -42,7 +42,7 @@ class IdeaShow extends React.Component {
         e.preventDefault();
         const formData = new FormData();
         formData.append('idea[collection_ids]', [this.state.collectionId]);
-        debugger
+        
         this.props.updateIdea(this.props.idea.id, formData).then((res) => {
             this.props.history.push(`/ideas/${res.payload.idea.id}`);
         });

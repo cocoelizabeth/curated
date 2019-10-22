@@ -48,7 +48,7 @@ const mapDispatchToProps = dispatch => {
         createIdeaJoin: (idea, collectionId) => dispatch(createIdeaJoin(idea, collectionId)),
         updateIdea: (id, formData) => dispatch(updateIdea(id, formData))
     };
-    debugger
+    
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(IdeaShow);

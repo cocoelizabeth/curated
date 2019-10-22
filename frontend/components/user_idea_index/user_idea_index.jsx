@@ -16,7 +16,7 @@ class UserIdeaIndex extends React.Component {
 
         this.props.fetchUserIdeas(this.props.match.params.userId);
         // 
-        debugger
+        
 
     }
 
@@ -57,7 +57,7 @@ class UserIdeaIndex extends React.Component {
 
         const { ideas } = this.props;
         const ideaItems = ideas.map(idea => {
-            debugger
+            
 
             return (
 

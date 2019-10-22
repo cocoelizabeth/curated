@@ -34,7 +34,7 @@ export const createIdea = (formData) => dispatch => {
 };
 
 export const updateIdea = (id, formData) => dispatch => {
-    debugger
+    
     return APIUtil.updateIdea(id, formData).then(
         idea => dispatch(receiveIdea(idea))
     );
