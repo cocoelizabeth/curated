@@ -100,12 +100,14 @@
         // margin: 0px auto;
         columns: 3;
         column-gap: 2px;
-        background-color: white;
+   
         grid-template-columns: repeat(auto-fill, minmax(98, 1fr));
         // overflow: hidden;
             li{
                 // margin: auto;
+                background-color: #efefef;
                 min-height: 98px;
+                // background-color: #efefef;
                 img {
                     width:100%;
                     min-height: 98px;

@@ -13,7 +13,7 @@ const ideasReducer = (state = {}, action) => {
             return merge({}, state, { [action.payload.idea.id]: action.payload.idea });
         
         case RECEIVE_COLLECTIONS:
-            debugger
+            
             return Object.assign({}, state, action.ideas);
         default:
             return state;

@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     
     const { collections,  ideas } = state.entities;
     const user = state.entities.users[ownProps.match.params.userId];
-    debugger
+    
     return {
         collections: Object.values(collections),
         ideas: Object.values(ideas),
