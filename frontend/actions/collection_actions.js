@@ -3,12 +3,13 @@ import * as APIUtil from "../util/collection_api_util";
 export const RECEIVE_COLLECTIONS= 'RECEIVE_COLLECTIONS';
 export const RECEIVE_COLLECTION = 'RECEIVE_COLLECTION';
 
-export const receiveCollections = (collections) => {
+// destructured payload to {collections, ideas} so that we can destructure in our return, instead of doing payload.ideas etc
+export const receiveCollections = ({collections, ideas} ) => {
     
     return ({
         type: RECEIVE_COLLECTIONS,
         collections,
-
+        ideas
     });
  
 };
@@ -21,7 +22,7 @@ export const receiveCollection = (payload) => ({
 
 export const fetchAllCollections = (userId) => dispatch => {
     return APIUtil.fetchAllCollections(userId).then(
-        collections => dispatch(receiveCollections(collections))
+        payload=> dispatch(receiveCollections(payload))
     );
 
 };

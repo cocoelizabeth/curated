@@ -6,9 +6,9 @@ const collectionsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_COLLECTION: 
             return Object.assign({}, state, {[action.payload.id]: action.payload});
-        
+    // action.collections is coming from RECIEVE_COLLECTIONS. Ideas are in the ideas reducer
         case RECEIVE_COLLECTIONS: 
-            return action.collections;
+            return Object.assign({}, state, action.collections);
         case RECEIVE_USER:
         case RECEIVE_CURRENT_USER: 
             const collections = action.collections;
