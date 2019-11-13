@@ -112,41 +112,52 @@ class UserShow extends React.Component {
                 this.props.fetchAllCollections(this.props.match.params.userId);
             });
         }
+
+        if (prevProps.location.pathname.includes("ideas") && !(this.state.ideaTab)) {
+            this.setState({
+                collectionTab: false,
+                ideaTab: true
+            });
+        }
     }
 
     
 
 
-
+// Renders grey background on selected tab; Black underlined on mouseover
     displayTabs() {
         if (this.state.collectionTab === true) {
             return (
-            <ul className="user-profile-tabs">
-                <li 
-                    className="selected" 
-                    onClick={this.handleTabClick}>
-                    <Link to={`/users/${this.props.user.id}/collections`}>Collections</Link>
-                </li>
-                <li 
-                    id="ideas-tab"
-                    onClick={this.handleTabClick}>
-                    <Link to={`/users/${this.props.user.id}/ideas`}>Ideas</Link>
-                </li>
-            </ul>
-            )
-        }else {
-            return (
+            <div className="user-profile-tabs-container">
                 <ul className="user-profile-tabs">
-                    <li
+                    <li 
+                        className="selected" 
                         onClick={this.handleTabClick}>
                         <Link to={`/users/${this.props.user.id}/collections`}>Collections</Link>
                     </li>
-                    <li
-                        className="selected"
+                    <li 
+                        id="ideas-tab"
                         onClick={this.handleTabClick}>
                         <Link to={`/users/${this.props.user.id}/ideas`}>Ideas</Link>
                     </li>
                 </ul>
+            </div>
+            )
+        }else {
+            return (
+                <div className="user-profile-tabs-container">
+                    <ul className="user-profile-tabs">
+                        <li
+                            onClick={this.handleTabClick}>
+                            <Link to={`/users/${this.props.user.id}/collections`}>Collections</Link>
+                        </li>
+                        <li
+                            className="selected"
+                            onClick={this.handleTabClick}>
+                            <Link to={`/users/${this.props.user.id}/ideas`}>Ideas</Link>
+                        </li>
+                    </ul>
+                </div>
             )
         }
 
@@ -164,6 +175,7 @@ class UserShow extends React.Component {
             })
         }
     }
+
 
 
     render() {
@@ -218,13 +230,13 @@ class UserShow extends React.Component {
                         </ul>
                     </div> */}
 
-                    <div className="user-profile-tabs-container">
+                    
                         {/* <ul className="user-profile-tabs"> */}
                             {this.displayTabs()}
                             {/* <li id="collections-tab"><Link to={`/users/${user.id}/collections`}>Collections</Link></li> */}
                             {/* <li id="ideas-tab"><Link to={`/users/${user.id}/ideas`}>Ideas</Link></li> */}
                         {/* </ul> */}
-                    </div>
+                    {/* </div> */}
 
                     <Switch>
                         <Route exact path="/users/:userId" component={CollectionsIndexContainer} />
