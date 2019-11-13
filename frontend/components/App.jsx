@@ -10,6 +10,7 @@ import Splash from './splash';
 import IdeaShowContainer from './idea/idea_show_container';
 import UserShowContainer from './user/user_show_container';
 import CreateIdeaFormContainer from './idea/create_idea_form_container';
+import CollectionShowContainer from './collections/collection_show_container';
 
 const App = () => (
     <div className="background-grid">
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/splash" component={Splash} />
             <Route path="/ideas/:ideaId" component={IdeaShowContainer} />
             <Route path="/users/:userId" component={UserShowContainer} />
+            <Route path="/collections/:collectionId" component={CollectionShowContainer}/>
             <ProtectedRoute path="/create_idea" component={CreateIdeaFormContainer} />
     
             

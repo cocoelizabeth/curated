@@ -3,7 +3,9 @@ import { RECEIVE_COLLECTIONS} from '../actions/collection_actions';
 import merge from 'lodash/merge';
 
 const ideasReducer = (state = {}, action) => {
+    
     Object.freeze(state);
+    debugger
     switch(action.type) {
         case RECEIVE_IDEAS: 
     
@@ -13,7 +15,7 @@ const ideasReducer = (state = {}, action) => {
             return merge({}, state, { [action.payload.idea.id]: action.payload.idea });
         
         case RECEIVE_COLLECTIONS:
-            
+            debugger
             return Object.assign({}, state, action.ideas);
         default:
             return state;

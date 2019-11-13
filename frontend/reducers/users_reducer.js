@@ -7,6 +7,7 @@ import { RECEIVE_IDEA, RECEIVE_IDEAS } from '../actions/idea_actions';
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
+    debugger
     switch(action.type) {
         
         case RECEIVE_CURRENT_USER:

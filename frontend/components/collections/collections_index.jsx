@@ -8,20 +8,20 @@ class CollectionIndex extends React.Component {
     constructor(props) {
         super(props);
         this.collectionItems = [];
-        debugger
+    
         
     }
 
     componentDidMount() {
-        debugger
+  
         this.props.fetchAllCollections(this.props.match.params.userId);
-        debugger
+  
         
     }
 
   
     render() {
-        debugger
+   
 
         const { user, ideas } = this.props;
         let collectionItem;

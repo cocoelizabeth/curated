@@ -20,6 +20,7 @@ export const fetchUserIdeas = (user_id) => {
     });
 };
 
+
 export const createIdea = (formData) => {
     return $.ajax({
             method: 'POST',
@@ -49,5 +50,11 @@ export const createIdeaJoin = (idea, collectionId) => {
     });
 };
 
+export const fetchCollectionIdeas = (collectionId) => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/collections/${collectionId}/ideas`
+    })
+}
   // contentType: false,
         // processData: false
