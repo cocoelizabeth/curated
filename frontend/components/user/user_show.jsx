@@ -99,10 +99,17 @@ class UserShow extends React.Component {
     }
 
     componentDidMount() {
-        //  debugger
+         debugger
         this.props.fetchUser(this.props.match.params.userId).then(() => {    
             this.props.fetchAllCollections(this.props.match.params.userId);
         });
+
+        if (this.props.location.pathname.includes("ideas") && !(this.state.ideaTab)) {
+            this.setState({
+                collectionTab: false,
+                ideaTab: true
+            });
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -110,13 +117,6 @@ class UserShow extends React.Component {
         if (prevProps.match.params.userId !== this.props.match.params.userId) {
             this.props.fetchUser(this.props.match.params.userId).then(() => {
                 this.props.fetchAllCollections(this.props.match.params.userId);
-            });
-        }
-
-        if (prevProps.location.pathname.includes("ideas") && !(this.state.ideaTab)) {
-            this.setState({
-                collectionTab: false,
-                ideaTab: true
             });
         }
     }
