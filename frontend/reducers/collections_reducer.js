@@ -3,7 +3,6 @@ import { RECEIVE_USER } from "../actions/user_actions";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 const collectionsReducer = (state = {}, action) => {
     Object.freeze(state);
-    debugger
     switch(action.type) {
         
         case RECEIVE_COLLECTION: 

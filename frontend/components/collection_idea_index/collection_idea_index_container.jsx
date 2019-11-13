@@ -7,7 +7,7 @@ import CollectionIdeaIndex from '../collection_idea_index/collection_idea_index'
 const mapStateToProps = (state, ownProps) => {
     const { ideas } = state.entities;
     const { collection } = state.entities.collections[ownProps.match.params.collectionId];
-    debugger
+    
 
     return {
         ideas: Object.values(ideas),

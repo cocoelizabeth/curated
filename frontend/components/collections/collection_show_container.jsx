@@ -9,7 +9,7 @@ import { createIdea } from "../../actions/idea_actions";
 
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
+    
 
     const collection = state.entities.collections[ownProps.match.params.collectionId];
     const ideas = collection.idea_ids.map(ideaId=> state.entities.ideas[ideaId]);

@@ -7,12 +7,10 @@ import CollectionIdeaIndex from "../collection_idea_index/collection_idea_index"
 
 class CollectionShow extends React.Component {
     constructor(props){
-        debugger
         super(props);
     }
 
     componentDidMount() {
-        debugger
         this.props.fetchCollection(this.props.match.params.collectionId).then(() => {
             this.props.fetchCollectionIdeas(this.props.match.params.collectionId);
         });
@@ -24,8 +22,6 @@ class CollectionShow extends React.Component {
 
     render() {
         const { collection } = this.props;
-        debugger
-
         return (
             <>
                 <NavContainer />
