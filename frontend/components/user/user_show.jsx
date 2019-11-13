@@ -89,6 +89,12 @@ import UserIdeaIndexContainer from "../user_idea_index/user_idea_index_container
 class UserShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state  = {
+            collectionTab: true,
+            ideaTab: false
+        };
+        this.handleTabClick = this.handleTabClick.bind(this);
+        this.displayTabs = this.displayTabs.bind(this);
         
     }
 
@@ -108,28 +114,77 @@ class UserShow extends React.Component {
         }
     }
 
+    
+
+
+
+    displayTabs() {
+        if (this.state.collectionTab === true) {
+            return (
+            <ul className="user-profile-tabs">
+                <li 
+                    className="selected" 
+                    onClick={this.handleTabClick}>
+                    <Link to={`/users/${this.props.user.id}/collections`}>Collections</Link>
+                </li>
+                <li 
+                    id="ideas-tab"
+                    onClick={this.handleTabClick}>
+                    <Link to={`/users/${this.props.user.id}/ideas`}>Ideas</Link>
+                </li>
+            </ul>
+            )
+        }else {
+            return (
+                <ul className="user-profile-tabs">
+                    <li
+                        onClick={this.handleTabClick}>
+                        <Link to={`/users/${this.props.user.id}/collections`}>Collections</Link>
+                    </li>
+                    <li
+                        className="selected"
+                        onClick={this.handleTabClick}>
+                        <Link to={`/users/${this.props.user.id}/ideas`}>Ideas</Link>
+                    </li>
+                </ul>
+            )
+        }
+
+    }
+// on click we set the state
+    handleTabClick(e) {
+        if (e.target.innerText === "Collections") {
+            this.setState({ 
+                collectionTab: true,
+                ideaTab: false})
+        } else if (e.target.innerText === "Ideas") {
+            this.setState({
+                collectionTab: false,
+                ideaTab: true
+            })
+        }
+    }
+
 
     render() {
-        // debugger
+
         const { user } = this.props;
         let collectionItem;
-
+        // render users collection items 
         if (user) {
-
             const collectionList = Object.keys(this.props.collections).map(
                 id => this.props.collections[id]
             );
-
             collectionItem = collectionList.map(collection => {
                 return (
                     <li className="collection-item-container" key={`collection-${collection.id}`}><CollectionItem collection={collection} /></li>
                 )
             })
         } else {
-            // debugger
             return <p>Loading...</p>
         }
-        // debugger
+
+
 
         return (
             <>
@@ -154,11 +209,21 @@ class UserShow extends React.Component {
                         </ul>
                         <img src="https://curated-seeds.s3.amazonaws.com/default_280.png" className="user-profile-photo"></img>
                     </div>
-                    <div className="user-profile-tabs-container">
+
+                    {/* old code comment back in if doesnt  */}
+                    {/* <div className="user-profile-tabs-container">
                         <ul className="user-profile-tabs">
                             <li id="collections-tab"><Link to={`/users/${user.id}/collections`}>Collections</Link></li>
                             <li id="ideas-tab"><Link to={`/users/${user.id}/ideas`}>Ideas</Link></li>
                         </ul>
+                    </div> */}
+
+                    <div className="user-profile-tabs-container">
+                        {/* <ul className="user-profile-tabs"> */}
+                            {this.displayTabs()}
+                            {/* <li id="collections-tab"><Link to={`/users/${user.id}/collections`}>Collections</Link></li> */}
+                            {/* <li id="ideas-tab"><Link to={`/users/${user.id}/ideas`}>Ideas</Link></li> */}
+                        {/* </ul> */}
                     </div>
 
                     <Switch>

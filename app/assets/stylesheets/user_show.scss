@@ -116,11 +116,14 @@
                 color: rgb(142, 142, 142);
                 // min-height: 40px;
             }
-            li:hover {
-                border-radius: 999px;
-                background-color: rgb(239, 239, 239);
+            li:hover, li.selected {
+
                 color: #333;
                 text-decoration: underline;
+            }
+            li.selected{
+                border-radius: 999px;
+                background-color: rgb(239, 239, 239);
             }
             li:active{
                 color: #333;
