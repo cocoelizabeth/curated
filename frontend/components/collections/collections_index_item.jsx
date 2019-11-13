@@ -26,7 +26,7 @@ class CollectionItem extends React.Component {
 
   
         return (
-            <>
+            <div className = "collection-item">
                 <div className="collection-image-grid-container"> 
                     <Link to={`/collections/${this.props.collection.id}`}>
                         <ul className="collection-image-grid">
@@ -39,7 +39,7 @@ class CollectionItem extends React.Component {
                     <div id="collection-num-ideas">{this.props.collection.idea_ids.length} ideas</div>
                 </div>
             
-            </>
+            </div>
             
         )
     }

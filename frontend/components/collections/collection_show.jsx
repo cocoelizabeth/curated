@@ -56,7 +56,6 @@ class CollectionShow extends React.Component {
                         </ul>
                     </div> */}
                 </div>
-
                 <CollectionIdeaIndex
                     ideas= {this.props.ideas}
                     fetchCollectionIdeas= {this.props.fetchCollectionIdeas}
