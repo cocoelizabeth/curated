@@ -15,7 +15,7 @@ class CreateIdeaForm extends React.Component {
             user_id: this.props.currentUser.id,
             optionText: "Select",
             collectionScroll: false,
-            chooseFile: false,
+            // chooseFile: false,
             photoFile: null,
             photoUrl: null,
             photoType: null,
@@ -26,11 +26,13 @@ class CreateIdeaForm extends React.Component {
         this.handleExternalFile - this.handleExternalFile.bind(this);
         this.showCollectionScroll = this.showCollectionScroll.bind(this);
         this.hideCollectionScroll = this.hideCollectionScroll.bind(this);
-        this.updateUrl = this.updateUrl.bind(this);
+        // this.updateUrl = this.updateUrl.bind(this);
         this.handleCollection = this.handleCollection.bind(this);
         this.update = this.update.bind(this);
         this.hideUploadBackground= this.hideUploadBackground.bind(this);
-        console.log('constructor')
+        this.toggleDropdown = this.toggleDropdown.bind(this);
+
+        
         // this.goBack = this.goBack.bind(this);
     }
 
@@ -38,106 +40,55 @@ class CreateIdeaForm extends React.Component {
         this.props.fetchAllCollections(this.props.currentUser.id);
     }
 
-    handleCollection(collection) {
+
+// COLLECTION DROPDOWN LOGIC
+
+
+    showCollectionScroll(e) {
+        this.setState({ collectionScroll: true });
         
+        const saveButton = document.querySelector(".idea-save-button");
+        const dropDown = document.querySelector(".create-idea-collection-dropdown-button");
+
+        const saveWidth = saveButton.clientWidth;
+        const dropDownWidth = dropDown.clientWidth;
+        const newWidth = (saveWidth + dropDownWidth - 28).toString() + "px";
+        saveButton.style.display = "none";
+        dropDown.style.width = newWidth;
+        dropDown.style.borderRadius="8px";
+    }
+
+    hideCollectionScroll(e) {
+        this.setState({ collectionScroll: false });
+        
+
+        const dropDown = document.querySelector(".create-idea-collection-dropdown-button");
+        const dropDownWidth = dropDown.clientWidth;
+        const saveButton = document.querySelector(".idea-save-button");
+        saveButton.style.display = "flex";
+        const saveWidth = saveButton.clientWidth;
+
+        const newWidth = (dropDownWidth - saveWidth - 28).toString() + "px";
+        dropDown.style.width = newWidth;
+        dropDown.style.borderTopRightRadius = "0px";
+        dropDown.style.borderBottomRightRadius = "0px";
+        
+
+    }
+
+    toggleDropdown(e) {
+        
+        this.state.collectionScroll ? this.hideCollectionScroll() : this.showCollectionScroll();
+    }
+
+    // put selected collection in the state, change dropdown text to collection title, hide dropdown
+    handleCollection(collection) {
         this.setState({collectionId: collection.id, optionText: collection.title});
         this.hideCollectionScroll();
     }
 
-// COME  BACK TO THIS
-    changeSelectField() {
-        
-        if (this.state.collectionScroll) {
-            return (
-                <ul className="create-idea-nav-right">
-                    <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
-                        <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
-                        <i className="fas fa-chevron-down"></i>
-                    </li>
-                    <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
-                </ul>
+// 
 
-            )
-        }else {
-            
-            return (
-                <ul className="create-idea-nav-right">
-                    <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
-                        <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
-                        <i className="fas fa-chevron-down"></i>
-                    </li>
-                    <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
-                </ul>
-            )
-        }
-    }
-
-    updateUrl() {
-        return(e) => {
-            this.setState({ photoUrl: e.target.value})
-        }
-    }
-
-    showCollectionScroll(e) {
-        this.setState({ collectionScroll: true})
-    }
-
-
-    hideCollectionScroll(e) { 
-        this.setState({ collectionScroll: false});
-    }
-
-    hideUploadBackground(e) {
-        const background = document.querySelector(".upload-image-container") || document.querySelector(".upload-image-container-error")
-        // const regularBackground = document.querySelector(".upload-image-container") || 
-        // const errorBackground = document.querySelector(".upload-image-container-error")
-        // const background = this.state.error ? errorBackground : regularBackground
-        const dotBorder = document.querySelector(".upload-section")
-        background.style.boxShadow ="none"
-        background.style.backgroundColor="transparent";
-        dotBorder.style.display="none";
-    }
-
-    showUploadBackground(e) {
-        const background = document.querySelector("#upload-image-form")
-        background.style.display = "block";
-    }
-
-    hideChooseFile(e) {
-        this.setState({ chooseFile: false})
-    }
-
-    showChooseFile(e) {
-        this.setState({ chooseFile: true});
-    }
-
-//    toggleErrorForm() {
-//         if (this.state.error) {
-
-//         }
-//         console.log("error message")
-//     }
-
-    handleSubmit(e) {
-        
-        if (this.state.photoType === 'upload') {
-            e.preventDefault();
-            this.setState({ error: false})
-            const formData = new FormData();
-            formData.append('idea[title]', this.state.title);
-            formData.append('idea[description]', this.state.description);
-            formData.append('idea[source_url]', this.state.source_url);
-            formData.append('idea[collection_ids]',  [this.state.collectionId]);
-            formData.append('idea[photo]', this.state.photoFile);
-            this.props.createIdea(formData).then((res) => {
-                
-                this.props.history.push(`/ideas/${res.payload.idea.id}`)
-            })
-        }else {
-            this.setState({ error: true })
-            // this.toggleErrorForm();
-        }
-    }
 
     previewImage() {
         if (this.state.photoUrl) {
@@ -146,6 +97,39 @@ class CreateIdeaForm extends React.Component {
             </div>
         }
     }
+
+
+
+    // hide background and dots once image has been uploaded
+    hideUploadBackground(e) {
+        const background = document.querySelector(".upload-image-container") || document.querySelector(".upload-image-container-error")
+        const dotBorder = document.querySelector(".upload-section");
+        background.style.boxShadow ="none";
+        background.style.backgroundColor="transparent";
+        dotBorder.style.display="none";
+    }
+
+    // if a photo is uploaded, collect all form data and save as a new Idea, otherwise: render red error box
+    handleSubmit(e) {
+        
+        if (this.state.photoType === 'upload') {
+            e.preventDefault();
+            this.setState({ error: false});
+            const formData = new FormData();
+            formData.append('idea[title]', this.state.title);
+            formData.append('idea[description]', this.state.description);
+            formData.append('idea[source_url]', this.state.source_url);
+            formData.append('idea[collection_ids]',  [this.state.collectionId]);
+            formData.append('idea[photo]', this.state.photoFile);
+            this.props.createIdea(formData).then((res) => {
+                this.props.history.push(`/ideas/${res.payload.idea.id}`);
+            });
+        } else {
+            this.setState({ error: true });
+        }
+    }
+
+
 
     handleUploadFile(e) {
         
@@ -204,9 +188,11 @@ class CreateIdeaForm extends React.Component {
 
  
 
-    render() {
+    render() {        
         
         const { idea } = this.state;
+
+        // logic for mapping users collections to dropdown list
         const displayCollectionScrollLis = 
             this.state.collectionScroll ? 
                 this.props.collections.map((collection, i) => (
@@ -219,7 +205,6 @@ class CreateIdeaForm extends React.Component {
                         fetchIdea={this.props.fetchIdea}
                         handleSubmit={this.handleSubmit}
                     />
-
                 )) : null;
         const displayCollectionScroll = this.state.collectionScroll ?  (
                 <ul className='dropdown-visible-collections'>
@@ -227,7 +212,7 @@ class CreateIdeaForm extends React.Component {
                 </ul>
             ) : null;
 
-
+        // toggles between regular form and red error message form
         const uploadImageForm =
             this.state.error ? (
                 <div className="upload-image-container-error">
@@ -260,18 +245,17 @@ class CreateIdeaForm extends React.Component {
             </div>
                  */}
             <div className="grey-background">
-                
-                   
                
                 <div className="form-container">
 
                     <div className="create-idea-nav">
                         <ul className="create-idea-nav-right">
-                            <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
+                             <li className="create-idea-collection-dropdown-button" onClick={this.toggleDropdown}>
+                            {/* <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}> */}
                                 <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
                                 <i className="fas fa-chevron-down"></i>
                             </li>
-                            <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
+                            <li id="idea-save-button" className="idea-save-button" onClick={this.handleSubmit}>Save</li>
                         </ul>
 
                     </div>
@@ -379,3 +363,53 @@ class CreateIdeaForm extends React.Component {
 
 
 export default CreateIdeaForm;
+
+
+
+
+// OLD CODE THAT IM NOT USING
+    // changeSelectField() {
+
+    //     if (this.state.collectionScroll) {
+    //         return (
+    //             <ul className="create-idea-nav-right">
+    //                 <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
+    //                     <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
+    //                     <i className="fas fa-chevron-down"></i>
+    //                 </li>
+    //                 <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
+    //             </ul>
+
+    //         )
+    //     }else {
+
+    //         return (
+    //             <ul className="create-idea-nav-right">
+    //                 <li className="create-idea-collection-dropdown-button" onClick={this.showCollectionScroll}>
+    //                     <h4 className="create-idea-dropdown-collection-name">{this.state.optionText}</h4>
+    //                     <i className="fas fa-chevron-down"></i>
+    //                 </li>
+    //                 <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
+    //             </ul>
+    //         )
+    //     }
+    // }
+
+    // updateUrl() {
+    //     return(e) => {
+    //         this.setState({ photoUrl: e.target.value});
+    //     }
+    // }
+
+        // showChooseFile(e) {
+    //     this.setState({ chooseFile: true });
+    // }
+
+    // hideChooseFile(e) {
+    //     this.setState({ chooseFile: false });
+    // }
+
+    // showUploadBackground(e) {
+    //     const background = document.querySelector("#upload-image-form")
+    //     background.style.display = "block";
+    // }
