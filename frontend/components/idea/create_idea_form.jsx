@@ -263,6 +263,7 @@ class CreateIdeaForm extends React.Component {
                         key={i}
                         text='Save'
                         fetchIdea={this.props.fetchIdea}
+                        handleSubmit={this.handleSubmit}
                     />
 
                 )) : null;

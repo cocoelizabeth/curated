@@ -9,6 +9,8 @@ class SelectCollection extends React.Component {
         this.turnOnVisibility  = this.turnOnVisibility.bind(this);
         this.displayLinks = this.displayLinks.bind(this);
         this.handleCollection = this.handleCollection.bind(this);
+        
+        // this.handleSubmit = this.props.handleSubmit.bind(this);
       
     }
 // COME BACK TO THIS - ELI
@@ -46,6 +48,7 @@ class SelectCollection extends React.Component {
             return (
                 <button
                     className="collection-dropdown-save-button"
+                    // onClick={this.props.handleSubmit}>
                     onClick={this.handleCollection}>
                     {this.props.text}
                 </button>
@@ -61,7 +64,9 @@ class SelectCollection extends React.Component {
                 className='collection-dropdown-list-item'
                 onMouseEnter={this.turnOnVisibility}
                 onMouseLeave={this.turnOffVisibility}
+                onClick={this.handleCollection}
                 value={collection.id}>
+                
                 {/* onClick={this.co} */}
                 <div className="collection-thumbnail-text-container">
                     <img className ="collection-dropdown-thumbnail-container" src=""></img>
