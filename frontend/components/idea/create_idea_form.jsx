@@ -32,6 +32,7 @@ class CreateIdeaForm extends React.Component {
         this.hideUploadBackground = this.hideUploadBackground.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.outsideElementClick = this.outsideElementClick.bind(this);
+        // this.removeOutsideElementHandler = this.removeOutsideElementHandler.bind(this);
 
 
         // this.goBack = this.goBack.bind(this);
@@ -43,42 +44,34 @@ class CreateIdeaForm extends React.Component {
 
 
     // COLLECTION DROPDOWN LOGIC
+    
 
-    outsideElementClick(ele, callback) {
-
-        function isClickedOutside(e){
-
-            const container = document.querySelector(ele);
-            if (container != (e.target) && (container.contains(e.target) === false)) {
-                callback();
-            }
-        }
-
-        $(document).mouseup(isClickedOutside);
-        return isClickedOutside;
-    }
 
 
     showCollectionScroll(e) {
         this.setState({ collectionScroll: true });
 
+        
+        // logic for hiding the save button when open
         const saveButton = document.querySelector(".idea-save-button");
         const dropDown = document.querySelector(".create-idea-collection-dropdown-button");
-
         const saveWidth = saveButton.clientWidth;
         const dropDownWidth = dropDown.clientWidth;
         const newWidth = (saveWidth + dropDownWidth - 28).toString() + "px";
         saveButton.style.display = "none";
         dropDown.style.width = newWidth;
         dropDown.style.borderRadius = "8px";
+        // while dropdown is open, it is listening for a click outside the dropdown to allow users to close it
+        this.outsideElementClick('.dropdown-visible-collections', this.toggleDropdown);
 
-        this.outsideElementClick('.dropdown-visible-collections', this.hideCollectionScroll);
     }
 
     hideCollectionScroll(e) {
+        
         this.setState({ collectionScroll: false });
 
 
+        // logic for adding the save button back when  closed
         const dropDown = document.querySelector(".create-idea-collection-dropdown-button");
         const dropDownWidth = dropDown.clientWidth;
         const saveButton = document.querySelector(".idea-save-button");
@@ -94,15 +87,62 @@ class CreateIdeaForm extends React.Component {
     }
 
     toggleDropdown(e) {
-
+        
         this.state.collectionScroll ? this.hideCollectionScroll() : this.showCollectionScroll();
     }
+
+    // allows users to close dropdown by clicking outside of it
+
+
+    // outsideElementClick(ele, callback) {
+    //     debugger
+    //     function isClickedOutside(e) {
+
+    //         const container = document.querySelector(ele);
+    //         // if the dropdown is not the target of the click && and it does  not  contain the target of  the click (i.e. the target is not a child of the dropdown)
+    //         if (container != (e.target) && (container.contains(e.target) === false)) {
+    //             callback();
+    //         }
+    //     }
+
+    //     $(document).mouseup(isClickedOutside);
+
+    //     // document.unbind("mouseup", isClickedOutside);
+    //     return isClickedOutside;
+
+    // }
+
+
+    outsideElementClick(ele, callback) {
+        document.addEventListener("click", (e) => {
+            const dropDown = document.querySelector(ele);
+            const dropDownButton = document.querySelector(".create-idea-collection-dropdown-button")
+            if (!dropDown) {
+                
+                return;
+            } 
+            
+            if (dropDown != (e.target) && (dropDownButton != (e.target)) && (dropDown.contains(e.target) === false)) {
+                    
+                callback();
+            } else {
+                
+            return;
+            }
+        });
+    }
+    
+  
+
+
 
     // put selected collection in the state, change dropdown text to collection title, hide dropdown
     handleCollection(collection) {
         this.setState({ collectionId: collection.id, optionText: collection.title });
         this.hideCollectionScroll();
     }
+
+
 
     // 
 
