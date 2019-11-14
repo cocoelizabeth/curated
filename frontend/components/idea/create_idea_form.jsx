@@ -44,14 +44,16 @@ class CreateIdeaForm extends React.Component {
 
 
     // COLLECTION DROPDOWN LOGIC
-    
 
+
+    toggleDropdown(e) {
+        this.state.collectionScroll ? this.hideCollectionScroll() : this.showCollectionScroll();
+    }
 
 
     showCollectionScroll(e) {
         this.setState({ collectionScroll: true });
 
-        
         // logic for hiding the save button when open
         const saveButton = document.querySelector(".idea-save-button");
         const dropDown = document.querySelector(".create-idea-collection-dropdown-button");
@@ -61,37 +63,44 @@ class CreateIdeaForm extends React.Component {
         saveButton.style.display = "none";
         dropDown.style.width = newWidth;
         dropDown.style.borderRadius = "8px";
+
         // while dropdown is open, it is listening for a click outside the dropdown to allow users to close it
         this.outsideElementClick('.dropdown-visible-collections', this.toggleDropdown);
-
     }
 
     hideCollectionScroll(e) {
         
         this.setState({ collectionScroll: false });
 
-
-        // logic for adding the save button back when  closed
+        // logic for adding the save button back when closed
         const dropDown = document.querySelector(".create-idea-collection-dropdown-button");
         const dropDownWidth = dropDown.clientWidth;
         const saveButton = document.querySelector(".idea-save-button");
         saveButton.style.display = "flex";
         const saveWidth = saveButton.clientWidth;
-
         const newWidth = (dropDownWidth - saveWidth - 28).toString() + "px";
         dropDown.style.width = newWidth;
         dropDown.style.borderTopRightRadius = "0px";
         dropDown.style.borderBottomRightRadius = "0px";
 
-
     }
 
-    toggleDropdown(e) {
-        
-        this.state.collectionScroll ? this.hideCollectionScroll() : this.showCollectionScroll();
-    }
+    // hide dropdown when user clicks away from it
+    outsideElementClick(ele, callback) {
+        document.addEventListener("click", (e) => {
+            const dropDown = document.querySelector(ele);
+            const dropDownButton = document.querySelector(".create-idea-collection-dropdown-button")
+            if (!dropDown) {
+                return;
+            }
 
-    // allows users to close dropdown by clicking outside of it
+            if (dropDown != (e.target) && (dropDownButton != (e.target)) && (dropDown.contains(e.target) === false)) {
+                callback();
+            } else {
+                return;
+            }
+        });
+    }
 
 
     // outsideElementClick(ele, callback) {
@@ -113,39 +122,11 @@ class CreateIdeaForm extends React.Component {
     // }
 
 
-    outsideElementClick(ele, callback) {
-        document.addEventListener("click", (e) => {
-            const dropDown = document.querySelector(ele);
-            const dropDownButton = document.querySelector(".create-idea-collection-dropdown-button")
-            if (!dropDown) {
-                
-                return;
-            } 
-            
-            if (dropDown != (e.target) && (dropDownButton != (e.target)) && (dropDown.contains(e.target) === false)) {
-                    
-                callback();
-            } else {
-                
-            return;
-            }
-        });
-    }
-    
-  
-
-
-
     // put selected collection in the state, change dropdown text to collection title, hide dropdown
     handleCollection(collection) {
         this.setState({ collectionId: collection.id, optionText: collection.title });
         this.hideCollectionScroll();
     }
-
-
-
-    // 
-
 
     previewImage() {
         if (this.state.photoUrl) {
@@ -154,8 +135,6 @@ class CreateIdeaForm extends React.Component {
             </div>
         }
     }
-
-
 
     // hide background and dots once image has been uploaded
     hideUploadBackground(e) {
@@ -296,11 +275,6 @@ class CreateIdeaForm extends React.Component {
             <>
                 <NavContainer />
 
-                {/* change */}
-                {/* <div className="dropdown-modal">
-                {this.displayCollectionScroll()}
-            </div>
-                 */}
                 <div className="grey-background">
 
                     <div className="form-container">
@@ -334,22 +308,6 @@ class CreateIdeaForm extends React.Component {
                                     </input>
                                 </div>
                                 {uploadImageForm}
-                                {/* <div className="upload-image-container"> 
-                                <div className="upload-section">
-                                    <div className="upload-arrow-content">
-                                <i className="fas fa-arrow-circle-up"></i>
-                                <div className="instructions">Drag and drop or click to upload</div>
-                                    </div>
-                                </div>
-                            </div> */}
-                                {/* <div className="upload-image-container-error">
-                                <div className="upload-section">
-                                    <div className="upload-error-content">
-                                        <i className="fas fa-exclamation-circle"></i>
-                                        <div className="error-instructions">An image is required to create an Idea.</div>
-                                    </div>
-                                </div>
-                            </div> */}
 
                             </div>
 
