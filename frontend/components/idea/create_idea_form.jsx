@@ -1,65 +1,3 @@
-// import React from 'react';
-// import { withRouter, Link, Switch }  from  'react-router-dom';
-// import SelectCollection from './select_collection';
-
-// class CreateIdeaForm extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.handleSubmit = this.handleSubmit.bind(this);
-//         this.state = ({
-//             idea: {title: "", photoFile: null}
-//         });
-//     }
-
-//     handleInput(e) {
-//         title = this.state.idea.title;
-//         debugger
-//         this.setState({title: e.currentTarget.value});
-//     }
-
-//     handleSubmit(e) {
-//         e.preventDefault();
-//         const formData = new FormData();
-//         debugger
-//         formData.append('idea[title]', this.state.idea.title);
-//         formData.append('idea[photo]', this.state.idea.photoFile);
-        
-//         this.props.createIdea(formData);
-//     }
-
-//     handleFile(e) {
-//         debugger
-//         this.setState({photoFile: e.currentTarget.files[0]});
-//     }
-
-//    render() {
-//        console.log(this.state)
-//        return (
-//          <form>
-//              {/* onSubmit={this.handleSubmit.bind(this)}> */}
-//              <label htmlFor="idea-title">Title of Idea</label> 
-//              <input type = "text"
-//                 id = "idea-title"
-//                 value = {this.state.idea.title}
-//                 onChange={this.handleInput.bind(this)}/> 
-//             <input type="file"
-//                 onChange={this.handleFile.bind(this)}/>
-
-//             <button onClick={this.handleSubmit.bind(this)}>Upload a new idea</button>
-//         </form>
-//        )
-//     }
-
-
-// }
-
-// export default CreateIdeaForm;
-
-
-
-
-//// OLD CODE
-
 import React from 'react';
 import { withRouter, Link, Switch }  from  'react-router-dom';
 import SelectCollection from './select_collection';
@@ -81,6 +19,7 @@ class CreateIdeaForm extends React.Component {
             photoFile: null,
             photoUrl: null,
             photoType: null,
+            error: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUploadFile = this.handleUploadFile.bind(this);
@@ -91,7 +30,7 @@ class CreateIdeaForm extends React.Component {
         this.handleCollection = this.handleCollection.bind(this);
         this.update = this.update.bind(this);
         this.hideUploadBackground= this.hideUploadBackground.bind(this);
-        
+        console.log('constructor')
         // this.goBack = this.goBack.bind(this);
     }
 
@@ -149,11 +88,12 @@ class CreateIdeaForm extends React.Component {
     }
 
     hideUploadBackground(e) {
-        
-        const background = document.querySelector(".upload-image-container")
-        
+        const background = document.querySelector(".upload-image-container") || document.querySelector(".upload-image-container-error")
+        // const regularBackground = document.querySelector(".upload-image-container") || 
+        // const errorBackground = document.querySelector(".upload-image-container-error")
+        // const background = this.state.error ? errorBackground : regularBackground
         const dotBorder = document.querySelector(".upload-section")
-
+        background.style.boxShadow ="none"
         background.style.backgroundColor="transparent";
         dotBorder.style.display="none";
     }
@@ -171,10 +111,18 @@ class CreateIdeaForm extends React.Component {
         this.setState({ chooseFile: true});
     }
 
+//    toggleErrorForm() {
+//         if (this.state.error) {
+
+//         }
+//         console.log("error message")
+//     }
+
     handleSubmit(e) {
         
         if (this.state.photoType === 'upload') {
             e.preventDefault();
+            this.setState({ error: false})
             const formData = new FormData();
             formData.append('idea[title]', this.state.title);
             formData.append('idea[description]', this.state.description);
@@ -185,6 +133,9 @@ class CreateIdeaForm extends React.Component {
                 
                 this.props.history.push(`/ideas/${res.payload.idea.id}`)
             })
+        }else {
+            this.setState({ error: true })
+            // this.toggleErrorForm();
         }
     }
 
@@ -197,9 +148,10 @@ class CreateIdeaForm extends React.Component {
     }
 
     handleUploadFile(e) {
+        
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
-
+    
         fileReader.onloadend = () => {
             
             const image = new Image();
@@ -208,8 +160,10 @@ class CreateIdeaForm extends React.Component {
                 const displayHeight =  (`${Math.round(image.height * (image.height / image.width))}`)
                 this.setState({ displayHeight: displayHeight});
                 
+                
             };
             image.src = fileReader.result;
+            
             
             this.hideUploadBackground();
             this.setState({
@@ -273,6 +227,29 @@ class CreateIdeaForm extends React.Component {
                 </ul>
             ) : null;
 
+
+        const uploadImageForm =
+            this.state.error ? (
+                <div className="upload-image-container-error">
+                    <div className="upload-section">
+                        <div className="upload-error-content">
+                            <i className="fas fa-exclamation-circle"></i>
+                            <div className="error-instructions">An image is required to create an Idea.</div>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <div className="upload-image-container">
+                    <div className="upload-section">
+                        <div className="upload-arrow-content">
+                            <i className="fas fa-arrow-circle-up"></i>
+                            <div className="instructions">Drag and drop or click to upload</div>
+                        </div>
+                    </div>
+                </div>
+            )
+
+
         return (
         <>
             <NavContainer />
@@ -315,16 +292,24 @@ class CreateIdeaForm extends React.Component {
                                     accept="image/jpeg,image/png">
                                 </input>
                             </div>
-                            <div className="upload-image-container">
-                                  
-                                            <div className="upload-section">
-                                                <div className="upload-arrow">
-                                            <i className="fas fa-arrow-circle-up"></i>
-                                            <div className="instructions">Drag and drop or click to upload</div>
-                                                </div>
-                                            </div>
-                                    
-                            </div>
+                            {uploadImageForm}
+                            {/* <div className="upload-image-container"> 
+                                <div className="upload-section">
+                                    <div className="upload-arrow-content">
+                                <i className="fas fa-arrow-circle-up"></i>
+                                <div className="instructions">Drag and drop or click to upload</div>
+                                    </div>
+                                </div>
+                            </div> */}
+                            {/* <div className="upload-image-container-error">
+                                <div className="upload-section">
+                                    <div className="upload-error-content">
+                                        <i className="fas fa-exclamation-circle"></i>
+                                        <div className="error-instructions">An image is required to create an Idea.</div>
+                                    </div>
+                                </div>
+                            </div> */}
+
                         </div>
 
 
