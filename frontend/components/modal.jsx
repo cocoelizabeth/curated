@@ -1,3 +1,26 @@
+// import React from 'react';
+// import { observable } from 'mobx';
+// import  { observer } from 'mobx-react';
+// import { closeModal } from '../actions/modal_actions';
+// import { connect } from 'react-redux';
+
+// import IdeaShowContainer from './idea/idea_show_container';
+
+
+// class Modal extends React.PureComponent {
+//     @observable isOpen = false;
+
+//     render() {
+//         return() {
+//             <div id='modal'>
+
+//             </div>
+//         }
+//     }
+// }
+
+// OLD CODE - functioned before
+
 import React from 'react';
 import { closeModal } from '../actions/modal_actions';
 import { connect } from 'react-redux';

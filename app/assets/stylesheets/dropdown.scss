@@ -1,4 +1,5 @@
-.dropdown-visible {
+
+.dropdown-visible,{
     // box-sizing: border-box;
    
     // overflow: auto;
@@ -10,6 +11,39 @@
     width: 320px;
     top: 68px;
     right: 0px;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #211922;
+    font-size: 12px;
+    border: 1px solid #efefef;;
+    stroke: rgb(239, 239, 239);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 3px 6px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+     overflow: hidden;
+     cursor: pointer;
+    // stroke: rgb(239, 239, 239);
+    
+   
+}
+
+
+.dropdown-visible-create {
+    // box-sizing: border-box;
+   
+    // overflow: auto;
+    position: absolute;
+    min-height: 40px;
+    max-height: 90vh;
+    // max-width: 90vw;
+    width: 238px;
+    // top: 68px;
+    // right: 0px;
     z-index: 101;
     display: flex;
     flex-direction: column;
@@ -204,5 +238,26 @@ collection-dropdown-save-button:hover {
     // width: 640px;
     // right: 0px;
 
+}
+
+.dropdown-modal-create {
+    // max-width: 90vw;
+    // display: flex;
+    // justify-content: flex-end;
+    // height: 100%;
+    position: relative;
+    width: 100%;
+    display: flex;
+    // top: -100px;
+
+    // position: fixed;
+    // right: 100px;
+    // z-index: 2;
+    // display: flex;
+    // justify-content: flex-end;
+    // width: 640px;
+    // right: 0px;
+
 
 }
+

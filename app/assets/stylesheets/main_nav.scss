@@ -67,7 +67,8 @@
 }
 
 #logo-container,
-#kebab-dropdown-button, {
+#kebab-dropdown-button,
+.fixed-nav-icon {
         padding: 4px;
         display: flex;
         align-items: center;
@@ -75,18 +76,52 @@
         width: 48px;
         height: 48px;
         z-index: 2;
+        color: rgb(142, 142, 142);
+        cursor: pointer;
+        border-radius: 100%;
 }
 
+
+#kebab-dropdown-button:focus,
+#kebab-dropdown-button:active,
+.fixed-nav-icon:focus,
+.fixed-nav-icon:active,
+a:focus {
+    outline: 0;
+    // outline: 4px rgba(0,132,255,.5);
+    background-color: rgb(239, 239, 239);
+    box-shadow: 0 0 0 4px rgba(0,132,255,.5);
+    // z-index: 1000;
+
+
+}
+
+#kebab-dropdown-button:hover,
+.fixed-nav-icon:hover {
+    background-color: rgb(239, 239, 239);
+
+}
+
+
+
 #logo-container:hover,
-#kebab-dropdown-button >i:hover, {
+#kebab-dropdown-button >i:hover,
+.fixed-nav-icon >i:hover {
         border-radius: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
         padding: 4px;
         background-color: rgb(239, 239, 239);
+        cursor: pointer;
+}
+
+
+#kebab-dropdown-button i {
+    color: #8e8e8e;
+    font-size: 24px;
 }
 
 
@@ -211,10 +246,6 @@
     border-left: 2px solid #efefef;
 }
 
-#kebab-dropdown-button i {
-    color: #8e8e8e;
-    font-size: 22px;
-}
 
 
 
