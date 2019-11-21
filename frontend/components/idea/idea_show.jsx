@@ -185,7 +185,7 @@ class IdeaShow extends React.Component {
                             <div className="idea-show-text">
                                 <ul className ="idea-user-info">
                                     <li id="user-info">
-                                               <Link to={`/${this.props.idea.curator.username}`}>{usernameDisplay}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link>
+                                               <Link to={`/users/${this.props.idea.curator.id}`}>{usernameDisplay}</Link> saved to <Link to={`/collections/${this.props.idea.original_collection.id}`}>{this.props.idea.original_collection.title}</Link>
                                     </li>
                                     <li className="num-resaves">
                                         <i className="fas fa-asterisk"></i>
