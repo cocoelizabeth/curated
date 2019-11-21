@@ -24,6 +24,7 @@ class UserShow extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.name = this.getName.bind(this);
         this.showModal = this.showModal.bind(this);
+        this.renderFixedNav = this.renderFixedNav.bind(this);
         // this.getName = this.getName.bind(this);
     }
 
@@ -201,6 +202,94 @@ class UserShow extends React.Component {
         }
     }
 
+    renderFixedNav() {
+       if (this.props.currentUser === this.props.user.id) {
+           return (
+               <div className="fixed-nav-container">
+                   <ul className="fixed-nav">
+                       <li
+                           ref={dropdownButton => this.dropdownButton = dropdownButton}
+                           // id="kebab-dropdown-button" 
+                           tabIndex="1"
+                           className="fixed-nav-icon"
+                           onClick={this.dropdownToggle}>
+                           <i className="fas fa-plus"></i>
+                       </li>
+                       <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
+                   </ul>
+               </div>
+           )
+       } else {
+           return (
+                  <div className="fixed-nav-container">
+                   <ul className="fixed-nav">
+                       <li
+                           ref={dropdownButton => this.dropdownButton = dropdownButton}
+                           tabIndex="1"
+                           className="fixed-nav-icon">
+                        {/* //    onClick={this.dropdownToggle}> */}
+                           <i class="fas fa-share"></i>
+                       </li>
+                       <div className="fixed-nav-right">
+                        <div className="profile-photo"></div>
+                         <button className="form-button red-button">Follow</button>
+                       </div>
+                   </ul>
+               </div>
+           )
+       }
+
+
+    }
+
+    renderFixedNav() {
+       if (this.props.currentUser === this.props.user.id) {
+           return (
+               <div className="fixed-nav-container">
+                   <div className="fixed-nav">
+                        <ul className="fixed-nav-left">
+                        <li
+                            ref={dropdownButton => this.dropdownButton = dropdownButton}
+                            // id="kebab-dropdown-button" 
+                            tabIndex="1"
+                            className="fixed-nav-icon"
+                            onClick={this.dropdownToggle}>
+                            <i className="fas fa-plus"></i>
+                        </li>
+                         <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
+                       </ul>
+                       {/* <div className="fixed-nav-transition">{this.props.user.username}</div> */}
+                   </div>
+                   <div className="fixed-nav-right"></div>
+               </div>
+           )
+       } else {
+           return (
+                <div className="fixed-nav-container">
+                    <div className="fixed-nav">
+                        <ul className="fixed-nav-left">
+                            <li
+                                ref={dropdownButton => this.dropdownButton = dropdownButton}
+                                tabIndex="1"
+                                className="fixed-nav-icon">
+                                {/* //    onClick={this.dropdownToggle}> */}
+                                <i class="fas fa-share"></i>
+                            </li>
+                        </ul>
+                        
+                       {/* <div className="fixed-nav-transition">{this.props.user.username}</div> */}
+                       <div className="fixed-nav-right">
+                            <div className="profile-photo"></div>
+                            <button className="form-button red-button">Follow</button>
+                       </div>
+                    </div>
+                    </div>
+           )
+       }
+
+
+    }
+
 
 
 
@@ -236,7 +325,7 @@ class UserShow extends React.Component {
             <>
                 <NavContainer />
                 <div className="profile-container">
-                    <div className="fixed-nav-container">
+                    {/* <div className="fixed-nav-container">
                         <ul className="fixed-nav">
                             <li 
                                 ref={dropdownButton => this.dropdownButton = dropdownButton} 
@@ -248,8 +337,8 @@ class UserShow extends React.Component {
                                 </li>
                             <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
                         </ul>
-                    </div>
-                    
+                    </div> */}
+                    {this.renderFixedNav()}
                     <div className="user-profile-header-container">
                         {this.renderDropdown()}
                         <ul className="user-profile-text">

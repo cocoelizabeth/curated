@@ -9,10 +9,12 @@ import { createIdea } from "../../actions/idea_actions";
 
 
 const mapStateToProps = (state, ownProps) => {
-    
+    debugger
+    const currentUser = state.session.id;
     const user = state.entities.users[ownProps.match.params.userId];
     return {
         user,
+        currentUser,
         collections: state.entities.collections,
     };
 };
