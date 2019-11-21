@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { openModal } from '../../actions/modal_actions';
 import { createIdea, fetchIdea } from '../../actions/idea_actions';
 import { fetchAllCollections } from '../../actions/collection_actions';
 import CreateIdeaForm from './create_idea_form';
@@ -20,7 +21,9 @@ const mapStateToProps = (state, ownProps)  => {
 const mapDispatchToProps = dispatch => ({
     createIdea: (formData) => dispatch(createIdea(formData)),
     fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
-    fetchIdea: (id) => dispatch(fetchIdea(id))
+    fetchIdea: (id) => dispatch(fetchIdea(id)),
+    openModal: (modal) => dispatch(openModal(modal)),
+
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateIdeaForm));

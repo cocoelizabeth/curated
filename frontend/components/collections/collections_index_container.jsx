@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { fetchAllCollections } from '../../actions/collection_actions';
-import { fetchIdea } from '../../actions/idea_actions'
+import { fetchIdea } from '../../actions/idea_actions';
+import { fetchUser } from '../../actions/user_actions';
 import CollectionIndex from './collections_index';
 
 // WORKING CODE::
 const mapStateToProps = (state, ownProps) => {
-    
+    debugger
     const { collections,  ideas } = state.entities;
     const user = state.entities.users[ownProps.match.params.userId];
     
@@ -18,7 +19,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
-    fetchIdea: (id) => dispatch(fetchIdea(id))
+    fetchIdea: (id) => dispatch(fetchIdea(id)),
+    fetchUser: (userId) => dispatch(fetchUser(userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CollectionIndex);

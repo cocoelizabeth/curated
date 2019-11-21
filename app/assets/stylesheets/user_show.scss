@@ -41,6 +41,16 @@
 
 
 
+// .modal-child {
+//   height: inherit;
+//   max-width: 628px;
+//   display: block;
+//   border-radius: 8px;
+//   margin: 32px auto;
+// }
+
+
+
 
 .user-profile-header-container{
     max-width: 800px;
@@ -52,11 +62,13 @@
     margin: 0 auto;
     height: 105px;
     align-items: flex-start;
-    padding-top: 30px;
+    padding-top: 20px;
     .user-profile-text {
         width: 100%;
+        text-transform: capitalize;;
         #header-username{
             margin: 0 -1px 0 0;
+            
 
         }
         #following-stats{

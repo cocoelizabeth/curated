@@ -14,10 +14,11 @@ class Api::CollectionsController < ApplicationController
 
 
     def create
+        debugger
         @collection = current_user.collections.new(collection_params)
         @collection.user_id = current_user.id
-
         if @collection.save
+            
             render :show
         else
             render json: @user.errors.full_messages, status: 422
@@ -49,6 +50,7 @@ class Api::CollectionsController < ApplicationController
     private
 
     def collection_params
+        debugger
         params.require(:collection).permit(:title, :description, :private, :user_id, :topic_id)
     end
 end

@@ -131,7 +131,7 @@ class IdeaShow extends React.Component {
            <div className="grey-background">
            
             
-               <div className="modal-child">
+               <div className="grey-background-child">
                  
                 <div className="idea-show-container" >
                 

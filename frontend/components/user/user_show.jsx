@@ -14,16 +14,24 @@ class UserShow extends React.Component {
             collectionTab: true,
             ideaTab: false,
             createDropdown: false,
+            user: {},
+            userCollection: {},
         };
+        debugger
         this.handleTabClick = this.handleTabClick.bind(this);
         this.displayTabs = this.displayTabs.bind(this);
         this.dropdownToggle = this.dropdownToggle.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.name = this.getName();
+        this.name = this.getName.bind(this);
+        this.showModal = this.showModal.bind(this);
         // this.getName = this.getName.bind(this);
     }
 
+// old code
     componentDidMount() {
+
+        this.setState({ user: this.props.match.params.userId })
+        debugger
 
         this.props.fetchUser(this.props.match.params.userId).then(() => {
             this.props.fetchAllCollections(this.props.match.params.userId);
@@ -38,13 +46,15 @@ class UserShow extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // debugger
+        debugger
         if (prevProps.match.params.userId !== this.props.match.params.userId) {
             this.props.fetchUser(this.props.match.params.userId).then(() => {
                 this.props.fetchAllCollections(this.props.match.params.userId);
             });
         }
     }
+
+
 
 
 
@@ -117,7 +127,7 @@ class UserShow extends React.Component {
                 <div className="drop-down-modal-create">
 
                     <ul ref={dropdownRef => this.dropdownRef = dropdownRef} className="dropdown-visible-create">
-                        <li><Link to="/create_collection" className="dropdown-list-item">Create Collection</Link></li>
+                        <li onClick={this.showModal} className="dropdown-list-item">Create Collection</li>
                         <li><Link to="/create_idea" className="dropdown-list-item">Create Idea</Link></li>
                     </ul>
                 </div>
@@ -147,23 +157,49 @@ class UserShow extends React.Component {
 
 
     getName() {
-   
-        const username = this.props.user.username;
-        let name = "";
-        for (let i = 0; i < username.length; i++) { 
 
-            let testChar = parseInt(username[i])
-   
-            if (testChar > 0) {
-                return name;
-            } else {
-         
-                name += username[i]
-            }
-        }
-        return name;
+        // const user = this.props.fetchUser(this.props.match.params.userId)
+
+        // const username = this.state.user.username;
+        // let name = "";
+        // for (let i = 0; i < username.length; i++) { 
+
+        //     let testChar = parseInt(username[i])
+
+        //     if (testChar > 0) {
+        //         return name;
+        //     } else {
+        
+        //         name += username[i]
+        //     }
+        // }
+        // return name;
     }
 
+    showModal(e) {
+        this.dropdownToggle();
+        this.props.openModal('createCollection');
+        debugger
+    }
+
+
+    getUserCollections(e) {
+        const { user } = this.props;
+        let collectionItem;
+        if (user) {
+
+            const collectionList = Object.keys(this.props.collections).map(
+                id => this.props.collections[id]
+            );
+            collectionItem = collectionList.map(collection => {
+                return (
+                    <li className="collection-item-container" key={`collection-${collection.id}`}><CollectionItem collection={collection} /></li>
+                )
+            })
+        } else {
+            return <p>Loading...</p>
+        }
+    }
 
 
 
@@ -171,9 +207,13 @@ class UserShow extends React.Component {
     render() {
 
         const { user } = this.props;
+        debugger
         let collectionItem;
         // render users collection items 
+
+        // 
         if (user) {
+
             const collectionList = Object.keys(this.props.collections).map(
                 id => this.props.collections[id]
             );
@@ -186,20 +226,6 @@ class UserShow extends React.Component {
             return <p>Loading...</p>
         }
 
-        // const username = this.props.user.username;
-        // let name = ""
-        // for (let i = 0; i < username.length; i++) {
-        //     debugger
-        //     if (parseInt(username[i]) === NaN) {
-        //         debugger
-        //         name += username[i]
-        //         debugger
-        //     } else {
-        //         break
-        //         debugger
-        //     }
-        // }
-        
         
 
         
@@ -214,7 +240,7 @@ class UserShow extends React.Component {
                         <ul className="fixed-nav">
                             <li 
                                 ref={dropdownButton => this.dropdownButton = dropdownButton} 
-                                id="kebab-dropdown-button" 
+                                // id="kebab-dropdown-button" 
                                 tabIndex="1"
                                 className="fixed-nav-icon" 
                                 onClick={this.dropdownToggle}>
@@ -227,7 +253,7 @@ class UserShow extends React.Component {
                     <div className="user-profile-header-container">
                         {this.renderDropdown()}
                         <ul className="user-profile-text">
-                            <li className="header-username"><h4>{this.name}</h4></li>
+                            <li className="header-username"><h4>{this.props.user.username}</h4></li>
                             {/* <li className="header-username"><h4>{this.props.user.username}</h4></li> */}
                             <li id="following-stats">
                                 <Link to="#">0 followers</Link>
@@ -311,7 +337,7 @@ export default UserShow;
 //     }
 
 //     componentDidMount() {
-//          debugger
+//          
 //         this.props.fetchUser(this.props.match.params.userId).then(() => {    
 //             this.props.fetchAllCollections(this.props.match.params.userId);
 //         });
@@ -325,7 +351,7 @@ export default UserShow;
 //     }
 
 //     componentDidUpdate(prevProps) {
-//         // debugger
+//         //
 //         if (prevProps.match.params.userId !== this.props.match.params.userId) {
 //             this.props.fetchUser(this.props.match.params.userId).then(() => {
 //                 this.props.fetchAllCollections(this.props.match.params.userId);

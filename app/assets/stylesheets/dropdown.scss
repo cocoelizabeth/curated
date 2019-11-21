@@ -1,5 +1,5 @@
 
-.dropdown-visible,{
+.dropdown-visible {
     // box-sizing: border-box;
    
     // overflow: auto;
@@ -37,12 +37,12 @@
     // box-sizing: border-box;
    
     // overflow: auto;
-    position: absolute;
+ 
     min-height: 40px;
     max-height: 90vh;
     // max-width: 90vw;
     width: 238px;
-    // top: 68px;
+    top: 130px;
     // right: 0px;
     z-index: 101;
     display: flex;
@@ -59,7 +59,7 @@
     font-weight: 700;
     letter-spacing: -0.4px;
      overflow: hidden;
-     cursor: pointer;
+    position: fixed;
     // stroke: rgb(239, 239, 239);
     
    
@@ -245,12 +245,11 @@ collection-dropdown-save-button:hover {
     // display: flex;
     // justify-content: flex-end;
     // height: 100%;
-    position: relative;
     width: 100%;
     display: flex;
     // top: -100px;
 
-    // position: fixed;
+    position: fixed;
     // right: 100px;
     // z-index: 2;
     // display: flex;

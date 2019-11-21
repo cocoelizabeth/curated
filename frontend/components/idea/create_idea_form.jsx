@@ -104,7 +104,7 @@ class CreateIdeaForm extends React.Component {
 
 
     // outsideElementClick(ele, callback) {
-    //     debugger
+    //     
     //     function isClickedOutside(e) {
 
     //         const container = document.querySelector(ele);
@@ -243,9 +243,12 @@ class CreateIdeaForm extends React.Component {
                     />
                 )) : null;
         const displayCollectionScroll = this.state.collectionScroll ? (
+            
             <ul className='dropdown-visible-collections'>
                 {displayCollectionScrollLis}
             </ul>
+            
+
         ) : null;
 
         // toggles between regular form and red error message form
@@ -292,6 +295,7 @@ class CreateIdeaForm extends React.Component {
                         </div>
                         <div className="dropdown-modal">
                             {displayCollectionScroll}
+                            <div className="dropdown-visible-collections"> New Collection</div>
                         </div>
 
                         <div className="create-idea-form-elements">
@@ -527,7 +531,6 @@ export default CreateIdeaForm;
 //         function isClickedOutside(e){
             
 //             const container = document.querySelector(ele);
-//             debugger
 //             if (container != (e.target) && (container.contains(e.target) === false)) {
 //                 callback();
 //             }
@@ -539,7 +542,6 @@ export default CreateIdeaForm;
 
 // // IMAGE UPLOAD
 //     //  updateUrl() {
-//     //      debugger
 //     //     return(e) => {
 //     //         this.setState({ photoUrl: e.target.value});
 //     //     }

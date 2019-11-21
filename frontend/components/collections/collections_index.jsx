@@ -19,6 +19,16 @@ class CollectionIndex extends React.Component {
         
     }
 
+    componentDidUpdate(prevProps) {
+        debugger
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.fetchUser(this.props.match.params.userId).then(() => {
+                this.props.fetchAllCollections(this.props.match.params.userId);
+            });
+        }
+    }
+
+
   
     render() {
    
