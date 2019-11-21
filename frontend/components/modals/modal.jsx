@@ -12,10 +12,12 @@ function Modal({ modal, closeModal }) {
 
 
     if (!modal) {
-        // body.style.overflow = "visible";
+        // allow scrolling
+        body.style.overflow = "visible";
         return null;
     } else {
-        // body.style.overflow="hidden";
+        // dont allow scrolling when modal is open
+        body.style.overflow="hidden";
     }
 
     let component;
