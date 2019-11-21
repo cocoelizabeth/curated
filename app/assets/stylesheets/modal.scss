@@ -3,14 +3,14 @@
   width: 100vw;
   overflow: hidden;
   z-index: 301;
-  position: absolute;
-  background-color: #333;
-  opacity: .9;
+  position: fixed;
+  background-color: rgba(10, 10, 10, .8);
   overflow-y: scroll;
 }
 
 .modal-child {
   background-color: white;
+  opacity: 100;
   min-height: 0;
   width: 544px;
   display: flex;
@@ -19,6 +19,7 @@
   margin: 32px auto;
   position: absolute;
   top: 40%;
+  z-index: 302;
   left: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -26,6 +27,7 @@
   transform: translateX(-50%);
   margin: 0 16px;
   max-height: calc(100vh - 32px);
+  background-color: white;
 }
 
 .modal-header {

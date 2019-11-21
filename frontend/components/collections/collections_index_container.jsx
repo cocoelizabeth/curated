@@ -6,7 +6,6 @@ import CollectionIndex from './collections_index';
 
 // WORKING CODE::
 const mapStateToProps = (state, ownProps) => {
-    debugger
     const { collections,  ideas } = state.entities;
     const user = state.entities.users[ownProps.match.params.userId];
     

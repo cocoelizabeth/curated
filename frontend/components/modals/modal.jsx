@@ -12,10 +12,10 @@ function Modal({ modal, closeModal }) {
 
 
     if (!modal) {
-        body.style.overflow = "visible";
+        // body.style.overflow = "visible";
         return null;
     } else {
-        body.style.overflow="hidden";
+        // body.style.overflow="hidden";
     }
 
     let component;

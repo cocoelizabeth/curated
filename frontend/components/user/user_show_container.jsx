@@ -9,7 +9,7 @@ import { createIdea } from "../../actions/idea_actions";
 
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
+    
     const user = state.entities.users[ownProps.match.params.userId];
     return {
         user,

@@ -17,7 +17,7 @@ class UserShow extends React.Component {
             user: {},
             userCollection: {},
         };
-        debugger
+        
         this.handleTabClick = this.handleTabClick.bind(this);
         this.displayTabs = this.displayTabs.bind(this);
         this.dropdownToggle = this.dropdownToggle.bind(this);
@@ -31,7 +31,7 @@ class UserShow extends React.Component {
     componentDidMount() {
 
         this.setState({ user: this.props.match.params.userId })
-        debugger
+        
 
         this.props.fetchUser(this.props.match.params.userId).then(() => {
             this.props.fetchAllCollections(this.props.match.params.userId);
@@ -46,7 +46,7 @@ class UserShow extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        debugger
+        
         if (prevProps.match.params.userId !== this.props.match.params.userId) {
             this.props.fetchUser(this.props.match.params.userId).then(() => {
                 this.props.fetchAllCollections(this.props.match.params.userId);
@@ -179,7 +179,7 @@ class UserShow extends React.Component {
     showModal(e) {
         this.dropdownToggle();
         this.props.openModal('createCollection');
-        debugger
+        
     }
 
 
@@ -207,7 +207,7 @@ class UserShow extends React.Component {
     render() {
 
         const { user } = this.props;
-        debugger
+        
         let collectionItem;
         // render users collection items 
 

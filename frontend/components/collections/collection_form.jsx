@@ -78,7 +78,6 @@ class CollectionForm extends React.Component {
     // Enable the create/save button if the user has entered  a titble
     displayActionButton() {
         if (this.state.collection.title === "") {
-            debugger
             return (
                 <button
                     

@@ -36,7 +36,6 @@ export const fetchCollection = (id) => dispatch => (
 
 
 export const createCollection = collection => dispatch => {
-    debugger
     return APIUtil.createCollection(collection).then(
         collection => dispatch(receiveCollection(collection))
     );
