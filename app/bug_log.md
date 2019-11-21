@@ -31,17 +31,20 @@ handleSubmit(e) {
 * Also was getting an error that `:collection` was not permitted in collection params
 * Put a debugger in collection_params and saw that the params were coming through as a nested object
 
-`<ActionController::Parameters {"collection"=>{"collection"=>{"title"=>"Places to go", "description"=>""}, "errors"=>""}, "format"=>:json, "controller"=>"api/collections", "action"=>"create"} permitted: false>`
+``` ruby 
+<ActionController::Parameters {"collection"=>{"collection"=>{"title"=>"Places to go", "description"=>""}, "errors"=>""}, "format"=>:json, "controller"=>"api/collections", "action"=>"create"} permitted: false>
+```
 * Figured it had something to do with the way I was passing the information in my `handle submit()` function
-* This was because I was using `Object.assign` and passing in a nested object to the action: `const collection = Object.assign({}, this.state);`
+* This was because I was using `Object.assign` and passing in a nested object to the action: `const collection = Object.assign({}, this.state);
 
-## SOLUTION:
+### SOLUTION:
 Once deleted the `Object.assign({}, this.state}`, and passed in `(this.state.collection)`, it worked); The params now looked like this:
 
-`<ActionController::Parameters {"collection"=><ActionController::Parameters {"title"=>"Places to go", "description"=>""} permitted: false>, "format"=>:json, "controller"=>"api/collections", "action"=>"create"} permitted: false>`
+``` ruby
+<ActionController::Parameters {"collection"=><ActionController::Parameters {"title"=>"Places to go", "description"=>""} permitted: false>, "format"=>:json, "controller"=>"api/collections", "action"=>"create"} permitted: false>
+```
 
-
-### Correct Code:
+Correct Code:
 ``` javascript
 handleSubmit(e) {
     e.preventDefault();
