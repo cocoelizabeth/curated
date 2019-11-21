@@ -29,10 +29,17 @@ class CollectionShow extends React.Component {
                 <div className="collection-profile-container">
 
                     <div className="fixed-nav-container">
-                        <ul className="fixed-nav">
-                            <li className="fixed-nav-icon"><Link to="/create_idea"><i className="fas fa-plus"></i></Link></li>
-                            <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
-                        </ul>
+                        <div className="fixed-nav">
+                            <ul className="fixed-nav-left">
+                                <li className="fixed-nav-icon"><Link to="/create_idea"><i className="fas fa-plus"></i></Link></li>
+                                <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
+                            </ul>
+                            {/* <div className="fixed-nav-transition">{this.props.user.username}</div> */}
+                            <div className="fixed-nav-right">
+                                <div className="profile-photo"><img src="https://curated-seeds.s3.amazonaws.com/default_280.png" className="user-profile-photo"></img></div>
+                                <button className="form-button red-button">Follow</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="user-profile-header-container">
