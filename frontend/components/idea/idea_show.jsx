@@ -88,9 +88,17 @@ class IdeaShow extends React.Component {
                 />
             )) : null;
             const displayCollectionScroll = this.state.collectionScroll ? (
-                <ul className='dropdown-visible-collections'>
-                    {displayCollectionScrollLis}
-                </ul>
+                <div className="dropdown-visible-collections">
+                    <ul className="dropdown-scroll">
+                        {displayCollectionScrollLis}
+                    </ul>
+                    <div className="create-collection-dropdown-button">
+                        <div className="collection-thumbnail-text-container">
+                            <div className="create-collection-dropdown-icon-container"><i class="fas fa-plus-circle"></i></div>
+                            <div className="create-collection-dropdown-text-container">Create collection</div>
+                        </div>
+                    </div>
+                </div>
             ): null;
     //  let editButton;
     //  let usernameDisplay ="";
