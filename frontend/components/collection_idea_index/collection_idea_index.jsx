@@ -17,8 +17,9 @@ class CollectionIdeaIndex extends React.Component {
     render() {
         const { ideas } = this.props;
         
-        
+        debugger
         const ideaItems = ideas.map(idea => {
+            debugger
             return (
                 <UserIdeaItem
                     key={idea.id + Math.random()}

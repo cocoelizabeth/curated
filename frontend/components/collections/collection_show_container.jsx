@@ -12,7 +12,14 @@ const mapStateToProps = (state, ownProps) => {
     
 
     const collection = state.entities.collections[ownProps.match.params.collectionId];
-    const ideas = collection.idea_ids.map(ideaId=> state.entities.ideas[ideaId]);
+    let ideas;
+    if (collection)  {
+        debugger
+        // filtering undefined values using Boolean
+        ideas = collection.idea_ids.map(ideaId=> state.entities.ideas[ideaId]).filter(Boolean);
+    } else {
+        ideas = [];
+    }
     return {
         collection,
         ideas

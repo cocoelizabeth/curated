@@ -11,6 +11,7 @@ class CollectionShow extends React.Component {
     }
 
     componentDidMount() {
+        
         this.props.fetchCollection(this.props.match.params.collectionId).then(() => {
             this.props.fetchCollectionIdeas(this.props.match.params.collectionId);
         });
@@ -22,6 +23,7 @@ class CollectionShow extends React.Component {
 
     render() {
         const { collection } = this.props;
+        if (!collection) return null;
         return (
             <>
                 <NavContainer />
