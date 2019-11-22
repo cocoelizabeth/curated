@@ -45,14 +45,13 @@ class CollectionShow extends React.Component {
                     <div className="user-profile-header-container">
                         <ul className="user-profile-text">
                             <li className="header-username"><h4>{this.props.collection.title}</h4></li>
-                            <li id="following-stats">
-                                <Link to="#">0 followers</Link>
-                                <span id="dot">&#183;</span>
-                                <Link to="#">0 following</Link>
+                            <li className="collection-stats">
+                                <span>{collection.idea_ids.length} ideas</span>
+                                 <span id="dot"> &#183;</span>
+                                <Link to="#"> 0 followers</Link>
                             </li>
-                            <li id="location">Location</li>
                         </ul>
-                        <img src="https://curated-seeds.s3.amazonaws.com/default_280.png" className="user-profile-photo"></img>
+                        {/* <img src="https://curated-seeds.s3.amazonaws.com/default_280.png" className="user-profile-photo"></img> */}
                     </div>
 
 
