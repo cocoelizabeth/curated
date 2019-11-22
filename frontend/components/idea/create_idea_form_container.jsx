@@ -7,6 +7,15 @@ import { fetchAllCollections } from '../../actions/collection_actions';
 import CreateIdeaForm from './create_idea_form';
 
 const mapStateToProps = (state, ownProps)  => {
+
+    let optionText;
+    if (!Object.values(state.entities.collections)[0]) {
+        optionText = "Select";
+    } else {
+
+        const lastCollectionIdx = Object.keys(state.entities.collections).length - 1;
+        optionText = Object.values(state.entities.collections)[lastCollectionIdx].title;
+    }
     const currentUser = state.entities.users[state.session.id] || {};
     const collections = Object.values(state.entities.collections)
         .filter(collection => collection.user_id === currentUser.id);
@@ -14,6 +23,7 @@ const mapStateToProps = (state, ownProps)  => {
         return ({
             currentUser,
             collections,
+            optionText,
         });
 };
 
@@ -22,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
     createIdea: (formData) => dispatch(createIdea(formData)),
     fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
     fetchIdea: (id) => dispatch(fetchIdea(id)),
-    openModal: (modal) => dispatch(openModal(modal)),
+    openModal: (modal, callback) => dispatch(openModal(modal, callback)),
 
 });
 

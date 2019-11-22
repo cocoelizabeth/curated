@@ -26,6 +26,11 @@ class IdeaShow extends React.Component {
     componentDidMount() {
         this.props.fetchIdea(this.props.match.params.ideaId);
         this.props.fetchAllCollections(this.props.currentUser);
+        this.setState({ optionText: this.props.optionText });
+    }
+
+    componentDidUpdate() {
+       
     }
 
     showCollectionScroll(e) {
@@ -154,7 +159,7 @@ class IdeaShow extends React.Component {
 
                         <ul className="idea-show-nav-right">
                             <li className="collection-dropdown-button" onClick={this.showCollectionScroll}>
-                                <h4 className="dropdown-collection-name">{this.props.optionText}</h4>
+                                <h4 className="dropdown-collection-name">{this.state.optionText}</h4>
                                 <i className="fas fa-chevron-down"></i>
                             </li>
                             <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>

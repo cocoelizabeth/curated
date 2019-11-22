@@ -137,6 +137,7 @@
     flex-direction: column;
     background-color: white;
     padding: 12px;
+    max-height: 322px;
 }
 .collection-dropdown-list-item,
 .collection-dropdown-list-item:hover,
@@ -145,7 +146,7 @@
     // position: absolute;
 
     display: block;
-    height: 52px;
+    min-height: 52px;
 
     width: 100%;
     flex: 1 1 auto;

@@ -19,6 +19,8 @@ const mapStateToProps = (state, ownProps) => {
     } else {
         ideas = [];
     }
+
+    
     return {
         collection,
         ideas

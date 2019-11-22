@@ -5,8 +5,10 @@ const modalReducer = (state = null, action) => {
     Object.freeze(state);
     switch (action.type) {
         case OPEN_MODAL:
+            debugger
             return {
                 modal: action.modal || state,
+                callback: action.callback,
             };
         case CLOSE_MODAL:
             return null;

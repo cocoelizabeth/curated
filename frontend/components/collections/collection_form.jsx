@@ -38,7 +38,12 @@ class CollectionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.action(this.state.collection).then(this.props.closeModal());
+        debugger
+        if (this.props.callback) {
+            this.props.callback(this.state.collection);
+        } 
+        this.props.action(this.state.collection)
+        .then(this.props.closeModal());
     }
 
     update(field) {

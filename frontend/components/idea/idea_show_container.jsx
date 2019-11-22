@@ -32,7 +32,9 @@ const mapStateToProps = (state, ownProps) => {
     if (!Object.values(state.entities.collections)[0]) {
         optionText = "Select";
     } else {
-        optionText = Object.values(state.entities.collections)[0].title;
+        
+        const lastCollectionIdx = Object.keys(state.entities.collections).length - 1;
+        optionText = Object.values(state.entities.collections)[lastCollectionIdx].title;
     }
     // const optionText = Object.values(state.entities.collections)[0].title || "COLLECTION NAME";
     const curator = state.entities.ideas[ownProps.match.params.ideaId]|| {};

@@ -32,6 +32,7 @@ class CreateIdeaForm extends React.Component {
         this.hideUploadBackground = this.hideUploadBackground.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.outsideElementClick = this.outsideElementClick.bind(this);
+        this.handleNewCollection = this.handleNewCollection.bind(this);
         // this.removeOutsideElementHandler = this.removeOutsideElementHandler.bind(this);
 
 
@@ -124,6 +125,7 @@ class CreateIdeaForm extends React.Component {
 
     // put selected collection in the state, change dropdown text to collection title, hide dropdown
     handleCollection(collection) {
+        debugger
         this.setState({ collectionId: collection.id, optionText: collection.title });
         this.hideCollectionScroll();
     }
@@ -221,6 +223,12 @@ class CreateIdeaForm extends React.Component {
             [field]: e.target.value
         });
     }
+    
+    handleNewCollection() {
+        this.props.openModal('createCollection', this.handleCollection)
+        debugger
+        // .then(handleCollection())
+    }
 
 
 
@@ -253,7 +261,7 @@ class CreateIdeaForm extends React.Component {
                 <ul className="dropdown-scroll">
                     {displayCollectionScrollLis}
                 </ul>
-                <div className="create-collection-dropdown-button">
+                <div className="create-collection-dropdown-button" onClick={this.handleNewCollection}>
                     <div className="collection-thumbnail-text-container">
                         <div className="create-collection-dropdown-icon-container"><i class="fas fa-plus-circle"></i></div>
                         <div className="create-collection-dropdown-text-container">Create collection</div>

@@ -7,7 +7,7 @@ import CreateCollectionFormContainer from '../collections/create_collection_form
 
 function Modal({ modal, closeModal }) {
    // toggle scrolling off an on when modal is open
-   
+   debugger
     const body = document.getElementsByTagName("BODY")[0]
 
 
@@ -26,7 +26,10 @@ function Modal({ modal, closeModal }) {
         //     component = <IdeaShowContainer idea={modal.idea} />
         //     break;
         case "createCollection":
-            component = <CreateCollectionFormContainer />;
+            debugger
+            component = <CreateCollectionFormContainer 
+                callback = {modal.callback}
+            />;
             break;
         default:
             return null;
