@@ -244,9 +244,22 @@ class CreateIdeaForm extends React.Component {
                 )) : null;
         const displayCollectionScroll = this.state.collectionScroll ? (
             
-            <ul className='dropdown-visible-collections'>
-                {displayCollectionScrollLis}
-            </ul>
+            // <ul className='dropdown-visible-collections'>
+                
+            //     {displayCollectionScrollLis}
+            // </ul>
+
+            <div className="dropdown-visible-collections">
+                <ul className="dropdown-scroll">
+                    {displayCollectionScrollLis}
+                </ul>
+                <div className="create-collection-dropdown-button">
+                    <div className="collection-thumbnail-text-container">
+                        <div className="create-collection-dropdown-icon-container"><i class="fas fa-plus-circle"></i></div>
+                        <div className="create-collection-dropdown-text-container">Create collection</div>
+                    </div>
+                </div>
+            </div>
             
 
         ) : null;
@@ -294,8 +307,11 @@ class CreateIdeaForm extends React.Component {
 
                         </div>
                         <div className="dropdown-modal">
+                            {/* <div className="dropdown-visible-collections">
+                                {displayCollectionScroll}
+                           
+                            </div> */}
                             {displayCollectionScroll}
-                            <div className="dropdown-visible-collections"> New Collection</div>
                         </div>
 
                         <div className="create-idea-form-elements">

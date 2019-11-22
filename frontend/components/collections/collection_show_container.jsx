@@ -13,8 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
     const collection = state.entities.collections[ownProps.match.params.collectionId];
     let ideas;
-    if (collection)  {
-        debugger
+    if (collection)  {  
         // filtering undefined values using Boolean
         ideas = collection.idea_ids.map(ideaId=> state.entities.ideas[ideaId]).filter(Boolean);
     } else {

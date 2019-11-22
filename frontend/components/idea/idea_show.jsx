@@ -6,12 +6,16 @@ import SelectCollection from './select_collection';
 class IdeaShow extends React.Component {
     constructor(props){
         super(props);
+        
         this.state = {
-            optionText: "COLLECTION NAME",
+            // optionText: "COLLECTION NAME",
+            // optionText: this.props.optionText,
             collectionScroll: false,
             collection_id: null,
             user_id: this.props.currentUser
         };
+
+        
         this.showCollectionScroll = this.showCollectionScroll.bind(this);
         this.hideCollectionScroll = this.hideCollectionScroll.bind(this);
         this.handleCollection = this.handleCollection.bind(this);
@@ -142,7 +146,7 @@ class IdeaShow extends React.Component {
 
                         <ul className="idea-show-nav-right">
                             <li className="collection-dropdown-button" onClick={this.showCollectionScroll}>
-                                <h4 className="dropdown-collection-name">{this.state.optionText}</h4>
+                                <h4 className="dropdown-collection-name">{this.props.optionText}</h4>
                                 <i className="fas fa-chevron-down"></i>
                             </li>
                             <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>

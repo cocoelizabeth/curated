@@ -104,12 +104,12 @@
     max-height: 440px;
     max-width: 90vw;
     width: 320px;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     
 
     z-index: 101;
     display: flex;
-    padding: 12px;
+    // padding: 12px;
     flex-direction: column;
     background-color: white;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -130,8 +130,18 @@
 
 }
 
+.dropdown-scroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 12px;
+}
 .collection-dropdown-list-item,
-.collection-dropdown-list-item:hover {
+.collection-dropdown-list-item:hover,
+.create-collection-dropdown-button,
+.create-collection-dropdown-button:hover {
     // position: absolute;
 
     display: block;
@@ -144,23 +154,42 @@
     justify-content: space-between;
     box-sizing: border-box;
     // padding: 0px 20px;
-    margin: 3px 0px;
-    cursor: pointer;
-  
    
+    cursor: pointer;
+}
+
+.collection-dropdown-list-item,
+.collection-dropdown-list-item:hover {
     border-radius: 8px;
+     margin: 3px 0px;
+      border-radius: 12px;
 
 }
-.collection-dropdown-list-item:hover {
-      background-color: #efefef;
-      border-radius: 12px;
+
+.create-collection-dropdown-button{
+    box-sizing: border-box;
+    padding: 8px;
 }
+
+.create-collection-dropdown-button,
+.create-collection-dropdown-button:hover {
+    border-top: rgb(239, 239, 239) 1px solid;
+    border-top-right-radius: none;
+    border-top-left-radius: none;
+    border-radius: 0px;
+
+}
+.collection-dropdown-list-item:hover,
+.create-collection-dropdown-button:hover {
+      background-color: #efefef;
+}
+
 
 .collection-thumbnail-text-container{
     display: flex;
 }
 
-.collection-dropdown-thumbnail-container{
+.collection-dropdown-thumbnail-container {
     // height: 36px;
     // width: 36px;
     // background-color: yellow;
@@ -173,6 +202,30 @@
 
     
 }
+
+.create-collection-dropdown-icon-container {
+    margin-left:16px;
+    margin-right: 20px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    i {
+        color: red;
+        font-size: 28px;
+        // text-align: center;
+        // vertical-align: center;
+    }
+}
+
+.create-collection-dropdown-text-container {
+        font-size: 16px;
+        text-overflow: ellipsis;
+         cursor: pointer;
+        margin: auto 0;
+}
+
 
 .collection-dropdown-text-container {
     text-overflow: ellipsis;

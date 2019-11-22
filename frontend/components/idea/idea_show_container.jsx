@@ -25,9 +25,16 @@ import { createIdea, updateIdea, createIdeaJoin } from '../../util/idea_api_util
 
 
 const mapStateToProps = (state, ownProps) => {
-    
+
     const currentUser = state.session["id"];
     const idea = state.entities.ideas[ownProps.match.params.ideaId] || { original_collection: {}, curator: {} };
+    let optionText;
+    if (!Object.values(state.entities.collections)[0]) {
+        optionText = "Select";
+    } else {
+        optionText = Object.values(state.entities.collections)[0].title;
+    }
+    // const optionText = Object.values(state.entities.collections)[0].title || "COLLECTION NAME";
     const curator = state.entities.ideas[ownProps.match.params.ideaId]|| {};
     const collections = Object.values(state.entities.collections)
         .filter(collection => collection.user_id === currentUser);
@@ -37,7 +44,8 @@ const mapStateToProps = (state, ownProps) => {
         idea,
         currentUser,
         curator,
-        collections
+        collections,
+        optionText,
     };
 };
 
