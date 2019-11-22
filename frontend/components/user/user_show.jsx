@@ -15,7 +15,6 @@ class UserShow extends React.Component {
             ideaTab: false,
             createDropdown: false,
             user: {},
-            userCollection: {},
         };
         
         this.handleTabClick = this.handleTabClick.bind(this);
@@ -54,11 +53,6 @@ class UserShow extends React.Component {
             });
         }
     }
-
-
-
-
-
 
     // Renders grey background on selected tab; Black underlined on mouseover
     displayTabs() {
@@ -202,45 +196,45 @@ class UserShow extends React.Component {
         }
     }
 
-    renderFixedNav() {
-       if (this.props.currentUser === this.props.user.id) {
-           return (
-               <div className="fixed-nav-container">
-                   <ul className="fixed-nav">
-                       <li
-                           ref={dropdownButton => this.dropdownButton = dropdownButton}
-                           // id="kebab-dropdown-button" 
-                           tabIndex="1"
-                           className="fixed-nav-icon"
-                           onClick={this.dropdownToggle}>
-                           <i className="fas fa-plus"></i>
-                       </li>
-                       <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
-                   </ul>
-               </div>
-           )
-       } else {
-           return (
-                  <div className="fixed-nav-container">
-                   <ul className="fixed-nav">
-                       <li
-                           ref={dropdownButton => this.dropdownButton = dropdownButton}
-                           tabIndex="1"
-                           className="fixed-nav-icon">
-                        {/* //    onClick={this.dropdownToggle}> */}
-                           <i class="fas fa-share"></i>
-                       </li>
-                       <div className="fixed-nav-right">
-                        <div className="profile-photo"></div>
-                         <button className="form-button red-button">Follow</button>
-                       </div>
-                   </ul>
-               </div>
-           )
-       }
+    // renderFixedNav() {
+    //    if (this.props.currentUser === this.props.user.id) {
+    //        return (
+    //            <div className="fixed-nav-container">
+    //                <ul className="fixed-nav">
+    //                    <li
+    //                        ref={dropdownButton => this.dropdownButton = dropdownButton}
+    //                        // id="kebab-dropdown-button" 
+    //                        tabIndex="1"
+    //                        className="fixed-nav-icon"
+    //                        onClick={this.dropdownToggle}>
+    //                        <i className="fas fa-plus"></i>
+    //                    </li>
+    //                    <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
+    //                </ul>
+    //            </div>
+    //        )
+    //    } else {
+    //        return (
+    //               <div className="fixed-nav-container">
+    //                <ul className="fixed-nav">
+    //                    <li
+    //                        ref={dropdownButton => this.dropdownButton = dropdownButton}
+    //                        tabIndex="1"
+    //                        className="fixed-nav-icon">
+    //                     {/* //    onClick={this.dropdownToggle}> */}
+    //                        <i class="fas fa-share"></i>
+    //                    </li>
+    //                    <div className="fixed-nav-right">
+    //                     <div className="profile-photo"></div>
+    //                      <button className="form-button red-button">Follow</button>
+    //                    </div>
+    //                </ul>
+    //            </div>
+    //        )
+    //    }
 
 
-    }
+    // }
 
     renderFixedNav() {
         if (this.props.currentUser === this.props.user.id) {
@@ -293,24 +287,7 @@ class UserShow extends React.Component {
 
         const { user } = this.props;
         
-        let collectionItem;
-        // render users collection items 
-
-        // 
-        if (user) {
-
-            const collectionList = Object.keys(this.props.collections).map(
-                id => this.props.collections[id]
-            );
-            collectionItem = collectionList.map(collection => {
-                return (
-                    <li className="collection-item-container" key={`collection-${collection.id}`}><CollectionItem collection={collection} /></li>
-                )
-            })
-        } else {
-            return <p>Loading...</p>
-        }
-
+         if (!user) return <p>Loading...</p> 
 
         return (
             <>
@@ -333,22 +310,8 @@ class UserShow extends React.Component {
                         <img src="https://curated-seeds.s3.amazonaws.com/default_280.png" className="user-profile-photo"></img>
                     </div>
 
-                    {/* old code comment back in if doesnt  */}
-                    {/* <div className="user-profile-tabs-container">
-                        <ul className="user-profile-tabs">
-                            <li id="collections-tab"><Link to={`/users/${user.id}/collections`}>Collections</Link></li>
-                            <li id="ideas-tab"><Link to={`/users/${user.id}/ideas`}>Ideas</Link></li>
-                        </ul>
-                    </div> */}
-
-
-                    {/* <ul className="user-profile-tabs"> */}
-                    {/* {this.renderDropdown()} */}
                     {this.displayTabs()}
-                    {/* <li id="collections-tab"><Link to={`/users/${user.id}/collections`}>Collections</Link></li> */}
-                    {/* <li id="ideas-tab"><Link to={`/users/${user.id}/ideas`}>Ideas</Link></li> */}
-                    {/* </ul> */}
-                    {/* </div> */}
+
 
                     <Switch>
                         <Route exact path="/users/:userId" component={CollectionsIndexContainer} />
@@ -356,13 +319,6 @@ class UserShow extends React.Component {
 
                         <Route exact path="/users/:userId/ideas" component={UserIdeaIndexContainer} />
                     </Switch>
-
-                    {/* <div className="collection-index">
-                        <ul className="collection-index-container">
-                            {collectionItem}
-
-                        </ul>
-                    </div> */}
 
 
                 </div>

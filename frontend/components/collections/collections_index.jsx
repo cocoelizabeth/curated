@@ -37,10 +37,9 @@ class CollectionIndex extends React.Component {
 
         if (user) {
             // Get all of users collections
-            const collectionList = Object.keys(this.props.collections).map(
-                id => this.props.collections[id]
-            );
             
+            const collectionList = Object.values(this.props.collections).filter( 
+                collection => collection.user_id === user.id);
 
             collectionItem = collectionList.map(collection => {
                 

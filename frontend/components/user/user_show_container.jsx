@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     debugger
     const currentUser = state.session.id;
     const user = state.entities.users[ownProps.match.params.userId];
+    debugger
     return {
         user,
         currentUser,
