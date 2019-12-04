@@ -1,6 +1,6 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
-import { createCollection } from '../../actions/collection_actions';
+import { createCollection, fetchCollection } from '../../actions/collection_actions';
 import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
 import IdeaSavedModal from './idea_saved_modal';
 import { connect } from 'react-redux';
@@ -9,11 +9,11 @@ const mapStateToProps = (state, ownProps) => {
     debugger
     return {
         username: ownProps.match.params.username,
-        photoUrl: state.modal.photoUrl,
-        // boardName: this.state.collectionTitle,
+        photoUrl: ownProps.photoUrl,
         formType: 'ideaSavedModal',
         placeholderText: 'Like "Places to go" or "Recipies to Make"',
-        header: 'Idea Saved to collectionName',
+        header: `Idea Saved to ${ownProps.collection}`,
+        collection: ownProps.collection,
         buttonText: 'See it Now'
     // collection: { title: "", description: "" },
     // add topics here later
@@ -23,6 +23,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     // action: (collection) => dispatch(createCollection(collection)),
+    fetchCollection: (collectionId) => dispatch(fetchCollection(collectionId)),
     closeModal: () => dispatch(closeModal()),
 });
 

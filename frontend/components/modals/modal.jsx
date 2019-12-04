@@ -25,7 +25,7 @@ function Modal({ modal, closeModal }) {
         
         case "ideaSavedModal":
             debugger
-            component = <IdeaSavedModalContainer photoUrl = {modal.photoUrl} />
+            component = <IdeaSavedModalContainer photoUrl = {modal.photoUrl} collection={modal.collection} />
             break;
         case "createCollection":
             debugger

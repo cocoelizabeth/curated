@@ -22,6 +22,7 @@ class IdeaShow extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSave = this.handleSave.bind(this);
         
+    
 
     }
 
@@ -30,12 +31,14 @@ class IdeaShow extends React.Component {
         this.props.fetchIdea(this.props.match.params.ideaId);
         this.props.fetchAllCollections(this.props.currentUser);
         this.setState({ optionText: this.props.optionText });
+       
         this.handleSave();
 
     }
 
     componentDidUpdate() {
         this.handleSave();
+       
     }
 
     showCollectionScroll(e) {

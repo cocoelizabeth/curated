@@ -31,6 +31,45 @@
   background-color: white;
 }
 
+
+// .modal-background {
+//   height: 100vh;
+//   width: 100vw;
+//   overflow: hidden;
+//   z-index: 301;
+//   position: fixed;
+//   background-color: rgba(10, 10, 10, .8);
+//   overflow-y: scroll;
+//   display: flex;
+//   align-content: center;
+//   align-items: center;
+//   justify-content: center;
+//   justify-items: center;
+// }
+
+// .modal-child {
+//   background-color: white;
+//   opacity: 100;
+//   min-height: 0;
+//   width: 544px;
+//   display: flex;
+//   flex-direction: column;
+//   border-radius: 8px;
+//   margin: 32px auto;
+//     // position: fixed;
+//   // position: absolute;
+//   top: 40%;
+//   z-index: 302;
+//   left: 50%;
+//   // -ms-transform: translateY(-50%);
+//   // transform: translateY(-50%);
+//   // -ms-transform: translateX(-50%);
+//   // transform: translateX(-50%);
+//   margin: 0 16px;
+//   max-height: calc(100vh - 32px);
+//   background-color: white;
+// }
+
 .modal-header {
   display: block;
   text-align: center;

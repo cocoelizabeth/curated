@@ -12,7 +12,9 @@ const modalReducer = (state = null, action) => {
             return {
                 modal: action.modal || state,
                 callback: action.callback,
+                collection: action.collection,
                 photoUrl: state.idea.photoUrl
+                
             };
         case CLOSE_MODAL:
             return null;

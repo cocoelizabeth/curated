@@ -31,6 +31,10 @@ class IdeaSavedModal extends React.Component {
 
     }
 
+    componentDidMount() {
+
+    }
+
     // handleDelete(e) {
     //     // come back to this
     //     console.log("Delete");
@@ -101,14 +105,14 @@ class IdeaSavedModal extends React.Component {
         return (
             <>
                 <div className="modal-header">
-                    <h5 className="modal-title">{this.props.header}</h5>
+                    <h5 className="modal-title">Idea saved to {this.props.collection}</h5>
                     <button className="modal-close-button" onClick={this.handleCancel}>
                         <i className="fas fa-times"></i>
                     </button>
                 </div>
 
-                <div className="collection-title">
-                    <img src={this.props.photoUrl}></img>
+                <div className="idea-show-image-container">
+                    <img className="idea-show-image" src={this.props.photoUrl}></img>
                 </div>
 
                 <div className="collection-form-buttons">
@@ -132,3 +136,11 @@ class IdeaSavedModal extends React.Component {
 }
 
 export default IdeaSavedModal;
+
+// username: ownProps.match.params.username,
+//     photoUrl: ownProps.photoUrl,
+//         formType: 'ideaSavedModal',
+//             placeholderText: 'Like "Places to go" or "Recipies to Make"',
+//                 header: `Idea Saved to ${ownProps.collection}`,
+//                     collection: ownProps.collection,
+//                         buttonText: 'See it Now'
