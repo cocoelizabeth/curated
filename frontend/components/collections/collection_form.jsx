@@ -38,7 +38,7 @@ class CollectionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
+        
         if (this.props.callback) {
             this.props.callback(this.state.collection);
         } 
@@ -80,7 +80,7 @@ class CollectionForm extends React.Component {
         console.log("You must give your collection a title");
     }
 
-    // Enable the create/save button if the user has entered  a titble
+    // Enable the create/save button if the user has entered  a title
     displayActionButton() {
         if (this.state.collection.title === "") {
             return (

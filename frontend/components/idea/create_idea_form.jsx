@@ -125,7 +125,6 @@ class CreateIdeaForm extends React.Component {
 
     // put selected collection in the state, change dropdown text to collection title, hide dropdown
     handleCollection(collection) {
-        debugger
         this.setState({ collectionId: collection.id, optionText: collection.title });
         this.hideCollectionScroll();
     }
@@ -226,7 +225,6 @@ class CreateIdeaForm extends React.Component {
     
     handleNewCollection() {
         this.props.openModal('createCollection', this.handleCollection)
-        debugger
         // .then(handleCollection())
     }
 

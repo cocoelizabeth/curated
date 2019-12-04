@@ -30,6 +30,8 @@ class Collection < ApplicationRecord
     has_many :ideas,
     through: :idea_joins
 
+  
+
 
 
 end

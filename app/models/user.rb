@@ -41,6 +41,8 @@ class User < ApplicationRecord
     through: :collections,
     source: :topic
 
+    
+
 
 
     # has_many :ideas

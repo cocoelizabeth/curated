@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-// import IdeaShowContainer from './idea/idea_show_container';
+import IdeaSavedModalContainer from '../idea/idea_saved_modal_container';
 import CreateCollectionFormContainer from '../collections/create_collection_form_container';
 
 
@@ -22,9 +22,11 @@ function Modal({ modal, closeModal }) {
 
     let component;
     switch (modal.modal) {
-        // case "show-idea":
-        //     component = <IdeaShowContainer idea={modal.idea} />
-        //     break;
+        
+        case "ideaSavedModal":
+            debugger
+            component = <IdeaSavedModalContainer photoUrl = {modal.photoUrl} />
+            break;
         case "createCollection":
             debugger
             component = <CreateCollectionFormContainer 

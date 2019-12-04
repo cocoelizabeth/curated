@@ -20,17 +20,22 @@ class IdeaShow extends React.Component {
         this.hideCollectionScroll = this.hideCollectionScroll.bind(this);
         this.handleCollection = this.handleCollection.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSave = this.handleSave.bind(this);
+        
 
     }
 
     componentDidMount() {
+    
         this.props.fetchIdea(this.props.match.params.ideaId);
         this.props.fetchAllCollections(this.props.currentUser);
         this.setState({ optionText: this.props.optionText });
+        this.handleSave();
+
     }
 
     componentDidUpdate() {
-       
+        this.handleSave();
     }
 
     showCollectionScroll(e) {
@@ -49,6 +54,8 @@ class IdeaShow extends React.Component {
     handleSubmit(e) {
 
         e.preventDefault();
+        let prevState = Object.assign({}, this.state);
+        this.setState({ savedCollection: `${prevState.optionText}` });
         const formData = new FormData();
         formData.append('idea[collection_ids]', [this.state.collectionId]);
         
@@ -56,13 +63,46 @@ class IdeaShow extends React.Component {
         //     // this.props.history.push(`/ideas/${res.payload.idea.id}`);
         //     console.log("saved")
         // });
-        
+        debugger
 
         this.props.createIdeaJoin(this.props.idea, this.state.collectionId).then((res) => {
+            // this.handleSave();
+            debugger
             // this.props.history.push(`/ideas/${res.payload.idea.id}`);
-            this.props.openModal('createCollection');
+            this.props.openModal('ideaSavedModal', null, this.state.savedCollection);
         });
         
+    }
+    
+ // CHANGE THIS TO CONDITIONALLY RENDER 2 DIFFERENT DROP DOWNS
+    handleSave(e) {
+        
+//         let prevState = Object.assign({}, this.state);
+//         const ideaCollections = this.props.idea.collections;
+//         const userCollections = Object.values(this.props.collections);
+//         for (let i=0; i<userCollections.length; i++) {
+//                 if (ideaCollections.includes(userCollections[i].id)) {
+//                     // change the text
+//                     this.setState({ optionText: `Saved to ${userCollections[i].title}` });
+// debugger
+//                     // logic for hiding the save button when open
+//                     const saveButton = document.querySelector(".idea-save-button");
+//                     debugger
+//                     const dropDownIcon = document.querySelector("#dropdown-icon");
+
+//                     const dropDown = document.querySelector(".collection-dropdown-button");
+//                     const saveWidth = saveButton.clientWidth;
+//                     const dropDownWidth = dropDown.clientWidth;
+//                     const newWidth = (saveWidth + dropDownWidth - 28).toString() + "px";
+//                     saveButton.style.display = "none";
+//                     dropDownIcon.className = "fas fa-pencil-alt";
+//                     // dropDown.style.width = newWidth;
+//                     dropDown.style.borderRadius = "8px";
+//                 }
+//             }
+      
+//         // let prevState = Object.assign({}, this.state);
+//         // this.setState({ optionText: `Saved to ${prevState.optionText}`});
     }
 
     // changeSelectField() {
@@ -167,7 +207,7 @@ class IdeaShow extends React.Component {
                         <ul className="idea-show-nav-right">
                             <li className="collection-dropdown-button" onClick={this.showCollectionScroll}>
                                 <h4 className="dropdown-collection-name">{this.state.optionText}</h4>
-                                <i className="fas fa-chevron-down"></i>
+                                <i id ="dropdown-icon" className="fas fa-chevron-down"></i>
                             </li>
                             <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>
                         </ul>
