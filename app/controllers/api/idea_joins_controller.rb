@@ -1,10 +1,11 @@
-class IdeaJoinsController < ApplicationController
+class Api::IdeaJoinsController < ApplicationController
     def create
         @join = IdeaJoin.new(idea_join_params)
         if @join.save
-            render :show
+            @idea = @join.idea
+            render 'api/ideas/show'
         else 
-            render json: @join.erorrs.full_messages
+            render json: @join.errors.full_messages
         end
     end
 
@@ -27,6 +28,6 @@ class IdeaJoinsController < ApplicationController
 
     private
     def idea_join_params
-        params.require(:idea_join).permit(:idea_id, :viewer_id)
+        params.require(:idea_join).permit(:idea_id, :collection_id)
     end
 end

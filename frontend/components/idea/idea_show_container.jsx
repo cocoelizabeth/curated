@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import {fetchAllCollections} from '../../actions/collection_actions';
 import { createIdea, updateIdea, createIdeaJoin } from '../../actions/idea_actions';
 
+
 // const mapStateToProps = (state, ownProps) => {
 //       
 //     const idea = state.entities.ideas[ownProps.match.params.ideaId];

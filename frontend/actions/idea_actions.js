@@ -55,11 +55,11 @@ export const fetchCollectionIdeas = (collectionId) => dispatch => (
 );
   
 
-// export const createIdeaJoin = (idea, collectionId) => dispatch => {
-//    return  APIUtil.createIdeaJoin(idea, collectionId).then(
-//        idea => dispatch(receiveIdea(idea))
-//    )
-// }
+export const createIdeaJoin = (idea, collectionId) => dispatch => {
+   return  APIUtil.createIdeaJoin(idea, collectionId).then(
+       idea => dispatch(receiveIdea(idea))
+   );
+};
 
 
 

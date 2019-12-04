@@ -52,8 +52,15 @@ class IdeaShow extends React.Component {
         const formData = new FormData();
         formData.append('idea[collection_ids]', [this.state.collectionId]);
         
-        this.props.updateIdea(this.props.idea.id, formData).then((res) => {
-            this.props.history.push(`/ideas/${res.payload.idea.id}`);
+        // this.props.updateIdea(this.props.idea.id, formData).then((res) => {
+        //     // this.props.history.push(`/ideas/${res.payload.idea.id}`);
+        //     console.log("saved")
+        // });
+        
+
+        this.props.createIdeaJoin(this.props.idea, this.state.collectionId).then((res) => {
+            // this.props.history.push(`/ideas/${res.payload.idea.id}`);
+            this.props.openModal('createCollection');
         });
         
     }

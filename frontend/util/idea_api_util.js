@@ -44,9 +44,9 @@ export const updateIdea = (id, formData) => {
 export const createIdeaJoin = (idea, collectionId) => {
     return $.ajax({
         method: 'POST',
-        url: "api/idea_joins",
-        data: { idea },
-        collectionId: collectionId
+        url: `/api/collections/${collectionId}/idea_joins`,
+        data: { idea_join: { idea_id: idea.id, collection_id: collectionId } },
+        // collectionId: collectionId
     });
 };
 
