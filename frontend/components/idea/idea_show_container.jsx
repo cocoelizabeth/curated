@@ -5,7 +5,7 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 import IdeaShow from './idea_show';
 import { withRouter } from 'react-router-dom';
 import {fetchAllCollections} from '../../actions/collection_actions';
-import { createIdea, updateIdea, createIdeaJoin } from '../../util/idea_api_util';
+import { createIdea, updateIdea, createIdeaJoin } from '../../actions/idea_actions';
 
 // const mapStateToProps = (state, ownProps) => {
 //       
@@ -57,7 +57,9 @@ const mapDispatchToProps = dispatch => {
         fetchIdea: (ideaId) => dispatch(fetchIdea(ideaId)),
         fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
         createIdeaJoin: (idea, collectionId) => dispatch(createIdeaJoin(idea, collectionId)),
-        updateIdea: (id, formData) => dispatch(updateIdea(id, formData))
+        updateIdea: (id, formData) => dispatch(updateIdea(id, formData)),
+        openModal: (modal) => dispatch(openModal(modal)),
+        closeModal: (modal) => dispatch(closeModal(modal))
     };
     
 };

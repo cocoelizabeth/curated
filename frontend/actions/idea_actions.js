@@ -4,16 +4,18 @@ export const RECEIVE_IDEAS = 'RECEIVE_IDEAS';
 export const RECEIVE_IDEA = 'RECEIVE_IDEA';
 
 export const receiveIdeas = (ideas) => ({
+    
     type: RECEIVE_IDEAS,
     ideas,
 });
 
-export const receiveIdea = (payload) => ({
-    type: RECEIVE_IDEA,
-    payload,
-});
-
-
+export const receiveIdea = (payload) => {
+    debugger
+    return ({
+        type: RECEIVE_IDEA,
+        payload,
+    });
+};
 export const fetchIdeas = () => dispatch => (
     APIUtil.fetchIdeas().then(
         ideas => dispatch(receiveIdeas(ideas))
@@ -34,7 +36,7 @@ export const createIdea = (formData) => dispatch => {
 };
 
 export const updateIdea = (id, formData) => dispatch => {
-    
+    debugger
     return APIUtil.updateIdea(id, formData).then(
         idea => dispatch(receiveIdea(idea))
     );

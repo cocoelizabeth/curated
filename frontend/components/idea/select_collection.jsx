@@ -14,17 +14,7 @@ class SelectCollection extends React.Component {
       
     }
 // COME BACK TO THIS - ELI
-    componentDidMount() {
-        
-        const { collection } = this.props;
-        const idea_id = collection.idea_ids[0];
-        this.props.fetchIdea(idea_id).then((res) => {
-            
-            console.log(res)
-            
-        })
 
-    }
 
     turnOffVisibility(e)  {
         

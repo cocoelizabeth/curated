@@ -47,12 +47,12 @@ class Api::IdeasController < ApplicationController
 
   def update
     collection_id = params[:idea][:collection_ids].to_i
-       
+    # @idea = idea.find(params[:id])
 
       if @idea.update(idea_params)
-         IdeaJoin.create(idea: @idea, collection_id: collection_id)
+        IdeaJoin.create(idea: @idea, collection_id: collection_id)
+        render :show
       else
-        
         render json: @idea.errors.full_messages
       end
    end
