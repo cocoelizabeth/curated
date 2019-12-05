@@ -32,7 +32,8 @@ const mapDispatchToProps = dispatch => ({
     createIdea: (formData) => dispatch(createIdea(formData)),
     fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
     fetchIdea: (id) => dispatch(fetchIdea(id)),
-    openModal: (modal, callback) => dispatch(openModal(modal, callback)),
+    // openModal: (modal, callback) => dispatch(openModal(modal, callback)),
+    openModal: (modal, callback, collection, idea) => dispatch(openModal(modal, callback, collection, idea)),
 
 });
 

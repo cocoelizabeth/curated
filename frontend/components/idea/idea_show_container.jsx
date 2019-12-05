@@ -59,7 +59,7 @@ const mapDispatchToProps = dispatch => {
         fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
         createIdeaJoin: (idea, collectionId) => dispatch(createIdeaJoin(idea, collectionId)),
         updateIdea: (id, formData) => dispatch(updateIdea(id, formData)),
-        openModal: (modal, callback, collection) => dispatch(openModal(modal, callback, collection)),
+        openModal: (modal, callback, collection, idea) => dispatch(openModal(modal, callback, collection, idea)),
         closeModal: (modal) => dispatch(closeModal(modal))
     };
     

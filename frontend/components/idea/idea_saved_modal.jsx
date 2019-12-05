@@ -105,14 +105,15 @@ class IdeaSavedModal extends React.Component {
         return (
             <>
                 <div className="modal-header">
-                    <h5 className="modal-title">Idea saved to {this.props.collection}</h5>
                     <button className="modal-close-button" onClick={this.handleCancel}>
                         <i className="fas fa-times"></i>
                     </button>
+                    <h5 className="modal-title">Idea saved to {this.props.collection}</h5>
+ 
                 </div>
 
-                <div className="idea-show-image-container">
-                    <img className="idea-show-image" src={this.props.photoUrl}></img>
+                <div className="save-idea-show-image-container">
+                    <img className="save-idea-show-image" src={this.props.photoUrl}></img>
                 </div>
 
                 <div className="collection-form-buttons">

@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         createIdea: () => dispatch(createIdea()),
-        openModal: modal => dispatch(openModal(modal))
+        openModal: (modal, callback, collection, idea) => dispatch(openModal(modal, callback, collection, idea)),
     };
 };
 

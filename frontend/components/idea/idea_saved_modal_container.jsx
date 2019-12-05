@@ -9,10 +9,10 @@ const mapStateToProps = (state, ownProps) => {
     debugger
     return {
         username: ownProps.match.params.username,
-        photoUrl: ownProps.photoUrl,
+        photoUrl: state.ui.modal.idea.photoUrl,
         formType: 'ideaSavedModal',
         placeholderText: 'Like "Places to go" or "Recipies to Make"',
-        header: `Idea Saved to ${ownProps.collection}`,
+        header: `Saved to ${ownProps.collection}`,
         collection: ownProps.collection,
         buttonText: 'See it Now'
     // collection: { title: "", description: "" },

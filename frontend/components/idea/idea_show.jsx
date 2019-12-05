@@ -8,73 +8,137 @@ class IdeaShow extends React.Component {
         super(props);
         
         this.state = {
-            // optionText: "COLLECTION NAME",
-            // optionText: this.props.optionText,
             collectionScroll: false,
             collection_id: null,
             user_id: this.props.currentUser
         };
 
-        
+        // collection dropdown logic
         this.showCollectionScroll = this.showCollectionScroll.bind(this);
         this.hideCollectionScroll = this.hideCollectionScroll.bind(this);
+        this.toggleDropdown = this.toggleDropdown.bind(this);
+        this.hideSaveButton = this.hideSaveButton.bind(this);
+        this.showSaveButton = this.showSaveButton.bind(this);
+        this.outsideElementClick = this.outsideElementClick.bind(this);
         this.handleCollection = this.handleCollection.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSave = this.handleSave.bind(this);
-        
-    
+        this.handleNewCollection = this.handleNewCollection.bind(this);
 
+        // submit logic
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+// LIFECYCLE METHODS
+    // fetch the idea, all of the user's collections to display in dropdown for re-saving the idea,
     componentDidMount() {
-    
         this.props.fetchIdea(this.props.match.params.ideaId);
         this.props.fetchAllCollections(this.props.currentUser);
         this.setState({ optionText: this.props.optionText });
-       
-        this.handleSave();
-
     }
 
-    componentDidUpdate() {
-        this.handleSave();
-       
-    }
-
+// COLLECTION DROPDOWN LOGIC
     showCollectionScroll(e) {
         this.setState({collectionScroll: true});
+        this.hideSaveButton();
+        this.outsideElementClick('.dropdown-visible-collections', this.toggleDropdown);
     }
 
     hideCollectionScroll(e) {
         this.setState({ collectionScroll: false});
+        this.showSaveButton();
     }
 
+    toggleDropdown(e) {
+        this.state.collectionScroll ? this.hideCollectionScroll() : this.showCollectionScroll();
+    }
+
+    // logic for hiding the save button and restyling dropdown when collection dropdown is open
+    hideSaveButton() {
+        const saveButton = document.querySelector(".idea-save-button");
+        const dropdown = document.querySelector(".collection-dropdown-button");
+        const saveWidth = saveButton.clientWidth;
+        const dropdownWidth = dropdown.clientWidth;
+        const newWidth = (saveWidth + dropdownWidth - 28).toString() + "px";
+        saveButton.style.display = "none";
+        dropdown.style.width = newWidth;
+        dropdown.style.borderRadius = "8px";
+    }  
+
+    // logic for rendering the save button when dropdown is closed
+    showSaveButton() {
+        const dropdown = document.querySelector(".collection-dropdown-button");
+        const dropdownWidth = dropdown.clientWidth;
+        const saveButton = document.querySelector(".idea-save-button");
+        saveButton.style.display = "flex";
+        const saveWidth = saveButton.clientWidth;
+        const newWidth = (dropdownWidth - saveWidth - 28).toString() + "px";
+        dropdown.style.width = newWidth;
+        dropdown.style.borderTopRightRadius = "0px";
+        dropdown.style.borderBottomRightRadius = "0px";
+    }
+
+    // hide dropdown when user clicks away from it
+    outsideElementClick(ele, callback) {
+        document.addEventListener("click", (e) => {
+            const dropdown = document.querySelector(ele);
+            const dropdownButton = document.querySelector(".collection-dropdown-button");
+            if (!dropdown) {
+                return;
+            }
+
+            if (dropdown != (e.target) && (dropdownButton != (e.target)) && (dropdown.contains(e.target) === false)) {
+                callback();
+            } else {
+                return;
+            }
+        });
+    }
+
+    // put selected collection in the state, change dropdown text to collection title, hide dropdown
     handleCollection(collection) {
         this.setState({collectionId: collection.id, optionText:collection.title});
         this.hideCollectionScroll();
     }
 
-    handleSubmit(e) {
+    // handleSubmit(e) {
+    //     e.preventDefault();
+    //     let prevState = Object.assign({}, this.state);
+    //     this.setState({ savedCollection: `${prevState.optionText}` });
+    //     const formData = new FormData();
+    //     formData.append('idea[collection_ids]', [this.state.collectionId]);
 
+    //     this.props.createIdeaJoin(this.props.idea, this.state.collectionId).then((res) => {
+    //         // this.handleSave();
+    //         debugger
+    //         // this.props.history.push(`/ideas/${res.payload.idea.id}`);
+    //         this.props.openModal('ideaSavedModal', null, this.state.savedCollection, res.payload.idea);
+    //     });
+        
+    // }
+
+    // NEW
+    handleSubmit(e) {
         e.preventDefault();
         let prevState = Object.assign({}, this.state);
         this.setState({ savedCollection: `${prevState.optionText}` });
         const formData = new FormData();
         formData.append('idea[collection_ids]', [this.state.collectionId]);
-        
-        // this.props.updateIdea(this.props.idea.id, formData).then((res) => {
-        //     // this.props.history.push(`/ideas/${res.payload.idea.id}`);
-        //     console.log("saved")
-        // });
-        debugger
 
         this.props.createIdeaJoin(this.props.idea, this.state.collectionId).then((res) => {
             // this.handleSave();
             debugger
             // this.props.history.push(`/ideas/${res.payload.idea.id}`);
-            this.props.openModal('ideaSavedModal', null, this.state.savedCollection);
+            this.props.openModal('ideaSavedModal', null, this.state.savedCollection, res.payload.idea);
         });
-        
+
+    }
+
+
+
+
+
+    handleNewCollection() {
+        this.props.openModal('createCollection', this.handleCollection, null, null);
+        // .then(handleCollection())
     }
     
  // CHANGE THIS TO CONDITIONALLY RENDER 2 DIFFERENT DROP DOWNS
@@ -91,16 +155,16 @@ class IdeaShow extends React.Component {
 //                     // logic for hiding the save button when open
 //                     const saveButton = document.querySelector(".idea-save-button");
 //                     debugger
-//                     const dropDownIcon = document.querySelector("#dropdown-icon");
+//                     const dropdownIcon = document.querySelector("#dropdown-icon");
 
-//                     const dropDown = document.querySelector(".collection-dropdown-button");
+//                     const dropdown = document.querySelector(".collection-dropdown-button");
 //                     const saveWidth = saveButton.clientWidth;
-//                     const dropDownWidth = dropDown.clientWidth;
-//                     const newWidth = (saveWidth + dropDownWidth - 28).toString() + "px";
+//                     const dropdownWidth = dropdown.clientWidth;
+//                     const newWidth = (saveWidth + dropdownWidth - 28).toString() + "px";
 //                     saveButton.style.display = "none";
-//                     dropDownIcon.className = "fas fa-pencil-alt";
-//                     // dropDown.style.width = newWidth;
-//                     dropDown.style.borderRadius = "8px";
+//                     dropdownIcon.className = "fas fa-pencil-alt";
+//                     // dropdown.style.width = newWidth;
+//                     dropdown.style.borderRadius = "8px";
 //                 }
 //             }
       
@@ -147,7 +211,7 @@ class IdeaShow extends React.Component {
                     <ul className="dropdown-scroll">
                         {displayCollectionScrollLis}
                     </ul>
-                    <div className="create-collection-dropdown-button">
+                    <div className="create-collection-dropdown-button" onClick={this.handleNewCollection}>
                         <div className="collection-thumbnail-text-container">
                             <div className="create-collection-dropdown-icon-container"><i class="fas fa-plus-circle"></i></div>
                             <div className="create-collection-dropdown-text-container">Create collection</div>
@@ -208,7 +272,7 @@ class IdeaShow extends React.Component {
                     
 
                         <ul className="idea-show-nav-right">
-                            <li className="collection-dropdown-button" onClick={this.showCollectionScroll}>
+                            <li className="collection-dropdown-button" onClick={this.toggleDropdown}>
                                 <h4 className="dropdown-collection-name">{this.state.optionText}</h4>
                                 <i id ="dropdown-icon" className="fas fa-chevron-down"></i>
                             </li>

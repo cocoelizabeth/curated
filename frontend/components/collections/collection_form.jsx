@@ -23,6 +23,7 @@ class CollectionForm extends React.Component {
         this.displayDeleteButton = this.displayDeleteButton.bind(this);
         this.displayActionButton = this.displayActionButton.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        
     }
 
     handleCancel(e) {
