@@ -11,7 +11,8 @@ function Modal({ modal, closeModal }) {
     const body = document.getElementsByTagName("BODY")[0]
 
 
-    if (!modal) {
+    if (!modal || !modal.modal) {
+        debugger
         // allow scrolling
         body.style.overflow = "visible";
         return null;
@@ -25,7 +26,7 @@ function Modal({ modal, closeModal }) {
         
         case "ideaSavedModal":
             debugger
-            component = <IdeaSavedModalContainer collection={modal.collection} />
+            component = <IdeaSavedModalContainer collectionId={modal.collectionId} collectionTitle={modal.collectionTitle}/>
             break;
         case "createCollection":
             debugger

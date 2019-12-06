@@ -173,7 +173,7 @@ class UserShow extends React.Component {
 
     showModal(e) {
         this.dropdownToggle();
-        this.props.openModal('createCollection', null, null, null);
+        this.props.openModal('createCollection', null, null, null, null);
         
     }
 

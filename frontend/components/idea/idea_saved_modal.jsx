@@ -32,7 +32,7 @@ class IdeaSavedModal extends React.Component {
     }
 
     componentDidMount() {
-
+        
     }
 
     // handleDelete(e) {
@@ -42,12 +42,13 @@ class IdeaSavedModal extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
-        if (this.props.callback) {
-            this.props.callback(this.state.collection);
-        }
-        this.props.action(this.state.collection)
-            .then(this.props.closeModal());
+        this.props.history.push(`/collections/${this.props.collectionId}`)
+        this.props.closeModal();
+        // if (this.props.callback) {
+        //     this.props.callback(this.state.collection);
+        // }
+        // this.props.action(this.state.collection)
+        //     .then(this.props.closeModal());
     }
 
     // update(field) {
@@ -88,6 +89,7 @@ class IdeaSavedModal extends React.Component {
     // Enable the create/save button if the user has entered  a title
     displayActionButton() {
             return (
+            // <Link to={`/collections/${this.props.collectionId}`}>
                 <button
                     className="form-button red-button"
                     type="submit"
@@ -95,6 +97,7 @@ class IdeaSavedModal extends React.Component {
                 >
                     {this.props.buttonText}
                 </button>
+            // </Link>
             )
         }
     
@@ -108,7 +111,7 @@ class IdeaSavedModal extends React.Component {
                     <button className="modal-close-button" onClick={this.handleCancel}>
                         <i className="fas fa-times"></i>
                     </button>
-                    <h5 className="modal-title">Idea saved to {this.props.collection}</h5>
+                    <h5 className="modal-title">Idea saved to {this.props.collectionTitle}</h5>
  
                 </div>
 

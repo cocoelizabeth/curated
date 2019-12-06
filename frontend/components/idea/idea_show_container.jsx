@@ -8,23 +8,6 @@ import {fetchAllCollections} from '../../actions/collection_actions';
 import { createIdea, updateIdea, createIdeaJoin } from '../../actions/idea_actions';
 
 
-// const mapStateToProps = (state, ownProps) => {
-//       
-//     const idea = state.entities.ideas[ownProps.match.params.ideaId];
-    
-//     let  curatorId;
-//     //  ? curatorId = state.entities.ideas[ownProps.match.params.ideaId].curator.id : curatorId = null
-//     // const curatorId = idea.curator.id
-//     return {
-//         idea,
-//         currentUser,
-//         curatorId,
-
-
-//     };
-// };
-
-
 const mapStateToProps = (state, ownProps) => {
 
     const currentUser = state.session["id"];
@@ -59,7 +42,7 @@ const mapDispatchToProps = dispatch => {
         fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
         createIdeaJoin: (idea, collectionId) => dispatch(createIdeaJoin(idea, collectionId)),
         updateIdea: (id, formData) => dispatch(updateIdea(id, formData)),
-        openModal: (modal, callback, collection, idea) => dispatch(openModal(modal, callback, collection, idea)),
+        openModal: (modal, callback, collectionId, collectionTitle, idea) => dispatch(openModal(modal, callback, collectionId, collectionTitle, idea)),
         closeModal: (modal) => dispatch(closeModal(modal))
     };
     

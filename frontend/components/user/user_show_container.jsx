@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchUser: userId => dispatch(fetchUser(userId)),
-        openModal: (modal, callback, collection, idea) => dispatch(openModal(modal, callback, collection, idea)),
+        openModal: (modal, callback, collectionId, collectionTitle, idea) => dispatch(openModal(modal, callback, collectionId, collectionTitle, idea)),
         createIdea: ()  => dispatch(createIdea()),
         createCollection: (collection)  => dispatch(createCollection(collection)),
         fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),

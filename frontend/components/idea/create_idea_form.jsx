@@ -195,7 +195,7 @@ class CreateIdeaForm extends React.Component {
 
     
     handleNewCollection() {
-        this.props.openModal('createCollection', this.handleCollection, null, null)
+        this.props.openModal('createCollection', this.handleCollection, null, null, null)
         // .then(handleCollection())
     }
 

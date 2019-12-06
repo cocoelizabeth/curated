@@ -33,8 +33,7 @@ const mapDispatchToProps = dispatch => ({
     fetchAllCollections: (userId) => dispatch(fetchAllCollections(userId)),
     fetchIdea: (id) => dispatch(fetchIdea(id)),
     // openModal: (modal, callback) => dispatch(openModal(modal, callback)),
-    openModal: (modal, callback, collection, idea) => dispatch(openModal(modal, callback, collection, idea)),
-
+    openModal: (modal, callback, collectionId, collectionTitle, idea) => dispatch(openModal(modal, callback, collectionId, collectionTitle, idea)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateIdeaForm));

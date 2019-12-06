@@ -12,8 +12,9 @@ const mapStateToProps = (state, ownProps) => {
         photoUrl: state.ui.modal.idea.photoUrl,
         formType: 'ideaSavedModal',
         placeholderText: 'Like "Places to go" or "Recipies to Make"',
-        header: `Saved to ${ownProps.collection}`,
-        collection: ownProps.collection,
+        // header: `Saved to ${ownProps.collection}`,
+        collectionId: ownProps.collectionId,
+        collectionTitle: ownProps.collectionTitle,
         buttonText: 'See it Now'
     // collection: { title: "", description: "" },
     // add topics here later

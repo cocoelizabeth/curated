@@ -115,11 +115,11 @@ class IdeaShow extends React.Component {
         
     // }
 
-    // NEW
     handleSubmit(e) {
         e.preventDefault();
         let prevState = Object.assign({}, this.state);
-        this.setState({ savedCollection: `${prevState.optionText}` });
+        this.setState({ savedCollection: `${prevState.collectionId}` });
+        this.setState ({ collectionTitle:`${prevState.optionText}` })
         const formData = new FormData();
         formData.append('idea[collection_ids]', [this.state.collectionId]);
 
@@ -127,7 +127,7 @@ class IdeaShow extends React.Component {
             // this.handleSave();
             debugger
             // this.props.history.push(`/ideas/${res.payload.idea.id}`);
-            this.props.openModal('ideaSavedModal', null, this.state.savedCollection, res.payload.idea);
+            this.props.openModal('ideaSavedModal', null, this.state.savedCollection, this.state.collectionTitle, res.payload.idea);
         });
 
     }
@@ -137,7 +137,7 @@ class IdeaShow extends React.Component {
 
 
     handleNewCollection() {
-        this.props.openModal('createCollection', this.handleCollection, null, null);
+        this.props.openModal('createCollection', this.handleCollection, null, null, null);
         // .then(handleCollection())
     }
     

@@ -2,16 +2,16 @@ export const CLOSE_MODAL = "CLOSE_MODAL";
 export const OPEN_MODAL = "OPEN_MODAL";
 
 // comment  back  in - works
-export const openModal = (modal, callback, collection, idea) => {
-    debugger
+export const openModal = (modal, callback, collectionId, collectionTitle, idea) => {
     return ({
         type: OPEN_MODAL,
         modal,
         callback,
-        collection,
+        collectionId,
+        collectionTitle,
         idea
     });
-}
+};
 
 
 export const closeModal = () => ({
