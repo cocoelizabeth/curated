@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+timport { connect } from 'react-redux';
 import { fetchUserIdeas } from '../../actions/idea_actions';
 
 import UserIdeaIndex from './user_idea_index';
