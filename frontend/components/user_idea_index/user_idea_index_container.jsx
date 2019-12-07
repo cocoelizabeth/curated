@@ -18,7 +18,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchUserIdeas: (user_id) => dispatch(fetchUserIdeas(user_id)),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserIdeaIndex);
