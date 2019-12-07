@@ -1,16 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import { createIdea } from '../actions/idea_actions';
-import { openModal } from '../actions/modal_actions';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         createIdea: () => dispatch(createIdea()),
-//         openModal: (modal, callback, collectionId, collectionTitle, idea) => dispatch(openModal(modal, callback, collectionId, collectionTitle, idea)),
-//     };
-// };
 
 const IdeaItem = ({ idea }) => {
     return (
@@ -25,7 +15,6 @@ const IdeaItem = ({ idea }) => {
 
 export default IdeaItem;
 
-// export default connect(null, mapDispatchToProps)(IdeaItem)
 
 
 
