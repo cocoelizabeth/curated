@@ -3,7 +3,7 @@ export const fetchIdeas = () => {
         method: 'GET',
         url: 'api/ideas',
         // data - take in data later?
-    })
+    });
 };
 
 export const fetchIdea = id => {
@@ -54,7 +54,5 @@ export const fetchCollectionIdeas = (collectionId) => {
     return $.ajax({
         method: 'GET',
         url: `/api/collections/${collectionId}/ideas`
-    })
-}
-  // contentType: false,
-        // processData: false
+    });
+};

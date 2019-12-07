@@ -7,12 +7,12 @@ import CreateCollectionFormContainer from '../collections/create_collection_form
 
 function Modal({ modal, closeModal }) {
    // toggle scrolling off an on when modal is open
-   debugger
+   
     const body = document.getElementsByTagName("BODY")[0]
 
 
     if (!modal || !modal.modal) {
-        debugger
+        
         // allow scrolling
         body.style.overflow = "visible";
         return null;
@@ -25,15 +25,15 @@ function Modal({ modal, closeModal }) {
     switch (modal.modal) {
         
         case "ideaSavedModal":
-            debugger
             component = <IdeaSavedModalContainer collectionId={modal.collectionId} collectionTitle={modal.collectionTitle}/>
             break;
         case "createCollection":
-            debugger
             component = <CreateCollectionFormContainer 
                 callback = {modal.callback}
             />;
             break;
+        case "editIdea":
+            component = <EditIdeaFormContainer />
         default:
             return null;
     }

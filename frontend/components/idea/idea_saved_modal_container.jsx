@@ -6,7 +6,6 @@ import IdeaSavedModal from './idea_saved_modal';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
     return {
         username: ownProps.match.params.username,
         photoUrl: state.ui.modal.idea.photoUrl,

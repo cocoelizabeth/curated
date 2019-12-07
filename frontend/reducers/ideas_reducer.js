@@ -7,11 +7,9 @@ const ideasReducer = (state = {}, action) => {
     Object.freeze(state);
     switch(action.type) {
         case RECEIVE_IDEAS: 
-    
             return action.ideas;
         
         case RECEIVE_IDEA:
-            debugger
             return merge({}, state, { [action.payload.idea.id]: action.payload.idea });
         
         case RECEIVE_COLLECTIONS:

@@ -6,7 +6,6 @@ class IdeaSavedModal extends React.Component {
     constructor(props) {
 
         super(props);
-        debugger
         this.state = {
             idea: {
                 // title: this.props.collection.title || '',
@@ -104,7 +103,6 @@ class IdeaSavedModal extends React.Component {
 
 
     render() {
-        debugger
         return (
             <>
                 <div className="modal-header">

@@ -11,6 +11,8 @@ import IdeaShowContainer from './idea/idea_show_container';
 import UserShowContainer from './user/user_show_container';
 import CreateIdeaFormContainer from './idea/create_idea_form_container';
 import CollectionShowContainer from './collections/collection_show_container';
+import CreateCollectionFormContainer from './collections/create_collection_form_container';
+import EditIdeaFormContainer from './idea/edit_idea_form_container';
 
 const App = () => (
     <div className="background-grid">

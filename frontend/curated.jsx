@@ -7,7 +7,7 @@ import configureStore from './store/store';
 import { login, logout, signup } from './actions/session_actions';
 import { createIdea, fetchIdea, fetchIdeas } from './actions/idea_actions';
 import { fetchAllCollections, fetchCollection, createCollection, updateCollection, deleteCollection } from './actions/collection_actions';
-
+//  add event listener for the DOM content to be loaded before we render JSX  / react  files
 document.addEventListener("DOMContentLoaded", () => {
     let store;
    
@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.updateCollection = updateCollection;
     window.deleteCollection = deleteCollection;
 
+    // Replaces entire content of target (root) with the component (<Root store..>)
     ReactDOM.render(<Root store={ store }/>, root);
 
     // TESTING

@@ -4,24 +4,15 @@ import { createIdea } from '../actions/idea_actions';
 import { openModal } from '../actions/modal_actions';
 import {Link} from 'react-router-dom';
 
-const mapStateToProps = (state, ownProps) => {
-    // 
-    const defaultTitle = { title: "" };
-    const id = ownProps.idea.id
-    const title = state.entities.ideas[ownProps.title] || defaultTitle;
-    return {
-        title,
-    };
-};
 
-const mapDispatchToProps = dispatch => {
-    return {
-        createIdea: () => dispatch(createIdea()),
-        openModal: (modal, callback, collectionId, collectionTitle, idea) => dispatch(openModal(modal, callback, collectionId, collectionTitle, idea)),
-    };
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         createIdea: () => dispatch(createIdea()),
+//         openModal: (modal, callback, collectionId, collectionTitle, idea) => dispatch(openModal(modal, callback, collectionId, collectionTitle, idea)),
+//     };
+// };
 
-const IdeaItem = ({ idea, title, description, source_url, createIdea, openModal, modal }) => {
+const IdeaItem = ({ idea }) => {
     return (
         <li className="idea-image-container">
             <Link to={`/ideas/${idea.id}`}>
@@ -29,51 +20,12 @@ const IdeaItem = ({ idea, title, description, source_url, createIdea, openModal,
             {/* <p> Title: {idea.title} </p> */}
             </Link>
         </li>
-
-
-
     );
-
 };
 
+export default IdeaItem;
 
-export default connect(mapStateToProps, mapDispatchToProps)(IdeaItem)
+// export default connect(null, mapDispatchToProps)(IdeaItem)
 
-// MODAL CODE BELOW // 
-
-// const mapStateToProps = (state, ownProps) => {
-//     const defaultTitle = { title: "" }
-//     const title = state.entities.ideas[ownProps.title] || defaultTitle;
-//     return {
-//         title,
-//     };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         createIdea: () => dispatch(createIdea()),
-//         openModal: modal => dispatch(openModal(modal))
-//     };
-// };
-
-// const  IdeaItem = ({ idea, title, description, source_url, createIdea, openModal, modal }) => {
-//     return (
-        
-//         <li className="idea-image-container" onClick={() =>
-//             dispatch(openModal({type: "show-idea", idea: idea}))}>
-//             <img src={idea.photoUrl} alt="image2" className="idea"/>
-//             <p> Title: {idea.title} </p>
-//          </li>
-
-            
-      
-//     );
-   
-// };
-
-
-// export  default connect(mapStateToProps, mapDispatchToProps)(IdeaItem)
-
-{/* // NOTE: will change createIdea button to save pin later */}
 
 

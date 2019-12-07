@@ -2,7 +2,6 @@ class Api::IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
 
   def index
-    
     if params[:user_id] 
       
       @ideas = Idea.with_attached_photo.joins(:curator).where(users:{id: params[:user_id]})

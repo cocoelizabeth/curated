@@ -22,6 +22,7 @@ class IdeaShow extends React.Component {
         this.outsideElementClick = this.outsideElementClick.bind(this);
         this.handleCollection = this.handleCollection.bind(this);
         this.handleNewCollection = this.handleNewCollection.bind(this);
+        this.editIdea = this.editIdea.bind(this)
 
         // submit logic
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -99,6 +100,7 @@ class IdeaShow extends React.Component {
         this.hideCollectionScroll();
     }
 
+
     // handleSubmit(e) {
     //     e.preventDefault();
     //     let prevState = Object.assign({}, this.state);
@@ -108,7 +110,7 @@ class IdeaShow extends React.Component {
 
     //     this.props.createIdeaJoin(this.props.idea, this.state.collectionId).then((res) => {
     //         // this.handleSave();
-    //         debugger
+    //         
     //         // this.props.history.push(`/ideas/${res.payload.idea.id}`);
     //         this.props.openModal('ideaSavedModal', null, this.state.savedCollection, res.payload.idea);
     //     });
@@ -125,7 +127,7 @@ class IdeaShow extends React.Component {
 
         this.props.createIdeaJoin(this.props.idea, this.state.collectionId).then((res) => {
             // this.handleSave();
-            debugger
+            
             // this.props.history.push(`/ideas/${res.payload.idea.id}`);
             this.props.openModal('ideaSavedModal', null, this.state.savedCollection, this.state.collectionTitle, res.payload.idea);
         });
@@ -137,7 +139,7 @@ class IdeaShow extends React.Component {
 
 
     handleNewCollection() {
-        this.props.openModal('createCollection', this.handleCollection, null, null, null);
+        this.props.openModal('editIdea', this.handleCollection, null, null, null);
         // .then(handleCollection())
     }
     
@@ -151,10 +153,10 @@ class IdeaShow extends React.Component {
 //                 if (ideaCollections.includes(userCollections[i].id)) {
 //                     // change the text
 //                     this.setState({ optionText: `Saved to ${userCollections[i].title}` });
-// debugger
+
 //                     // logic for hiding the save button when open
 //                     const saveButton = document.querySelector(".idea-save-button");
-//                     debugger
+//                     
 //                     const dropdownIcon = document.querySelector("#dropdown-icon");
 
 //                     const dropdown = document.querySelector(".collection-dropdown-button");
@@ -172,6 +174,9 @@ class IdeaShow extends React.Component {
 //         // this.setState({ optionText: `Saved to ${prevState.optionText}`});
     }
 
+    editIdea (){
+        this.props.openModal("createCollection", null, null, null);
+    }
     // changeSelectField() {
     //     if (this.state.collectionScroll) {
     //         return 
@@ -237,7 +242,11 @@ class IdeaShow extends React.Component {
     //  }
      const editButton =  this.props.currentUser  === this.props.idea.curator.id ? (
          <ul className="idea-show-nav-left">
-             <li className="idea-show-nav-left"><i className="fas fa-pencil-alt"></i></li>
+             <li className="idea-show-nav-left">
+                    <i className="fas fa-pencil-alt"
+                        onClick={this.editIdea}>
+                    </i>
+            </li>
          </ul> 
      ) : <div height="40px" width="40px"></div>
 
