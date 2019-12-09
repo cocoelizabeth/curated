@@ -175,7 +175,7 @@ class IdeaShow extends React.Component {
     }
 
     editIdea (){
-        this.props.openModal("createCollection", null, null, null);
+        this.props.openModal("editIdea", null, null, null);
     }
     // changeSelectField() {
     //     if (this.state.collectionScroll) {

@@ -12,20 +12,19 @@ const mapStateToProps = (state, ownProps) => {
 
     const currentUser = state.session["id"];
     const idea = state.entities.ideas[ownProps.match.params.ideaId] || { original_collection: {}, curator: {} };
-    let optionText;
-    if (!Object.values(state.entities.collections)[0]) {
-        optionText = "Select";
-    } else {
-        
-        const lastCollectionIdx = Object.keys(state.entities.collections).length - 1;
-        optionText = Object.values(state.entities.collections)[lastCollectionIdx].title;
-    }
-    // const optionText = Object.values(state.entities.collections)[0].title || "COLLECTION NAME";
-    const curator = state.entities.ideas[ownProps.match.params.ideaId]|| {};
+    const curator = state.entities.ideas[ownProps.match.params.ideaId] || {};
     const collections = Object.values(state.entities.collections)
         .filter(collection => collection.user_id === currentUser);
+    let optionText;
 
-    // const curatorId = idea.curator.id 
+    if (!collections[0]) {
+        optionText = "Select";
+    } else {
+        const lastCollectionIdx = collections.length - 1;
+        const lastCollection = collections[lastCollectionIdx];
+        optionText = lastCollection.title;
+    }
+
     return {
         idea,
         currentUser,
