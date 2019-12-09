@@ -1,0 +1,1 @@
+json.extract! idea_join, :id, :collection 

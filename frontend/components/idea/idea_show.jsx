@@ -139,7 +139,7 @@ class IdeaShow extends React.Component {
 
 
     handleNewCollection() {
-        this.props.openModal('editIdea', this.handleCollection, null, null, null);
+        this.props.openModal('createCollection', this.handleCollection, null, null, null);
         // .then(handleCollection())
     }
     
@@ -218,7 +218,7 @@ class IdeaShow extends React.Component {
                     </ul>
                     <div className="create-collection-dropdown-button" onClick={this.handleNewCollection}>
                         <div className="collection-thumbnail-text-container">
-                            <div className="create-collection-dropdown-icon-container"><i class="fas fa-plus-circle"></i></div>
+                            <div className="create-collection-dropdown-icon-container"><i className="fas fa-plus-circle"></i></div>
                             <div className="create-collection-dropdown-text-container">Create collection</div>
                         </div>
                     </div>

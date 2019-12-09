@@ -7,84 +7,25 @@ class IdeaSavedModal extends React.Component {
 
         super(props);
         this.state = {
-            idea: {
-                // title: this.props.collection.title || '',
-                // description: this.props.collection.description,
-                // id: this.props.collection.id,
-                // add topics here later
-            },
-            // is_secret: false, - add later
             errors: null,
         };
         this.handleCancel = this.handleCancel.bind(this);
-        // this.handleDelete = this.handleDelete.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.displayDeleteButton = this.displayDeleteButton.bind(this);
-        // this.displayActionButton = this.displayActionButton.bind(this);
-        // this.renderErrors = this.renderErrors.bind(this);
     }
 
     handleCancel(e) {
         e.preventDefault();
         this.props.closeModal();
-
     }
 
-    componentDidMount() {
-        
-    }
-
-    // handleDelete(e) {
-    //     // come back to this
-    //     console.log("Delete");
-    // }
 
     handleSubmit(e) {
         e.preventDefault();
         this.props.history.push(`/collections/${this.props.collectionId}`)
         this.props.closeModal();
-        // if (this.props.callback) {
-        //     this.props.callback(this.state.collection);
-        // }
-        // this.props.action(this.state.collection)
-        //     .then(this.props.closeModal());
     }
 
-    // update(field) {
-    //     return (e) => {
-    //         this.setState({
-    //             collection: { ...this.state.collection, [field]: e.currentTarget.value }
-    //         });
-    //     };
-    // }
-
-    // Show delete button if the user is editing their own board
-    // displayDeleteButton() {
-    //     if (this.props.formType === "editCollection") {
-    //         return (
-    //             <button
-    //                 className="form-button grey-button"
-    //                 onClick={this.handleDelete}>
-    //                 Delete
-    //             </button>
-    //         )
-    //     } else {
-    //         return (
-    //             <button
-    //                 className="form-button grey-button"
-    //                 style={{ display: "none" }}
-    //                 Delete>
-    //             </button>
-
-    //         )
-    //     }
-    // }
-
-
-    // renderErrors() {
-    //     console.log("You must give your collection a title");
-    // }
-
+    
     // Enable the create/save button if the user has entered  a title
     displayActionButton() {
             return (
@@ -139,10 +80,3 @@ class IdeaSavedModal extends React.Component {
 
 export default IdeaSavedModal;
 
-// username: ownProps.match.params.username,
-//     photoUrl: ownProps.photoUrl,
-//         formType: 'ideaSavedModal',
-//             placeholderText: 'Like "Places to go" or "Recipies to Make"',
-//                 header: `Idea Saved to ${ownProps.collection}`,
-//                     collection: ownProps.collection,
-//                         buttonText: 'See it Now'

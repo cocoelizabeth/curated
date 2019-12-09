@@ -56,3 +56,10 @@ export const fetchCollectionIdeas = (collectionId) => {
         url: `/api/collections/${collectionId}/ideas`
     });
 };
+
+export const fetchCollectionIdeaJoins = (collectionId) => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/collections/${collectionId}/idea_joins`
+    });
+};

@@ -62,6 +62,12 @@ export const createIdeaJoin = (idea, collectionId) => dispatch => {
    );
 };
 
+export const fetchCollectionIdeaJoins = (collectionId) => dispatch => (
+    APIUtil.fetchCollectionIdeaJoins(collectionId).then (
+        ideaJoins => dispatch( receiveIdeas(ideaJoins))
+    )
+);
+
 
 
 // NOTES: might change fetchIdeas to: 

@@ -1,6 +1,10 @@
 import React from 'react';
+import CollectionIdeaIndexContainer from "./collection_idea_index/collection_idea_index_container";
+import IdeaIndexContainer from "./idea_index_container";
 import IdeaItem from './idea_index_item';
 import NavContainer from './nav_container';
+import { connect } from 'react-redux';
+import UserIdeaIndexContainer from './user_idea_index/user_idea_index_container';
 
 class IdeaIndex extends React.Component {
 
@@ -40,3 +44,26 @@ class IdeaIndex extends React.Component {
 
 export default IdeaIndex;
 
+// FUTURE IMPLEMENTATION: combine all idea indexes
+// function IdeaIndex({ index }) {
+//     let component;
+
+//     switch( index.type ) {
+//         case "ideaIndex":
+//             component = <IdeaIndexContainer />
+//             break;
+//         case "collectionIdeaIndex":
+//             component = <CollectionIdeaIndexContainer />
+//             break;
+//         case "userIdeaIndex": {
+//             component = <UserIdeaIndexContainer />
+//             break;
+//         }
+//     }
+
+//     return(
+
+//     )
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(IdeaIndex);

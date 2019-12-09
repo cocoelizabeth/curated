@@ -12,8 +12,12 @@ class CollectionShow extends React.Component {
 
     componentDidMount() {
         
+        // this.props.fetchCollection(this.props.match.params.collectionId).then(() => {
+        //     this.props.fetchCollectionIdeas(this.props.match.params.collectionId);
+        // });
+
         this.props.fetchCollection(this.props.match.params.collectionId).then(() => {
-            this.props.fetchCollectionIdeas(this.props.match.params.collectionId);
+            this.props.fetchCollectionIdeaJoins(this.props.match.params.collectionId);
         });
     }
 

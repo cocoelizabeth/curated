@@ -33,7 +33,6 @@ class EditIdeaForm extends React.Component {
 
     handleDelete(e) {
         // come back to this
-        console.log("Delete");
     }
 
     handleSubmit(e) {
@@ -78,7 +77,7 @@ class EditIdeaForm extends React.Component {
 
 
     renderErrors() {
-        console.log("You must give your collection a title");
+        // console.log("You must give your collection a title");
     }
 
     // Enable the create/save button if the user has entered  a title

@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import IdeaSavedModalContainer from '../idea/idea_saved_modal_container';
 import CreateCollectionFormContainer from '../collections/create_collection_form_container';
-
+import EditIdeaFormContainer from '../idea/edit_idea_form_container';
 
 function Modal({ modal, closeModal }) {
    // toggle scrolling off an on when modal is open
@@ -12,7 +12,6 @@ function Modal({ modal, closeModal }) {
 
 
     if (!modal || !modal.modal) {
-        
         // allow scrolling
         body.style.overflow = "visible";
         return null;
@@ -34,6 +33,7 @@ function Modal({ modal, closeModal }) {
             break;
         case "editIdea":
             component = <EditIdeaFormContainer />
+            break;
         default:
             return null;
     }

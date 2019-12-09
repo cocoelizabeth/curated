@@ -17,7 +17,6 @@ class CollectionIdeaIndex extends React.Component {
     render() {
         const { ideas } = this.props;
         
-        
         const ideaItems = ideas.map(idea => {
             return (
                 <UserIdeaItem
@@ -30,7 +29,6 @@ class CollectionIdeaIndex extends React.Component {
         return (
             <>
                 <div className="idea-index">
-
                     <ul className="idea-index-container">
                         {ideaItems}
                     </ul>

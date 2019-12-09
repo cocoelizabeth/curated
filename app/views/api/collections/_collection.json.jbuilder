@@ -1,1 +1,1 @@
-json.extract! collection, :id, :title, :description, :private, :user_id, :topic_id, :idea_ids
+json.extract! collection, :id, :title, :description, :private, :user_id, :topic_id, :idea_ids, :idea_joins_ids
