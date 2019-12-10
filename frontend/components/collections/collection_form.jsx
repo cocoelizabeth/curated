@@ -1,12 +1,8 @@
 import React from 'react';
-import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-router-dom';
-// import { TextInput } from '../global/form';
 
 class CollectionForm extends React.Component {
     constructor(props) {
-
         super(props);
-        
         this.state= {
             collection: {
                 title: this.props.collection.title || '',
@@ -23,18 +19,23 @@ class CollectionForm extends React.Component {
         this.displayDeleteButton = this.displayDeleteButton.bind(this);
         this.displayActionButton = this.displayActionButton.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
-        
+        this.reverseButtons = this.reverseButtons.bind(this);
+        this.descriptionField = this.descriptionField.bind(this);
     }
 
     handleCancel(e) {
         e.preventDefault();
         this.props.closeModal();
-  
+    }
+
+    componentDidMount(e) {
+        this.reverseButtons();
+
     }
 
    handleDelete(e) {
-        // come back to this
-     
+    //    this.props.openModal('createCollection', null, this.props.collection.id, this.props.collection.title, null);
+
     }
 
     handleSubmit(e) {
@@ -71,9 +72,34 @@ class CollectionForm extends React.Component {
                     style={{display: "none"}}
                     Delete>
                 </button>
-
                 )
             }
+    }
+
+    // reverse order of buttons when edit form
+    reverseButtons() {
+        if (this.props.formType === "editCollection") {
+            document.querySelector('.collection-form-buttons').style.flexDirection = "row";
+        }
+    }
+
+    descriptionField() {
+        if (this.props.formType === "editCollection") {
+            return (
+                <div className="collection-description">
+                    <p>{this.props.textArea.name}</p>
+                    <textarea
+                        // type="title"
+                        rows = "3"
+                        name="description"
+                        placeholder={this.props.textArea.placeholderText}
+                        value={this.state.collection.description}
+                        onChange={this.update('description')}
+                    >
+                    </textarea>
+                </div>
+            )
+        }
     }
     
 
@@ -83,7 +109,7 @@ class CollectionForm extends React.Component {
 
     // Enable the create/save button if the user has entered  a title
     displayActionButton() {
-        if (this.state.collection.title === "") {
+        if (this.state.collection.title === "" ) {
             return (
                 <button
                     
@@ -129,8 +155,10 @@ class CollectionForm extends React.Component {
                     >
                     </input>
                 </div>
+                {this.descriptionField()}
                 <div className="collection-form-buttons">
                 {/* comment this  back in and move delete button to displayDeleteButton function */}
+               
                     {this.displayDeleteButton()}
                     {/* <button
                         className="form-button grey-button"

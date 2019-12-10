@@ -17,7 +17,6 @@ import EditIdeaFormContainer from './idea/edit_idea_form_container';
 const App = () => (
     <div className="background-grid">
     <Modal />
-        {/* <div className="overlay"> */}
         <Switch>
             <Route exact path="/" component={SignupFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
@@ -28,8 +27,6 @@ const App = () => (
             <Route path="/users/:userId" component={UserShowContainer} />
             <Route path="/collections/:collectionId" component={CollectionShowContainer}/>
             <ProtectedRoute path="/create_idea" component={CreateIdeaFormContainer} />
-            
-            
         </Switch>
 
     </div>

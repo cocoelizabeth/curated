@@ -21,7 +21,6 @@ class UserShow extends React.Component {
         this.displayTabs = this.displayTabs.bind(this);
         this.dropdownToggle = this.dropdownToggle.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.name = this.getName.bind(this);
         this.showModal = this.showModal.bind(this);
         this.renderFixedNav = this.renderFixedNav.bind(this);
         // this.getName = this.getName.bind(this);
@@ -29,12 +28,12 @@ class UserShow extends React.Component {
 
 // old code
     componentDidMount() {
-
-        this.setState({ user: this.props.match.params.userId })
+        const userId = this.props.match.params.userId;
+        this.setState({ user: userId })
         
-
-        this.props.fetchUser(this.props.match.params.userId).then(() => {
-            this.props.fetchAllCollections(this.props.match.params.userId);
+        
+        this.props.fetchUser(userId).then(() => {
+            this.props.fetchAllCollections(userId);
         });
 
         if (this.props.location.pathname.includes("ideas") && !(this.state.ideaTab)) {
@@ -150,27 +149,6 @@ class UserShow extends React.Component {
     }
 
 
-
-    getName() {
-
-        // const user = this.props.fetchUser(this.props.match.params.userId)
-
-        // const username = this.state.user.username;
-        // let name = "";
-        // for (let i = 0; i < username.length; i++) { 
-
-        //     let testChar = parseInt(username[i])
-
-        //     if (testChar > 0) {
-        //         return name;
-        //     } else {
-        
-        //         name += username[i]
-        //     }
-        // }
-        // return name;
-    }
-
     showModal(e) {
         this.dropdownToggle();
         this.props.openModal('createCollection', null, null, null, null);
@@ -196,45 +174,6 @@ class UserShow extends React.Component {
         }
     }
 
-    // renderFixedNav() {
-    //    if (this.props.currentUser === this.props.user.id) {
-    //        return (
-    //            <div className="fixed-nav-container">
-    //                <ul className="fixed-nav">
-    //                    <li
-    //                        ref={dropdownButton => this.dropdownButton = dropdownButton}
-    //                        // id="kebab-dropdown-button" 
-    //                        tabIndex="1"
-    //                        className="fixed-nav-icon"
-    //                        onClick={this.dropdownToggle}>
-    //                        <i className="fas fa-plus"></i>
-    //                    </li>
-    //                    <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
-    //                </ul>
-    //            </div>
-    //        )
-    //    } else {
-    //        return (
-    //               <div className="fixed-nav-container">
-    //                <ul className="fixed-nav">
-    //                    <li
-    //                        ref={dropdownButton => this.dropdownButton = dropdownButton}
-    //                        tabIndex="1"
-    //                        className="fixed-nav-icon">
-    //                     {/* //    onClick={this.dropdownToggle}> */}
-    //                        <i class="fas fa-share"></i>
-    //                    </li>
-    //                    <div className="fixed-nav-right">
-    //                     <div className="profile-photo"></div>
-    //                      <button className="form-button red-button">Follow</button>
-    //                    </div>
-    //                </ul>
-    //            </div>
-    //        )
-    //    }
-
-
-    // }
 
     renderFixedNav() {
         if (this.props.currentUser === this.props.user.id) {
@@ -250,7 +189,8 @@ class UserShow extends React.Component {
                                 onClick={this.dropdownToggle}>
                                 <i className="fas fa-plus"></i>
                             </li>
-                            <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li>
+                            {/* CHANGE THIS */}
+                            {/* <li className="fixed-nav-icon"><i className="fas fa-pencil-alt"></i></li> */}
                         </ul>
                        {/* <div className="fixed-nav-transition">{this.props.user.username}</div> */}
                         <div className="fixed-nav-right"></div>
@@ -268,7 +208,7 @@ class UserShow extends React.Component {
                                 tabIndex="1"
                                 className="fixed-nav-icon">
                                 {/* //    onClick={this.dropdownToggle}> */}
-                                <i class="fas fa-share"></i>
+                                <i className="fas fa-share"></i>
                             </li>
                         </ul>
                         

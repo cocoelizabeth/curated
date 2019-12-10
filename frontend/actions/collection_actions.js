@@ -43,7 +43,7 @@ export const createCollection = collection => dispatch => {
 
 export const updateCollection = collection => dispatch => {
 
-    return APIUtil.createCollection(collection).then(
+    return APIUtil.updateCollection(collection).then(
         collection => dispatch(receiveCollection(collection))
     );
 };
@@ -55,15 +55,3 @@ export const deleteCollection = collection => dispatch => {
     );
 };
 
-
-
-
-
-// // NOTES: might change fetchIdeas to: 
-
-// // export const fetchIdeas = (filters) => dispatch => (
-// //     APIUtil.login(user).then(
-// //         user => dispatch(receiveCurrentUser(user)),
-// //         err => dispatch(receiveSessionErrors(err.responseJSON))
-// //     )
-// // );

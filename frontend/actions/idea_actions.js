@@ -11,12 +11,12 @@ export const receiveIdeas = (ideas) => {
 };
 
 export const receiveIdea = (payload) => {
-    
     return ({
         type: RECEIVE_IDEA,
         payload,
     });
 };
+
 export const fetchIdeas = () => dispatch => (
     APIUtil.fetchIdeas().then(
         ideas => dispatch(receiveIdeas(ideas))
@@ -29,7 +29,6 @@ export const fetchIdea = (id) => dispatch => (
     )
 );
 
-
 export const createIdea = (formData) => dispatch => {
     return APIUtil.createIdea(formData).then(
             idea => dispatch(receiveIdea(idea))
@@ -37,7 +36,6 @@ export const createIdea = (formData) => dispatch => {
 };
 
 export const updateIdea = (id, formData) => dispatch => {
-    
     return APIUtil.updateIdea(id, formData).then(
         idea => dispatch(receiveIdea(idea))
     );
@@ -55,7 +53,6 @@ export const fetchCollectionIdeas = (collectionId) => dispatch => (
     )
 );
   
-
 export const createIdeaJoin = (idea, collectionId) => dispatch => {
    return  APIUtil.createIdeaJoin(idea, collectionId).then(
        idea => dispatch(receiveIdea(idea))

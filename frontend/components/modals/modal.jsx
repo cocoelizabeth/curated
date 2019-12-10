@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import IdeaSavedModalContainer from '../idea/idea_saved_modal_container';
 import CreateCollectionFormContainer from '../collections/create_collection_form_container';
 import EditIdeaFormContainer from '../idea/edit_idea_form_container';
+import EditCollectionFormContainer from '../collections/edit_collection_form_container';
 
 function Modal({ modal, closeModal }) {
    // toggle scrolling off an on when modal is open
@@ -30,6 +31,9 @@ function Modal({ modal, closeModal }) {
             component = <CreateCollectionFormContainer 
                 callback = {modal.callback}
             />;
+            break;
+        case "editCollection":
+            component = <EditCollectionFormContainer collectionId = {modal.collectionId} collectionTitle={modal.collectionTitle} />
             break;
         case "editIdea":
             component = <EditIdeaFormContainer />
@@ -62,46 +66,3 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
 
-// import React from 'react';
-// import { closeModal } from '../actions/modal_actions';
-// import { connect } from 'react-redux';
-// import {ReactModal} from 'react-modal';
-
-// const mapStateToProps = (state) => {
-//     return {
-//         modal: state.ui.modal
-//     };
-// };
-
-// class ModalContainer extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             modalIsOpen: props.modalProps.open
-//         };
-//         this.closeModal = this.closeModal.bind(this);
-//     }
-
-//     componentWillReceiveProps(nextProps) {
-//         if (nextProps.modalProps.open !=== this.props.modalProps.open) {
-//             this.setState({
-//                 modalIsOpen: nextProps.modalProps.open
-//             })
-//         }
-//     }
-
-//     closeModal() {
-//         this.props.closeModal()
-//     }
-
-//     render() {
-//         if (!this.props.modalType) {
-//             return null
-//         }
-
-//         return (
-//             <div className="modal-background"
-//         )
-//     }
-
-// }

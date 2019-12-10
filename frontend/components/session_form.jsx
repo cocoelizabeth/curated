@@ -30,7 +30,7 @@ class SessionForm extends React.Component {
         const user = Object.assign({}, this.state);
 
         this.props.processForm(user)
-        .then(()=> this.props.history.push('/index'));
+        .then(()=> this.props.history.push('/index'))
     }
 
     renderErrors() {

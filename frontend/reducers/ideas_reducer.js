@@ -8,7 +8,7 @@ const ideasReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_IDEAS: 
             return action.ideas;
-        
+            // return Object.assign({}, state, action.ideas);
         case RECEIVE_IDEA:
             return merge({}, state, { [action.payload.idea.id]: action.payload.idea });
         

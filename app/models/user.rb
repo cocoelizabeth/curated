@@ -41,12 +41,6 @@ class User < ApplicationRecord
     through: :collections,
     source: :topic
 
-    
-
-
-
-    # has_many :ideas
-    # belongs to
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
@@ -69,20 +63,18 @@ class User < ApplicationRecord
 
     def set_username
         username = self.email.split("@")[0]
-   
-        if User.find_by username: username == nil
+        return if username == nil
+        if User.find_by username: username == nil 
              username = username
         else
             username += self.id.to_s
         end
         self.username = username
-        
         self.save 
     end
 
     def ensure_session_token
         self.session_token ||= User.generate_session_token
-
     end
 
     def reset_session_token!
@@ -91,5 +83,4 @@ class User < ApplicationRecord
         self.session_token
     end
 
-    #figvaper
 end

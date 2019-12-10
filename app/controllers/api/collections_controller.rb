@@ -34,7 +34,6 @@ class Api::CollectionsController < ApplicationController
     end
 
     def update
-        deugger
         @collection = current_user.collections.find(params[:id])
         @collection.update!(collection_params)
         render :show

@@ -10,7 +10,8 @@ class IdeaShow extends React.Component {
         this.state = {
             collectionScroll: false,
             collection_id: null,
-            user_id: this.props.currentUser
+            user_id: this.props.currentUser,
+            saveButton: true,
         };
 
         // collection dropdown logic
@@ -56,25 +57,14 @@ class IdeaShow extends React.Component {
     hideSaveButton() {
         const saveButton = document.querySelector(".idea-save-button");
         const dropdown = document.querySelector(".collection-dropdown-button");
-        const saveWidth = saveButton.clientWidth;
-        const dropdownWidth = dropdown.clientWidth;
-        const newWidth = (saveWidth + dropdownWidth - 28).toString() + "px";
-        saveButton.style.display = "none";
-        dropdown.style.width = newWidth;
-        dropdown.style.borderRadius = "8px";
+        dropdown.style.borderRadius = "12px";
+        saveButton.style.display = "none";  
     }  
 
     // logic for rendering the save button when dropdown is closed
     showSaveButton() {
-        const dropdown = document.querySelector(".collection-dropdown-button");
-        const dropdownWidth = dropdown.clientWidth;
         const saveButton = document.querySelector(".idea-save-button");
         saveButton.style.display = "flex";
-        const saveWidth = saveButton.clientWidth;
-        const newWidth = (dropdownWidth - saveWidth - 28).toString() + "px";
-        dropdown.style.width = newWidth;
-        dropdown.style.borderTopRightRadius = "0px";
-        dropdown.style.borderBottomRightRadius = "0px";
     }
 
     // hide dropdown when user clicks away from it
@@ -85,7 +75,6 @@ class IdeaShow extends React.Component {
             if (!dropdown) {
                 return;
             }
-
             if (dropdown != (e.target) && (dropdownButton != (e.target)) && (dropdown.contains(e.target) === false)) {
                 callback();
             } else {
@@ -100,42 +89,18 @@ class IdeaShow extends React.Component {
         this.hideCollectionScroll();
     }
 
-
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     let prevState = Object.assign({}, this.state);
-    //     this.setState({ savedCollection: `${prevState.optionText}` });
-    //     const formData = new FormData();
-    //     formData.append('idea[collection_ids]', [this.state.collectionId]);
-
-    //     this.props.createIdeaJoin(this.props.idea, this.state.collectionId).then((res) => {
-    //         // this.handleSave();
-    //         
-    //         // this.props.history.push(`/ideas/${res.payload.idea.id}`);
-    //         this.props.openModal('ideaSavedModal', null, this.state.savedCollection, res.payload.idea);
-    //     });
-        
-    // }
-
     handleSubmit(e) {
         e.preventDefault();
         let prevState = Object.assign({}, this.state);
         this.setState({ savedCollection: `${prevState.collectionId}` });
-        this.setState ({ collectionTitle:`${prevState.optionText}` })
+        this.setState ({ collectionTitle:`${prevState.optionText}` });
         const formData = new FormData();
         formData.append('idea[collection_ids]', [this.state.collectionId]);
-
         this.props.createIdeaJoin(this.props.idea, this.state.collectionId).then((res) => {
-            // this.handleSave();
-            
-            // this.props.history.push(`/ideas/${res.payload.idea.id}`);
-            this.props.openModal('ideaSavedModal', null, this.state.savedCollection, this.state.collectionTitle, res.payload.idea);
+            this.props.openModal('ideaSavedModal', null, this.prevState.savedCollection, this.prevState.collectionTitle, res.payload.idea);
         });
 
     }
-
-
-
 
 
     handleNewCollection() {
@@ -177,22 +142,6 @@ class IdeaShow extends React.Component {
     editIdea (){
         this.props.openModal("editIdea", null, null, null);
     }
-    // changeSelectField() {
-    //     if (this.state.collectionScroll) {
-    //         return 
-    //     }
-
-    // }
-    // formatName() {
-    //     const defaultCurator = "A curator";
-        
-    //     const curator = this.props.curator || defaultCurator;
-    //     if (curator.firstName ? curator = curator.firstName : curator = curator.username)
-    //         return (
-    //             curator
-    //         );
-    // }
-
 
 
    render () {
@@ -240,7 +189,10 @@ class IdeaShow extends React.Component {
 
 
     //  }
+
+    
      const editButton =  this.props.currentUser  === this.props.idea.curator.id ? (
+         
          <ul className="idea-show-nav-left">
              <li className="idea-show-nav-left">
                     <i className="fas fa-pencil-alt"
@@ -282,7 +234,7 @@ class IdeaShow extends React.Component {
 
                         <ul className="idea-show-nav-right">
                             <li className="collection-dropdown-button" onClick={this.toggleDropdown}>
-                                <h4 className="dropdown-collection-name">{this.state.optionText}</h4>
+                                <div className="dropdown-collection-name">{this.state.optionText}</div>
                                 <i id ="dropdown-icon" className="fas fa-chevron-down"></i>
                             </li>
                             <li className="idea-save-button" onClick={this.handleSubmit}>Save</li>

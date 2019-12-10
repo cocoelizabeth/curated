@@ -20,7 +20,7 @@ class CollectionItem extends React.Component {
         const photoUrls = firstSixIdeas.map(idea => {
 
             return (
-                <li className="mini-image"><img src={idea.photoUrl}></img></li>
+                <li className="mini-image" key={idea.id}><img src={idea.photoUrl}></img></li>
             )
         })
 

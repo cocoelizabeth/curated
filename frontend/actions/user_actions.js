@@ -10,7 +10,6 @@ export const receiveUsers = (users) => {
 };
 
 export const receiveUser = (payload) => {
-
     return {
         type: RECEIVE_USER,
         user: payload.user,

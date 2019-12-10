@@ -141,25 +141,30 @@
 }
 
 .idea-show-nav-right {
-    height: 40px;
     display: flex;
     flex-direction: row;
     align-content: space-between;
+    align-items: center;
     cursor: pointer;
+    background-color: rgb(239, 239, 239);
+    border-radius: 16px;
+    width: 236px;
+    height: 44px;
     .collection-dropdown-button {
         height: 40px;
-        padding: 0px 14px;
-        width: 172px;
+        padding: 0px 16px;
+        width: 100%;
         background-color: rgb(239, 239, 239);
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         .dropdown-collection-name {
-            font-weight: 400;
-            font-size: 16px;
+            font-weight: 800;
+            font-size: 12px;
             color: #333;
+            color: pink;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -174,8 +179,8 @@
     .idea-save-button {
         display: flex;
         height: 100%;
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
         padding: 0px 14px;
         font-size: 15px;
         background-color: #e60023;
@@ -200,6 +205,7 @@
 .idea-show-image {
     border-radius: 8px;
     height: 100%;
+    width: 100%;
 }
 
 .idea-show-info-container {

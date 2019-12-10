@@ -9,33 +9,20 @@ import { createIdea } from "../../actions/idea_actions";
 
 
 const mapStateToProps = (state, ownProps) => {
-    
-
+    const currentUser = state.entities.users[state.session.id] || {};
     const collection = state.entities.collections[ownProps.match.params.collectionId];
     let ideas;
     if (collection)  {  
-        
         // filtering undefined values using Boolean
         ideas = collection.idea_ids.map(ideaId=> state.entities.ideas[ideaId]).filter(Boolean);
     } else {
         ideas = [];
     }
-
-    let ideaJoins;
-    if (collection) {
-        // ideaJoins = collection.idea_join_id.map(ideaJoinId =>
-        //     fetchIdeaJoin
-        //     )
-        // idea_joins = collection.idea_joins.map(ideaJoinId => state.entities.ideas[ideaJoinId.ideaId]).filter(Boolean)
-    } else {
-        ideaJoins = [];
-    }
-
     
     return {
         collection,
         ideas,
-        ideaJoins
+        currentUser
     };
 };
 

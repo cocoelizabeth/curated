@@ -14,7 +14,6 @@ const collectionsReducer = (state = {}, action) => {
         case RECEIVE_CURRENT_USER: 
             const collections = action.collections;
             return Object.assign({}, state, collections);
-    
         default: 
             return state;
     }
