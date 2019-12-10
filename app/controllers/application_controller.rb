@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
     private
 
+    # caching method; only compute @current_user once in the same request/response cycle and then save it as an instance variable
+    # so that we don’t query the database every time we want to figure out who the current_user is
     def current_user
         return nil unless session[:session_token]
         @current_user ||= User.find_by(session_token: session[:session_token])
@@ -14,7 +16,7 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user
     end
-
+    # prevent user from accessing the site if not logged in
     def ensure_logged_in
         redirect_to api_session_url unless logged_in?
     end

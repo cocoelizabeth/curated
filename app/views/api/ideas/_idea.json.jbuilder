@@ -4,3 +4,9 @@ json.original_collection idea.collections.first
 json.collections idea.collection_ids
 json.curatorId idea.curator.id
 json.photoUrl(idea.photo.service_url)
+
+
+# json.curator do  
+#     json.id idea.curator.id
+#     json.username idea.curator.username
+# end

@@ -1,7 +1,8 @@
 class Api::UsersController < ApplicationController
+
+    # Create new user 
     def create
         @user = User.new(user_params)
-        
         if @user.save
             login(@user)
             render :show
@@ -13,6 +14,16 @@ class Api::UsersController < ApplicationController
     def show
          @user = User.find(params[:id])
     end
+
+    # Future implementation
+
+    # edit user profile
+    # def update
+    # end
+
+    # delete account
+    # def destroy
+    # end
 
     private
 
